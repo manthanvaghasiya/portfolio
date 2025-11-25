@@ -20,11 +20,12 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-light text-primary overflow-x-hidden">
+    // ADDED 'bg-grid-pattern' here
+    <div className="min-h-screen bg-light bg-grid-pattern text-primary overflow-x-hidden">
       <Navbar />
       <Hero />
       <Stats />
-      <Experience /> {/* <--- Add this line here */}
+      <Experience /> 
       <Projects />
       <Skills />
       <Contact />

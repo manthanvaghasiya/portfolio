@@ -9,3 +9,24 @@ body {
   color: #0F172A;
   font-family: 'Inter', sans-serif;
 }
+
+/* --- MODERN TECH BACKGROUND --- */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
