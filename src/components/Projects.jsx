@@ -43,7 +43,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 px-6 bg-white">
+    <section id="projects" className="py-20 px-6 bg-transparent">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16" data-aos="fade-up">
           <h2 className="text-4xl font-extrabold text-primary mb-4">

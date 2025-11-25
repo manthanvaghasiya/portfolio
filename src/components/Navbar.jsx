@@ -23,7 +23,6 @@ const Navbar = () => {
         
         {/* LOGO */}
         <div className="text-2xl font-bold tracking-tighter cursor-pointer flex items-center gap-1">
-          <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center text-white font-bold text-lg">M</div>
           <span>Manthan<span className="text-accent">Portfolio</span>.</span>
         </div>
         
