@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowRight, Download, Github, Linkedin, Instagram } from 'lucide-react';
 
 const Hero = () => {
   return (
@@ -42,17 +42,20 @@ const Hero = () => {
             </a>
           </div>
 
-          <div className="flex gap-6 text-gray-400 pt-4">
-             <a href="https://github.com/manthanvaghasiya" target="_blank" rel="noopener noreferrer">
-               <Github className="hover:text-primary cursor-pointer transition" size={24} />
-             </a>
-             <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">
-               <Linkedin className="hover:text-primary cursor-pointer transition" size={24} />
-             </a>
-             <a href="mailto:your.email@gmail.com">
-               <Mail className="hover:text-primary cursor-pointer transition" size={24} />
-             </a>
-          </div>
+         <div className="flex gap-6 text-gray-400 pt-4">
+         <a href="https://github.com/manthanvaghasiya" target="_blank" rel="noopener noreferrer">
+           <Github className="hover:text-primary cursor-pointer transition" size={24} />
+         </a>
+         <a href="https://www.linkedin.com/in/manthan-vaghasiya-b213a8267" target="_blank" rel="noopener noreferrer">
+           <Linkedin className="hover:text-primary cursor-pointer transition" size={24} />
+         </a>
+
+         {/* Instagram (UPDATED) */}
+         {/* Replace the link below with your actual link */}
+         <a href="https://www.instagram.com/manthan_vaghasiya_07?igsh=NmhycDlqOGRndWNu" target="_blank" rel="noopener noreferrer">
+           <Instagram className="hover:text-primary cursor-pointer transition" size={24} />
+         </a>
+         </div>
         </div>
 
         {/* Right Image - Animates from Left */}

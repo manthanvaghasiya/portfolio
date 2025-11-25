@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { Mail, MapPin, Phone, Send, Loader2 } from 'lucide-react';
+import { Mail, MapPin, Send, Loader2 } from 'lucide-react';
 
 const Contact = () => {
   const form = useRef();
@@ -11,16 +11,16 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // REPLACE THESE WITH YOUR ACTUAL KEYS FROM STEP 2
-    const SERVICE_ID = "service_tqyl1bs"; 
-    const TEMPLATE_ID = "template_gji86k6";
-    const PUBLIC_KEY = "LejwDMsuSfiQAbUBX";
+    // Make sure these are your actual keys!
+    const SERVICE_ID = "YOUR_SERVICE_ID"; 
+    const TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+    const PUBLIC_KEY = "YOUR_PUBLIC_KEY";
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
       .then((result) => {
           setStatusMessage("Message sent! I'll get back to you soon.");
           setIsSubmitting(false);
-          e.target.reset(); // Clear the form
+          e.target.reset(); 
       }, (error) => {
           setStatusMessage("Something went wrong. Please try again.");
           setIsSubmitting(false);
@@ -39,9 +39,10 @@ const Contact = () => {
           <h2 className="text-5xl font-extrabold tracking-tight">
             Let's work <br /> <span className="text-accent">together</span>.
           </h2>
+          {/* UPDATED TEXT: Open for Job & Freelance */}
           <p className="text-xl text-gray-400 max-w-lg leading-relaxed">
-            I am currently open for freelance work and internship opportunities. 
-            Have a project in mind? Let's discuss how we can build it.
+            I am currently open for <b>full-time job opportunities</b> and <b>freelance projects</b>. 
+            Whether you have a question or just want to say hi, I'll get back to you!
           </p>
           
           <div className="space-y-4 pt-4">
@@ -51,7 +52,8 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm text-gray-500">Email Me</p>
-                <p className="font-medium">your.email@example.com</p>
+                {/* UPDATED EMAIL */}
+                <p className="font-medium">manthanvaghasiya60@gmail.com</p>
               </div>
             </div>
             
@@ -70,7 +72,6 @@ const Contact = () => {
         {/* Right Side: The Form */}
         <div className="bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-sm" data-aos="fade-left">
           <form ref={form} onSubmit={sendEmail} className="space-y-6">
-            
             <div>
               <label className="block text-sm font-medium text-gray-400 mb-2">Your Name</label>
               <input 
@@ -100,7 +101,7 @@ const Contact = () => {
                 required
                 rows="4"
                 className="w-full bg-gray-900/50 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition resize-none"
-                placeholder="Tell me about your project..."
+                placeholder="Tell me about your project or job opportunity..."
               ></textarea>
             </div>
 
@@ -132,11 +133,11 @@ const Contact = () => {
 
       {/* Footer Strip */}
       <div className="max-w-7xl mx-auto mt-20 pt-10 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-6 text-gray-500 text-sm">
-        <p>© 2025 Crafted by You.</p>
+        <p>© 2025 Manthan Vaghasiya.</p>
         <div className="flex gap-6">
-          <a href="#" className="hover:text-white transition">GitHub</a>
-          <a href="#" className="hover:text-white transition">LinkedIn</a>
-          <a href="#" className="hover:text-white transition">Instagram</a>
+          <a href="https://github.com/manthanvaghasiya" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">GitHub</a>
+          <a href="https://www.linkedin.com/in/manthan-vaghasiya-b213a8267" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">LinkedIn</a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">Instagram</a>
         </div>
       </div>
     </section>

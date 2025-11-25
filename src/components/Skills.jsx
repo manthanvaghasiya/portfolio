@@ -11,12 +11,13 @@ const Skills = () => {
     { 
       category: "Backend", 
       icon: <Server className="w-8 h-8 text-accent" />, 
-      items: ["Node.js", "Express.js", "PHP", "REST APIs"] 
+      items: ["Node.js", "Express.js", "REST APIs", "JWT Auth"] 
     },
     { 
       category: "Database", 
       icon: <Database className="w-8 h-8 text-accent" />, 
-      items: ["MongoDB", "MySQL", "Mongoose", "SQL"] 
+      // UPDATED: Added Mongoose and Firebase
+      items: ["MongoDB", "PostgreSQL", "Mongoose", "Firebase"] 
     },
     { 
       category: "Tools", 
