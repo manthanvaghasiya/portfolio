@@ -8,35 +8,43 @@ const Projects = () => {
   const projects = [
     {
       title: "Surat BookCycle",
-      category: "Full Stack (MERN)",
+      category: "Old Book Exchange - E-commerce Platform",
       shortDescription: "A community-driven book exchange platform for Surat.",
-      // You confirmed this description is correct:
-      fullDescription: "Surat BookCycle is a localized marketplace designed to reduce paper waste and promote reading. It allows users to list used books, find books nearby, and chat with sellers. I am currently rewriting the legacy PHP codebase into a modern MERN stack architecture to support 10,000+ users.",
+      
+      // 1. UPDATED: Realistic MERN Description
+      fullDescription: "Surat BookCycle is a centralized marketplace engineered to solve the problem of textbook waste. The platform allows students to easily list their used books and find buyers. \n\n• Designed a robust REST API using Node.js and Express to handle book data.\n• Implemented Secure User Authentication using JWT (JSON Web Tokens) to protect user accounts.\n• Built a dynamic frontend with React.js that allows users to search, filter, and view book details instantly.\n• created a responsive dashboard for users to manage their listings (Add, Edit, Delete books).",
+      
+      // 2. UPDATED: Realistic Features
       features: [
-        "User Authentication (JWT)",
-        "Real-time Book Search & Filtering",
-        "Geolocated Book Listings",
-        "Secure Chat System"
+        "Secure Login/Signup (JWT)",
+        "Search & Category Filtering",
+        "Book Listing Management (CRUD)",
+        "Responsive Mobile/Desktop UI"
       ],
       tech: ["MongoDB", "Express", "React", "Node.js"],
+      
       image: "/bookcycle.png", 
+      modalImage: "/bookcycle-full.png",
       githubLink: "https://github.com/manthanvaghasiya/surat-bookcycle",
       liveLink: "#",
     },
     {
       title: "DairyFlow",
-      category: "POS & Shop Management",
+      category: "Dairy Management System",
       shortDescription: "A complete business management system for dairy shops.",
-      fullDescription: "DairyFlow is a specialized ERP & POS system built for Dairy Shops in Gujarat. It solves the complex problem of tracking 'Udhaar' (Customer Debt) and managing daily sales. It includes inventory tracking for perishable goods and comprehensive revenue analytics for shop owners.",
+      
+      // DairyFlow Description (Kept technical as per your previous diagram)
+      fullDescription: "DairyFlow is a specialized SaaS solution tailored for the Indian dairy industry. It digitizes the traditional 'red book' record-keeping system. \n\n• Developed a custom Point of Sale (POS) interface optimized for rapid morning/evening transaction shifts.\n• Solved the complex 'Customer Debt' (Udhaar) tracking problem with automated ledger updates.\n• Implemented real-time inventory tracking for perishable goods to reduce wastage.\n• Designed interactive dashboards for daily revenue and sales analytics.",
+      
       features: [
         "Point of Sale (POS) Interface",
         "Customer Debt (Udhaar) Management",
-        // Removed 'Milk Fat/SNF Calculator' as requested
         "Inventory & Stock Alerts",
         "Daily Revenue Reports"
       ],
       tech: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
       image: "/dairyflow.png", 
+      modalImage: "/dairyflow-full.png",
       githubLink: "https://github.com/manthanvaghasiya/dairyflow-dairy-management-system",
       liveLink: "#",
     },
@@ -75,7 +83,6 @@ const Projects = () => {
                     alt={project.title} 
                     className="w-full h-[350px] object-cover hover:scale-105 transition duration-700"
                   />
-                  {/* Overlay Hint */}
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
                     <p className="text-white font-bold text-lg flex items-center gap-2">
                       <ExternalLink size={20} /> View Details
@@ -86,12 +93,17 @@ const Projects = () => {
 
               {/* Project Summary */}
               <div className="w-full md:w-1/2 space-y-6">
-                <div className="text-accent font-bold tracking-widest uppercase text-sm">
-                  {project.category}
-                </div>
+                
+                {/* Title First */}
                 <h3 className="text-3xl font-bold text-primary">
                   {project.title}
                 </h3>
+
+                {/* Category Second */}
+                <div className="text-accent font-bold tracking-widest uppercase text-sm">
+                  {project.category}
+                </div>
+
                 <p className="text-gray-600 text-lg leading-relaxed">
                   {project.shortDescription}
                 </p>
@@ -130,7 +142,6 @@ const Projects = () => {
           {/* Modal Content */}
           <div className="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative z-10 animate-fade-in-up shadow-2xl">
             
-            {/* Close Button */}
             <button 
               onClick={() => setSelectedProject(null)}
               className="absolute top-4 right-4 bg-white rounded-full p-2 hover:bg-gray-100 transition z-20"
@@ -141,24 +152,27 @@ const Projects = () => {
             {/* Modal Image */}
             <div className="relative h-64 md:h-80 w-full">
               <img 
-                src={selectedProject.image} 
+                src={selectedProject.modalImage || selectedProject.image} 
                 alt={selectedProject.title} 
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+              
               <div className="absolute bottom-6 left-6 md:left-10 text-white">
-                <p className="text-accent font-bold uppercase tracking-wider text-sm mb-2">{selectedProject.category}</p>
-                <h2 className="text-3xl md:text-4xl font-extrabold">{selectedProject.title}</h2>
+                <h2 className="text-3xl md:text-4xl font-extrabold mb-3 shadow-sm">{selectedProject.title}</h2>
+                <span className="inline-block bg-white text-accent px-4 py-2 rounded-full font-bold uppercase tracking-wider text-sm shadow-lg">
+                  {selectedProject.category}
+                </span>
               </div>
             </div>
 
             {/* Modal Details */}
             <div className="p-6 md:p-10 grid md:grid-cols-3 gap-8">
               
-              {/* Left: Description & Features */}
               <div className="md:col-span-2 space-y-6">
                 <h3 className="text-xl font-bold text-primary">About this project</h3>
-                <p className="text-gray-600 leading-relaxed text-lg">
+                {/* whitespace-pre-line ensures the bullets are on new lines */}
+                <p className="text-gray-600 leading-relaxed text-lg whitespace-pre-line">
                   {selectedProject.fullDescription}
                 </p>
 
@@ -173,7 +187,6 @@ const Projects = () => {
                 </ul>
               </div>
 
-              {/* Right: Actions & Tech */}
               <div className="space-y-8">
                 <div className="space-y-4">
                   <a 
