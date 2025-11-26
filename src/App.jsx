@@ -13,9 +13,11 @@ import Contact from './components/Contact';
 function App() {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation speed
-      once: false,     // <--- CHANGE THIS to false (So it repeats every time)
-      mirror: true,    // <--- ADD THIS (Animates when scrolling back up too)
+      duration: 1000,
+      once: false,       // Repeat animations
+      mirror: true,      // Animate when scrolling backward (up)
+      offset: 0,         // Trigger immediately when element touches screen edge
+      anchorPlacement: 'top-bottom', // Triggers as soon as the top of element hits bottom of window
       easing: 'ease-out',
     });
   }, []);
