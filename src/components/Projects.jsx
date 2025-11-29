@@ -58,7 +58,7 @@ const Projects = () => {
       image: "/lifeos.png", 
       modalImage: "/lifeos-full.png",
       githubLink: "https://github.com/manthanvaghasiya/lifeos",
-      liveLink: "https://lifeos-demo.vercel.app",
+      liveLink: "https://lifeos-by-manthan.vercel.app/",
     },
   ];
 
