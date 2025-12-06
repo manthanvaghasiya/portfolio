@@ -12,6 +12,7 @@ const Contact = () => {
     setIsSubmitting(true);
     setStatusMessage("");
 
+    // NOTE: In production, consider moving these to environment variables (import.meta.env.VITE_...)
     const SERVICE_ID = "service_tqyl1bs";
     const TEMPLATE_ID = "template_gji86k6";
     const PUBLIC_KEY = "LejwDMsuSfiQAbUBX";
@@ -22,7 +23,7 @@ const Contact = () => {
         setIsSubmitting(false);
         e.target.reset();
 
-        // auto-hide success message after a few seconds (optional but nice UX)
+        // auto-hide success message after a few seconds
         setTimeout(() => setStatusMessage(""), 5000);
       },
       () => {
@@ -35,35 +36,34 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-24 px-6 bg-[#0F172A] text-white relative overflow-hidden scroll-mt-24 md:scroll-mt-32"
+      className="py-16 md:py-24 px-6 bg-[#0F172A] text-white relative overflow-hidden scroll-mt-24 md:scroll-mt-32"
     >
+      {/* Soft background glow - Optimized size for mobile to prevent overflow/visual clutter */}
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
-      {/* Soft background glow */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-
-      <div className="max-w-7xl mx-auto relative z-10 grid md:grid-cols-2 gap-16 items-start">
+      <div className="max-w-7xl mx-auto relative z-10 grid md:grid-cols-2 gap-10 md:gap-16 items-start">
         {/* LEFT: INTRO & CONTACT INFO */}
-        <div className="space-y-8" data-aos="fade-right">
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+        <div className="space-y-6 md:space-y-8" data-aos="fade-right">
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">
             Let&apos;s build{" "}
             <br />
             <span className="text-accent">something great together.</span>
           </h2>
 
-          <p className="text-lg md:text-xl text-gray-400 max-w-lg leading-relaxed">
+          <p className="text-base md:text-xl text-gray-400 max-w-lg leading-relaxed">
             I&apos;m currently open to{" "}
             <b>full-time job opportunities and freelance projects</b> in web
             development (MERN stack).
             <br />
-            <span className="text-gray-500 text-sm">
+            <span className="text-gray-500 text-sm block mt-2">
               Share a few details about what you need — I usually reply within{" "}
               <b>24 hours</b>.
             </span>
           </p>
 
-          <div className="space-y-4 pt-4">
+          <div className="space-y-4 pt-2 md:pt-4">
             <div className="flex items-center gap-4 text-gray-300">
-              <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-accent">
+              <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-accent flex-shrink-0">
                 <Mail size={20} />
               </div>
               <div>
@@ -75,7 +75,7 @@ const Contact = () => {
             </div>
 
             <div className="flex items-center gap-4 text-gray-300">
-              <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-accent">
+              <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-accent flex-shrink-0">
                 <MapPin size={20} />
               </div>
               <div>
@@ -88,10 +88,10 @@ const Contact = () => {
 
         {/* RIGHT: FORM */}
         <div
-          className="bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-sm shadow-xl"
+          className="bg-white/5 p-6 md:p-8 rounded-3xl border border-white/10 backdrop-blur-sm shadow-xl"
           data-aos="fade-left"
         >
-          <form ref={form} onSubmit={sendEmail} className="space-y-6">
+          <form ref={form} onSubmit={sendEmail} className="space-y-5 md:space-y-6">
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
                 Your Name
@@ -136,7 +136,7 @@ const Contact = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-accent hover:bg-blue-600 text-white font-bold py-4 rounded-xl transition flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full bg-accent hover:bg-blue-600 text-white font-bold py-4 rounded-xl transition flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed active:scale-[0.98]"
             >
               {isSubmitting ? (
                 <>
@@ -151,10 +151,11 @@ const Contact = () => {
 
             {statusMessage && (
               <p
-                className={`text-center text-sm mt-2 ${statusMessage.includes("wrong")
+                className={`text-center text-sm mt-2 ${
+                  statusMessage.includes("wrong")
                     ? "text-red-400"
                     : "text-green-400"
-                  }`}
+                }`}
                 aria-live="polite"
               >
                 {statusMessage}
@@ -165,8 +166,8 @@ const Contact = () => {
       </div>
 
       {/* FOOTER BAR */}
-      <div className="max-w-7xl mx-auto mt-20 pt-10 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 text-gray-500 text-sm">
-        <p>© {new Date().getFullYear()} Manthan Vaghasiya. All rights reserved.</p>
+      <div className="max-w-7xl mx-auto mt-16 md:mt-20 pt-10 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 text-gray-500 text-sm">
+        <p className="text-center md:text-left">© {new Date().getFullYear()} Manthan Vaghasiya. All rights reserved.</p>
         <div className="flex gap-6">
           <a
             href="https://github.com/manthanvaghasiya"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ArrowRight,
   X,
@@ -10,11 +10,20 @@ import {
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
+  // Prevent background scrolling when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [selectedProject]);
+
   // --- PROJECT DATA ---
   const projects = [
     {
       title: "Surat BookCycle",
-      category: "Old Book Exchange · E-commerce Platform",
+      category: "Old Book Exchange · E-commerce",
       shortDescription:
         "A hyper-local P2P marketplace connecting students to buy, sell, and exchange used textbooks — reducing waste and making books more affordable.",
       fullDescription:
@@ -27,7 +36,7 @@ const Projects = () => {
         "Secure Login/Signup with JWT",
         "Search, Category & Filter Flow",
         "Book Listing Management (CRUD)",
-        "Responsive UI for Students on Mobile/Desktop",
+        "Responsive UI for Students",
       ],
       tech: ["MongoDB", "Express", "React", "Node.js"],
       image: "/bookcycle.png",
@@ -74,7 +83,7 @@ const Projects = () => {
         "Financial Analytics with Charts",
         "Habit Tracker with Consistency Logic",
         "Goal Setting & Notes",
-        "MERN Stack Architecture Ready for Scaling",
+        "MERN Stack Architecture",
       ],
       tech: ["MERN Stack", "Recharts", "Tailwind CSS", "Render"],
       image: "/lifeos.png",
@@ -85,15 +94,15 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 px-6 bg-transparent scroll-mt-24 md:scroll-mt-32">
+    <section id="projects" className="py-16 md:py-20 px-6 bg-transparent scroll-mt-24 md:scroll-mt-32">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="mb-16" data-aos="fade-up">
-          <h2 className="text-4xl font-extrabold text-primary mb-4">
+        <div className="mb-12 md:mb-16" data-aos="fade-up">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
             Featured <span className="text-accent">Work</span>
           </h2>
           <div className="w-20 h-1.5 bg-accent rounded-full"></div>
-          <p className="mt-4 text-gray-600 max-w-xl text-lg">
+          <p className="mt-4 text-gray-600 max-w-xl text-base md:text-lg">
             A selection of real-world products I&apos;ve designed and built
             end-to-end — focused on local businesses, operations, and
             productivity.
@@ -101,13 +110,13 @@ const Projects = () => {
         </div>
 
         {/* Projects List */}
-        <div className="space-y-24">
+        <div className="space-y-16 md:space-y-24">
           {projects.map((project, index) => (
             <div
               key={index}
               className={`flex flex-col ${
                 index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              } gap-12 items-center bg-white p-8 rounded-3xl shadow-xl border border-white/50 hover:shadow-2xl transition duration-500`}
+              } gap-8 md:gap-12 items-center bg-white p-6 md:p-8 rounded-3xl shadow-xl border border-white/50 hover:shadow-2xl transition duration-500`}
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
@@ -117,14 +126,14 @@ const Projects = () => {
                 onClick={() => setSelectedProject(project)}
               >
                 <div
-                  className={`relative rounded-2xl overflow-hidden shadow-lg border border-gray-100 transform transition-transform duration-500 ${
+                  className={`relative rounded-2xl overflow-hidden shadow-lg border border-gray-100 transform transition-transform duration-500 md:${
                     index % 2 === 0 ? "rotate-2" : "-rotate-2"
                   } group-hover:rotate-0 group-hover:scale-[1.02]`}
                 >
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-[350px] object-cover hover:scale-105 transition duration-700"
+                    className="w-full h-[220px] md:h-[350px] object-cover hover:scale-105 transition duration-700"
                   />
 
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
@@ -136,8 +145,8 @@ const Projects = () => {
               </div>
 
               {/* Project Summary */}
-              <div className="w-full md:w-1/2 space-y-5">
-                <h3 className="text-3xl font-bold text-primary">
+              <div className="w-full md:w-1/2 space-y-4 md:space-y-5">
+                <h3 className="text-2xl md:text-3xl font-bold text-primary">
                   {project.title}
                 </h3>
 
@@ -145,16 +154,16 @@ const Projects = () => {
                   {project.category}
                 </div>
 
-                <p className="text-gray-600 text-lg leading-relaxed">
+                <p className="text-gray-600 text-base md:text-lg leading-relaxed">
                   {project.shortDescription}
                 </p>
 
                 {/* Tech Tags */}
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2 md:gap-3">
                   {project.tech.map((t, i) => (
                     <span
                       key={i}
-                      className="px-4 py-1 bg-slate-100 text-primary text-sm font-semibold rounded-lg border border-slate-200"
+                      className="px-3 py-1 bg-slate-100 text-primary text-xs md:text-sm font-semibold rounded-lg border border-slate-200"
                     >
                       {t}
                     </span>
@@ -162,10 +171,10 @@ const Projects = () => {
                 </div>
 
                 {/* View Project CTA */}
-                <div className="pt-4">
+                <div className="pt-2 md:pt-4">
                   <button
                     onClick={() => setSelectedProject(project)}
-                    className="inline-flex items-center gap-2 text-primary font-bold hover:text-accent transition group"
+                    className="inline-flex items-center gap-2 text-primary font-bold hover:text-accent transition group text-sm md:text-base"
                   >
                     View project
                     <ArrowRight
@@ -190,17 +199,17 @@ const Projects = () => {
           ></div>
 
           {/* Modal Content */}
-          <div className="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative z-10 animate-fade-in-up shadow-2xl">
-            {/* Close */}
+          <div className="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative z-10 animate-fade-in-up shadow-2xl flex flex-col">
+            {/* Close Button - Fixed to top right of modal content */}
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-4 right-4 bg-white rounded-full p-2 hover:bg-gray-100 transition z-20"
+              className="absolute top-4 right-4 bg-white/90 backdrop-blur rounded-full p-2 hover:bg-gray-100 transition z-30 shadow-md"
             >
-              <X size={24} className="text-gray-600" />
+              <X size={24} className="text-gray-900" />
             </button>
 
             {/* Modal Image */}
-            <div className="relative h-64 md:h-80 w-full">
+            <div className="relative h-56 md:h-80 w-full flex-shrink-0">
               <img
                 src={selectedProject.modalImage || selectedProject.image}
                 alt={selectedProject.title}
@@ -208,52 +217,52 @@ const Projects = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
 
-              <div className="absolute bottom-6 left-6 md:left-10 text-white">
-                <h2 className="text-3xl md:text-4xl font-extrabold mb-3 shadow-sm">
+              <div className="absolute bottom-4 left-4 md:bottom-6 md:left-10 text-white max-w-[85%]">
+                <h2 className="text-2xl md:text-4xl font-extrabold mb-2 md:mb-3 shadow-sm leading-tight">
                   {selectedProject.title}
                 </h2>
-                <span className="inline-block bg-white text-accent px-4 py-2 rounded-full font-bold uppercase tracking-wider text-sm shadow-lg">
+                <span className="inline-block bg-white text-accent px-3 py-1 md:px-4 md:py-2 rounded-full font-bold uppercase tracking-wider text-xs md:text-sm shadow-lg">
                   {selectedProject.category}
                 </span>
               </div>
             </div>
 
             {/* Modal Body */}
-            <div className="p-6 md:p-10 grid md:grid-cols-3 gap-8">
+            <div className="p-5 md:p-10 grid md:grid-cols-3 gap-8">
               <div className="md:col-span-2 space-y-6">
                 <h3 className="text-xl font-bold text-primary">
                   About this project
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-lg whitespace-pre-line">
+                <p className="text-gray-600 leading-relaxed text-base md:text-lg whitespace-pre-line">
                   {selectedProject.fullDescription}
                 </p>
 
-                <h3 className="text-xl font-bold text-primary pt-4">
+                <h3 className="text-xl font-bold text-primary pt-2 md:pt-4">
                   Key features
                 </h3>
                 <ul className="space-y-3">
                   {selectedProject.features.map((feature, i) => (
                     <li
                       key={i}
-                      className="flex items-center gap-3 text-gray-600"
+                      className="flex items-start gap-3 text-gray-600 text-sm md:text-base"
                     >
                       <CheckCircle
                         size={18}
-                        className="text-accent flex-shrink-0"
+                        className="text-accent flex-shrink-0 mt-0.5"
                       />
-                      {feature}
+                      <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="space-y-8">
-                <div className="space-y-4">
+              <div className="space-y-6 md:space-y-8 border-t md:border-t-0 border-gray-100 pt-6 md:pt-0">
+                <div className="space-y-3 md:space-y-4">
                   <a
                     href={selectedProject.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full bg-gray-900 text-white py-3 rounded-xl font-bold hover:bg-gray-800 transition"
+                    className="flex items-center justify-center gap-2 w-full bg-gray-900 text-white py-3.5 rounded-xl font-bold hover:bg-gray-800 transition active:scale-[0.98]"
                   >
                     <Github size={20} /> GitHub Repo
                   </a>
@@ -262,7 +271,7 @@ const Projects = () => {
                       href={selectedProject.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 w-full bg-accent text-white py-3 rounded-xl font-bold hover:bg-blue-600 transition"
+                      className="flex items-center justify-center gap-2 w-full bg-accent text-white py-3.5 rounded-xl font-bold hover:bg-blue-600 transition active:scale-[0.98]"
                     >
                       <ExternalLink size={20} /> Live Demo
                     </a>

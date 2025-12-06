@@ -7,10 +7,10 @@ const About = () => {
       id="about"
       className="py-16 md:py-20 px-6 bg-transparent scroll-mt-24 md:scroll-mt-32"
     >
-      <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 lg:gap-16 items-start">
         {/* LEFT: NARRATIVE */}
         <div className="md:col-span-7 space-y-6" data-aos="fade-up">
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-500">
+          <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.25em] text-slate-500">
             About Me
           </p>
 
@@ -25,14 +25,14 @@ const About = () => {
             The Developer
           </h3>
 
-          <p className="text-gray-600 text-lg leading-relaxed">
+          <p className="text-gray-600 text-base md:text-lg leading-relaxed">
             I am a <b>Full Stack Engineer</b> with a passion for building
             scalable, high-performance web applications. My journey is defined
             by a relentless curiosity for how things work under the hood—from
             the browser rendering engine to database indexing.
           </p>
 
-          <p className="text-gray-600 text-lg leading-relaxed">
+          <p className="text-gray-600 text-base md:text-lg leading-relaxed">
             I specialize in the <b>MERN Stack</b>, but I pick the right tool for
             the job. Whether it’s optimizing <b>DairyFlow</b> for
             low-bandwidth environments or architecting the flows behind{" "}
@@ -40,17 +40,17 @@ const About = () => {
             <b>System Reliability</b>.
           </p>
 
-          <p className="text-gray-600 text-lg leading-relaxed">
+          <p className="text-gray-600 text-base md:text-lg leading-relaxed">
             When I&apos;m not coding, I&apos;m analyzing system designs of major
             tech products or learning from open-source codebases. I see software
             engineering as a team sport and thrive in collaborative
             environments.
           </p>
 
-          <div className="pt-3">
+          <div className="pt-4 md:pt-3">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 text-blue-600 font-bold hover:underline text-lg"
+              className="inline-flex items-center gap-2 text-blue-600 font-bold hover:underline text-base md:text-lg transition"
             >
               Let&apos;s build something amazing together →
             </a>
@@ -59,13 +59,14 @@ const About = () => {
 
         {/* RIGHT: CORE VALUES CARDS */}
         <div
-          className="md:col-span-5 space-y-4"
+          className="md:col-span-5 space-y-4 md:space-y-4 mt-4 md:mt-0"
           data-aos="fade-up"
           data-aos-delay="120"
         >
           {/* Value 1 – Impact First */}
           <div className="bg-white p-5 rounded-2xl shadow-lg border border-white/60 flex gap-4 hover:border-blue-100 hover:shadow-xl hover:-translate-y-1 transition-all">
-            <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+            {/* Mobile Fix: Added flex-shrink-0 to prevent icon squishing */}
+            <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
               <Target className="text-blue-600 w-5 h-5" />
             </div>
             <div>
@@ -82,7 +83,7 @@ const About = () => {
 
           {/* Value 2 – Clean Architecture */}
           <div className="bg-white p-5 rounded-2xl shadow-lg border border-white/60 flex gap-4 hover:border-green-100 hover:shadow-xl hover:-translate-y-1 transition-all">
-            <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center flex-shrink-0">
               <Code className="text-green-600 w-5 h-5" />
             </div>
             <div>
@@ -99,7 +100,7 @@ const About = () => {
 
           {/* Value 3 – Always Shipping */}
           <div className="bg-white p-5 rounded-2xl shadow-lg border border-white/60 flex gap-4 hover:border-orange-100 hover:shadow-xl hover:-translate-y-1 transition-all">
-            <div className="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center flex-shrink-0">
               <Zap className="text-orange-500 w-5 h-5" />
             </div>
             <div>
@@ -113,8 +114,6 @@ const About = () => {
               </p>
             </div>
           </div>
-
-          
         </div>
       </div>
     </section>

@@ -31,18 +31,17 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", href: "#home", id: "home" },
     { name: "About", href: "#about", id: "about" },
-    { name: "Experience", href: "#experience", id: "experience" },
     { name: "Skills", href: "#skills", id: "skills" },
+    { name: "Experience", href: "#experience", id: "experience" },
     { name: "Projects", href: "#projects", id: "projects" },
   ];
 
   return (
     <nav
-      className={`fixed w-full top-0 z-50 transition-all duration-500 border-b border-transparent ${
-        isScrolled
+      className={`fixed w-full top-0 z-50 transition-all duration-500 border-b border-transparent ${isScrolled
           ? "bg-[#0F172A]/85 backdrop-blur-xl py-4 border-white/10 shadow-2xl"
           : "bg-[#0F172A] py-6"
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between text-white">
         {/* LOGO */}
@@ -66,15 +65,13 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className={`relative group text-sm font-semibold uppercase tracking-widest transition-colors duration-300 ${
-                  isActive ? "text-white" : "text-gray-400 hover:text-white"
-                }`}
+                className={`relative group text-sm font-semibold uppercase tracking-widest transition-colors duration-300 ${isActive ? "text-white" : "text-gray-400 hover:text-white"
+                  }`}
               >
                 {link.name}
                 <span
-                  className={`absolute -bottom-1 left-0 h-[2px] bg-accent transition-all duration-300 ${
-                    isActive ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
+                  className={`absolute -bottom-1 left-0 h-[2px] bg-accent transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
                 />
               </a>
             );
