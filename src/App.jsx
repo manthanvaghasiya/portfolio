@@ -30,8 +30,9 @@ function App() {
         
         <Stats />
         <About />
-        <Experience />
         <Skills />
+        <Experience />
+        
         <Projects />
         
         <Contact />
