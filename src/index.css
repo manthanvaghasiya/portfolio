@@ -10,11 +10,17 @@ html {
 
 /* --- GLOBAL STYLES --- */
 body {
-  /* Premium Light Gray */
   background-color: #F1F5F9; 
-  /* Dark Slate Text */ 
   color: #0F172A;
   font-family: 'Inter', sans-serif;
+  overflow-x: hidden; /* Prevents accidental horizontal scroll */
+}
+
+/* --- 1. VISUAL POLISH: BRAND SELECTION --- */
+/* This makes text highlight in your specific blue accent color */
+::selection {
+  background-color: #2563EB; /* Your Accent Color */
+  color: #ffffff;
 }
 
 /* --- LIGHT DOT PATTERN --- */
@@ -32,12 +38,22 @@ body {
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
-/* --- SCROLLBAR --- */
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #F1F5F9; }
+/* --- 2. VISUAL POLISH: REFINED SCROLLBAR --- */
+/* Made the track slightly darker so it looks good on both Dark and Light sections */
+::-webkit-scrollbar { 
+  width: 10px; 
+}
+
+::-webkit-scrollbar-track { 
+  background: #E2E8F0; /* Slightly darker than page bg for contrast */
+}
+
 ::-webkit-scrollbar-thumb { 
   background: #94a3b8; 
   border-radius: 5px; 
-  border: 2px solid #F1F5F9; 
+  border: 2px solid #E2E8F0; /* Creates a nice 'floating' effect */
 }
-::-webkit-scrollbar-thumb:hover { background: #2563EB; }
+
+::-webkit-scrollbar-thumb:hover { 
+  background: #2563EB; /* Turns Accent Blue on hover */
+}

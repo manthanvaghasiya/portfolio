@@ -38,7 +38,7 @@ const Hero = () => {
     };
   }, []);
 
-  // Render line 1 with only "ideas" in gradient once it appears
+  // Render line 1 with only "ideas" in gradient
   const renderLine1 = () => {
     if (!text1) return null;
     const word = "ideas";
@@ -63,7 +63,7 @@ const Hero = () => {
     );
   };
 
-  // Render line 2 with "scalable digital" in gradient and "products" black
+  // Render line 2 with "scalable digital" in gradient
   const renderLine2 = () => {
     if (!text2) return null;
     const word = "products";
@@ -93,8 +93,6 @@ const Hero = () => {
   return (
     <section
       id="home"
-      // UX Fix: Added overflow-hidden to prevent horizontal scrolling on mobile due to background blobs
-      // UX Fix: Adjusted min-h to fit content better on mobile, keep screen height on desktop
       className="relative flex items-center px-6 pt-28 pb-12 md:min-h-screen md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-tr from-emerald-100 via-white to-sky-100 scroll-mt-24 md:scroll-mt-32"
     >
       {/* ---------------- BACKGROUND SHAPES ---------------- */}
@@ -103,7 +101,7 @@ const Hero = () => {
         <div className="absolute -right-20 top-0 md:-right-40 md:-top-32 h-60 w-60 md:h-72 md:w-72 rounded-full bg-sky-300/60 blur-3xl" />
       </div>
 
-      {/* Big orange circle behind image - Adjusted positioning for mobile */}
+      {/* Big orange circle behind image */}
       <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-[-40px] md:left-[-140px] md:translate-x-0 md:bottom-[-120px] h-[300px] w-[300px] md:h-[560px] md:w-[560px] rounded-full bg-gradient-to-tr from-orange-500 via-orange-400 to-rose-500 -z-10 opacity-60 md:opacity-100" />
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col md:flex-row items-center gap-8 md:gap-10 lg:gap-14">
@@ -113,13 +111,12 @@ const Hero = () => {
           data-aos="fade-right"
           data-aos-duration="800"
         >
-          {/* UX Fix: Removed negative margin on mobile to prevent overflow. Added max-width constraint for mobile. */}
-          <div className="relative w-full max-w-[280px] sm:max-w-sm md:max-w-lg lg:max-w-xl md:-mr-6">
+          {/* UPDATED: Changed 'md:-mt-0' to 'md:-mt-24' to lift image significantly on desktop */}
+          <div className="relative w-full max-w-[280px] sm:max-w-sm md:max-w-lg lg:max-w-xl md:-mr-6 -mt-12 md:-mt-24">
             <img
               src="/profile.jpg"
               alt="Manthan"
-              // UX Fix: Removed scale on mobile (scale-100) to keep layout clean, kept scale-110 for desktop
-              className="w-full h-auto max-h-[350px] md:max-h-[720px] object-contain drop-shadow-2xl transform scale-100 md:scale-110 lg:scale-[1.18] origin-bottom hover:scale-[1.05] md:hover:scale-[1.2] transition-transform duration-700 ease-out"
+              className="w-full h-auto max-h-[350px] md:max-h-[720px] object-contain drop-shadow-2xl transform scale-100 md:scale-110 lg:scale-[1.18] origin-bottom hover:scale-[1.05] md:hover:scale-[1.2] transition-transform duration-700 ease-out animate-float"
               style={{
                 maskImage:
                   "linear-gradient(to bottom, black 85%, transparent 100%)",
@@ -142,7 +139,7 @@ const Hero = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 md:h-2.5 md:w-2.5 rounded-full bg-emerald-500" />
             </span>
-            Available for Work
+            Available for Full-Time Job Roles & Startups
           </div>
 
           {/* Heading */}
@@ -159,7 +156,6 @@ const Hero = () => {
               Full-Stack Developer
             </span>
 
-            {/* UX Fix: Adjusted font sizes for mobile to prevent word breaking */}
             <span className="block text-3xl md:text-4xl lg:text-5xl mb-1 min-h-[40px] md:min-h-auto">
               {renderLine1()}
             </span>
@@ -204,9 +200,10 @@ const Hero = () => {
           >
             <a
               href="#contact"
-              className="flex items-center gap-2 md:gap-3 rounded-full bg-slate-900 px-6 py-3 md:px-8 md:py-3.5 text-sm md:text-base font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-black active:scale-95"
+              className="group relative overflow-hidden flex items-center gap-2 md:gap-3 rounded-full bg-slate-900 px-6 py-3 md:px-8 md:py-3.5 text-sm md:text-base font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-black active:scale-95"
             >
-              Hire Me
+              <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-10" />
+              <span className="relative z-20">Hire Me</span>
             </a>
 
             <a
@@ -254,6 +251,19 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-15px); }
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        @keyframes shimmer {
+          100% { transform: translateX(100%); }
+        }
+      `}</style>
     </section>
   );
 };
