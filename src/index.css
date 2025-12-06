@@ -4,11 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* --- GLOBAL STYLES --- */
 body {
   /* Premium Light Gray */
   background-color: #F1F5F9; 
-  /* Dark Slate Text */
+  /* Dark Slate Text */ 
   color: #0F172A;
   font-family: 'Inter', sans-serif;
 }
