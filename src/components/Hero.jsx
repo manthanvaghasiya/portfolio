@@ -99,6 +99,7 @@ const Hero = () => {
     >
       {/* ---------------- BACKGROUND SHAPES ---------------- */}
       <div className="absolute inset-0 -z-20 pointer-events-none overflow-hidden">
+        <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-sky-200/40 rounded-full blur-[120px] pointer-events-none" />
         {/* Adjusted background blobs for tablet visibility */}
         <div className="absolute -left-20 bottom-0 lg:-left-40 lg:bottom-[-140px] h-60 w-60 lg:h-80 lg:w-80 rounded-full bg-emerald-300/60 blur-3xl" />
         <div className="absolute -right-20 top-0 lg:-right-40 lg:-top-32 h-60 w-60 lg:h-72 lg:w-72 rounded-full bg-sky-300/60 blur-3xl" />
@@ -148,7 +149,7 @@ const Hero = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 md:h-2.5 md:w-2.5 rounded-full bg-emerald-500" />
             </span>
-            Available for Full-Time Job Roles & Startups
+            Available for Work
           </div>
 
           {/* Heading */}
@@ -157,9 +158,9 @@ const Hero = () => {
             data-aos="fade-up"
             data-aos-delay="160"
           >
-            <span className="block text-lg md:text-2xl lg:text-3xl font-semibold text-slate-600 mb-1">
-              I&apos;m Manthan Vaghasiya
-            </span>
+            <span className="block text-xl md:text-2xl font-bold text-slate-500 mb-2">
+                Hi, I&apos;m Manthan Vaghasiya
+              </span>
 
             <span className="block text-[10px] md:text-sm lg:text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 mb-3 md:mb-4 lg:mb-3">
               Full-Stack Developer
