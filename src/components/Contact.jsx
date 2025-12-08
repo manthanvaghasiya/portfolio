@@ -12,7 +12,7 @@ const Contact = () => {
     setIsSubmitting(true);
     setStatus(null);
 
-    // Keep your existing EmailJS credentials
+    // Kept your existing EmailJS credentials exactly as they were
     emailjs.sendForm('service_tqyl1bs', 'template_gji86k6', form.current, 'LejwDMsuSfiQAbUBX')
       .then(() => {
         setStatus({ type: 'success', message: "Message sent successfully!" });
@@ -32,11 +32,15 @@ const Contact = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        {/* CHANGED: 'gap-16' -> 'gap-12 lg:gap-24'. 
+            This brings the text and form closer on tablets so they relate better visually. */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 mb-20 md:mb-24">
           
           {/* --- LEFT: Call to Action --- */}
           <div data-aos="fade-right">
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-6">
+            {/* CHANGED: 'md:text-6xl' -> 'md:text-5xl lg:text-6xl'. 
+                Fixes the headline being too massive on tablets. */}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6">
               Let’s build something <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
                 great together.
@@ -44,25 +48,25 @@ const Contact = () => {
             </h2>
             
             <p className="text-slate-400 text-lg md:text-xl mb-8 leading-relaxed max-w-lg">
-              I'm currently available for <b>Full-Time Positions And Freelance Work</b> . 
+              I'm currently available for <b>Full-Time Positions And Freelance Work</b>. 
               If you have a project that needs a skilled MERN stack developer, let's talk.
             </p>
 
             <div className="space-y-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-blue-400">
+                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-blue-400 shrink-0">
                   <Mail size={24} />
                 </div>
                 <div>
                   <p className="text-sm text-slate-500 font-medium">Email Me</p>
-                  <a href="mailto:manthanvaghasiya60@gmail.com" className="text-lg hover:text-blue-400 transition-colors">
+                  <a href="mailto:manthanvaghasiya60@gmail.com" className="text-lg hover:text-blue-400 transition-colors break-all md:break-normal">
                     manthanvaghasiya60@gmail.com
                   </a>
                 </div>
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-emerald-400">
+                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-emerald-400 shrink-0">
                   <MapPin size={24} />
                 </div>
                 <div>
@@ -74,7 +78,8 @@ const Contact = () => {
           </div>
 
           {/* --- RIGHT: Modern Form --- */}
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-3xl" data-aos="fade-left">
+          {/* CHANGED: 'p-8' -> 'p-6 md:p-8'. Gives inputs more room on smaller screens. */}
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 md:p-8 rounded-3xl" data-aos="fade-left">
             <form ref={form} onSubmit={sendEmail} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
@@ -84,7 +89,8 @@ const Contact = () => {
                     name="user_name" 
                     required 
                     placeholder="John Doe"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all placeholder:text-slate-600"
+                    // CHANGED: Added 'text-base' to prevent iOS zoom on focus
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-base focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all placeholder:text-slate-600"
                   />
                 </div>
                 <div className="space-y-2">
@@ -94,7 +100,7 @@ const Contact = () => {
                     name="user_email" 
                     required 
                     placeholder="john@example.com"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all placeholder:text-slate-600"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-base focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all placeholder:text-slate-600"
                   />
                 </div>
               </div>
@@ -106,7 +112,7 @@ const Contact = () => {
                   rows="4" 
                   required 
                   placeholder="Tell me about your project..."
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none placeholder:text-slate-600"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-base focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none placeholder:text-slate-600"
                 ></textarea>
               </div>
 
@@ -127,28 +133,28 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* --- FOOTER (Integrated) --- */}
-        <div className="mt-24 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-slate-500 text-sm">
+        {/* --- FOOTER --- */}
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-slate-500 text-sm text-center md:text-left">
             © {new Date().getFullYear()} Manthan Vaghasiya. Built with React & Tailwind.
           </p>
          <div className="flex items-center gap-4">
-                     {[
-                       { icon: Github, link: "https://github.com/manthanvaghasiya" },
-                       { icon: Linkedin, link: "https://www.linkedin.com/in/manthan-vaghasiya-b213a8267" },
-                       { icon: Instagram, link: "https://www.instagram.com/manthan_vaghasiya_07" }
-                     ].map((social, idx) => (
-                       <a
-                         key={idx}
-                         href={social.link}
-                         target="_blank"
-                         rel="noreferrer"
-                         className="p-3 rounded-full bg-white/5 text-slate-400 border border-white/5 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-500/20"
-                       >
-                         <social.icon size={20} />
-                       </a>
-                     ))}
-                   </div>
+             {[
+               { icon: Github, link: "https://github.com/manthanvaghasiya" },
+               { icon: Linkedin, link: "https://www.linkedin.com/in/manthan-vaghasiya-b213a8267" },
+               { icon: Instagram, link: "https://www.instagram.com/manthan_vaghasiya_07" }
+             ].map((social, idx) => (
+               <a
+                 key={idx}
+                 href={social.link}
+                 target="_blank"
+                 rel="noreferrer"
+                 className="p-3 rounded-full bg-white/5 text-slate-400 border border-white/5 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-500/20"
+               >
+                 <social.icon size={20} />
+               </a>
+             ))}
+           </div>
         </div>
 
       </div>

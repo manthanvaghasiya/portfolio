@@ -1,5 +1,4 @@
 import React from "react";
-// FIX: Added 'TrendingUp' to the imports below
 import { User, Code, Target, Zap, ArrowRight, Terminal, CheckCircle2, Layout, ShieldCheck, Database, Rocket, Bot, Sparkles, GitBranch, TrendingUp } from "lucide-react";
 
 const About = () => {
@@ -26,16 +25,18 @@ const About = () => {
         </div>
 
         {/* --- COMPACT BENTO GRID --- */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-fr">
+        {/* CHANGED: 'md:grid-cols-3' -> 'md:grid-cols-2 lg:grid-cols-3'. 
+            This creates a balanced 2x2 layout on Tablet before going 3-cols on Desktop. */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-fr">
           
-          {/* 1. THE FULL STACK BUILDER (Span 2) - Side-by-Side Layout */}
+          {/* 1. THE FULL STACK BUILDER (Span 2) */}
           <div 
-            className="md:col-span-2 bg-white rounded-3xl border border-slate-900 p-6 shadow-xl shadow-slate-200/50 hover:shadow-slate-900/50 transition-all duration-300 flex flex-col md:flex-row items-stretch gap-8 group"
+            className="md:col-span-2 lg:col-span-2 bg-white rounded-3xl border border-slate-900 p-6 shadow-xl shadow-slate-200/50 hover:shadow-slate-900/50 transition-all duration-300 flex flex-col md:flex-row items-stretch gap-8 group"
             data-aos="fade-up"
             data-aos-delay="100"
           >
             {/* Icon Column */}
-            <div className="w-full md:w-20 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300">
+            <div className="w-full md:w-20 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300 py-6 md:py-0">
                <Terminal size={32} />
             </div>
 
@@ -68,7 +69,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* 2. PRODUCT MINDSET (Span 1) - Dark Card */}
+          {/* 2. PRODUCT MINDSET (Span 1) */}
           <div 
             className="bg-[#0F172A] text-white p-6 rounded-3xl relative overflow-hidden group flex flex-col justify-between shadow-2xl shadow-slate-900/20 ring-1 ring-white/10"
             data-aos="fade-up"
@@ -100,7 +101,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* 3. AI-POWERED EFFICIENCY (Span 1) - Brand Color Card */}
+          {/* 3. AI-POWERED EFFICIENCY (Span 1) */}
           <div 
             className="bg-indigo-600 text-white p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between shadow-xl shadow-indigo-600/20 ring-1 ring-white/20"
             data-aos="fade-up"
@@ -133,15 +134,14 @@ const About = () => {
              </div>
           </div>
 
-          {/* 4. MODERN EXECUTION (Span 2) - Side-by-Side Layout */}
+          {/* 4. MODERN EXECUTION (Span 2) */}
           <div 
-            className="md:col-span-2 bg-white rounded-3xl border border-indigo-500 p-6 shadow-xl shadow-slate-200/50 hover:shadow-indigo-500/50 transition-all duration-300 flex flex-col md:flex-row items-stretch gap-8 group"
+            className="md:col-span-2 lg:col-span-2 bg-white rounded-3xl border border-indigo-500 p-6 shadow-xl shadow-slate-200/50 hover:shadow-indigo-500/50 transition-all duration-300 flex flex-col md:flex-row items-stretch gap-8 group"
             data-aos="fade-up"
             data-aos-delay="400"
           >
             {/* Icon Column */}
-            
-            <div className="w-full md:w-20 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300">
+            <div className="w-full md:w-20 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300 py-6 md:py-0">
                <Rocket size={32} />
             </div>
             
