@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ArrowUpRight, X, Github, ExternalLink, Layers, Database, Zap } from "lucide-react";
+import { ExternalLink, Github, X, ArrowUpRight, Layers, Zap, CheckCircle2, ArrowRight } from "lucide-react";
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -10,181 +10,270 @@ const Projects = () => {
     else document.body.style.overflow = "unset";
   }, [selectedProject]);
 
-  // --- DATA ---
+  // --- PROJECT DATA ---
   const projects = [
     {
       title: "Surat BookCycle",
-      tagline: "Hyper-local Book Exchange",
-      category: "E-Commerce",
-      description: "A centralized P2P marketplace reducing textbook waste for students. Features instant search, secure user profiles, and a robust listing management system.",
-      tech: ["React.js", "Node.js", "MongoDB", "Express"],
+      category: "E-commerce",
+      shortDescription:
+        "A hyper-local P2P marketplace connecting students to buy, sell, and exchange used textbooks.",
+      fullDescription:
+        "Surat BookCycle is a centralized book marketplace designed to reduce textbook waste and cost for students.\n\n" +
+        "• Designed and implemented a RESTful API using Node.js and Express to manage book listings and user operations.\n" +
+        "• Integrated secure authentication with JWT to protect user sessions and personal data.\n" +
+        "• Built a React.js frontend with instant search, filters, and detail pages for a smooth browsing experience.\n" +
+        "• Created a responsive user dashboard to manage listings (add, edit, delete) on both mobile and desktop.",
+      features: [
+        "Secure Login/Signup with JWT",
+        "Search, Category & Filter Flow",
+        "Book Listing Management (CRUD)",
+        "Responsive UI for Students",
+      ],
+      tech: ["MongoDB", "Express", "React", "Node.js"],
       image: "/bookcycle.png",
-      github: "https://github.com/manthanvaghasiya/surat-bookcycle-mern.git",
-      live: "#",
-      features: ["JWT Authentication", "Real-time Search", "Image Optimization", "Responsive Dashboard"]
+      modalImage: "/bookcycle-full.png",
+      githubLink: "https://github.com/manthanvaghasiya/surat-bookcycle-mern.git",
+      liveLink: "#",
     },
     {
       title: "DairyFlow",
-      tagline: "Modern Dairy ERP",
-      category: "SaaS Product",
-      description: "A digital ledger and inventory system for dairy businesses. Replaces manual bookkeeping with automated daily reports and credit (Udhaar) tracking.",
-      tech: ["React.js", "Tailwind", "Node.js", "Recharts"],
+      category: "SaaS ERP",
+      shortDescription:
+        "A modern ERP-style platform helping dairy shops manage sales, credit (udhaar), and inventory.",
+      fullDescription:
+        "DairyFlow is a SaaS-style system built specifically for small and mid-size dairy businesses in India.\n\n" +
+        "• Developed a custom POS flow optimized for high-traffic morning/evening shifts.\n" +
+        "• Implemented a robust Udhaar (credit) tracking system replacing the traditional red book.\n" +
+        "• Designed real-time inventory tracking to reduce wastage on perishable items.\n" +
+        "• Built dashboards for daily revenue, top products, and customer behaviour using clean UI patterns.",
+      features: [
+        "POS interface tailored to dairy workflows",
+        "Customer Udhaar & Ledger Management",
+        "Inventory Alerts for Perishables",
+        "Daily Revenue & Performance Insights",
+      ],
+      tech: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
       image: "/dairyflow.png",
-      github: "https://github.com/manthanvaghasiya/dairyflow-dairy-management-system",
-      live: "#",
-      features: ["POS Interface", "Credit Management", "Daily Revenue Charts", "Inventory Alerts"]
+      modalImage: "/dairyflow-full.png",
+      githubLink:
+        "https://github.com/manthanvaghasiya/dairyflow-dairy-management-system",
+      liveLink: "#",
     },
     {
       title: "LifeOS",
-      tagline: "Personal Operating System",
       category: "Productivity",
-      description: "An all-in-one dashboard for habit tracking and financial analytics. Visualizes personal data to help users build consistency and achieve goals.",
-      tech: ["MERN Stack", "Render", "Chart.js"],
+      shortDescription:
+        "An all-in-one personal operating system that combines financial tracking and habit consistency.",
+      fullDescription:
+        "LifeOS is a MERN-based productivity platform that unifies financial tracking and habit building into a single interface.\n\n" +
+        "• Built a financial analytics dashboard using Recharts (area and donut charts) to visualize income vs expense.\n" +
+        "• Implemented a GitHub-style habit tracker with optimistic UI updates for instant feedback.\n" +
+        "• Used MongoDB aggregations to calculate consistency, streaks, and financial summaries.\n" +
+        "• Secured the platform with JWT auth and role-based access for future extensibility.",
+      features: [
+        "Financial Analytics with Charts",
+        "Habit Tracker with Consistency Logic",
+        "Goal Setting & Notes",
+        "MERN Stack Architecture",
+      ],
+      tech: ["MERN Stack", "Recharts", "Tailwind CSS", "Render"],
       image: "/lifeos.png",
-      github: "https://github.com/manthanvaghasiya/lifeos",
-      live: "https://lifeos-by-manthan.vercel.app/",
-      features: ["Habit Streaks", "Expense Visualization", "Goal Setting", "Dark Mode UI"]
+      modalImage: "/lifeos-full.png",
+      githubLink: "https://github.com/manthanvaghasiya/lifeos",
+      liveLink: "https://lifeos-by-manthan.vercel.app/",
     },
   ];
 
   return (
-    <section id="projects" className="py-24 px-6 bg-white relative">
+    <section id="projects" className="py-24 px-6 bg-[#F8FAFC]">
       <div className="max-w-7xl mx-auto">
         
-        {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6" data-aos="fade-up">
+        {/* --- HEADER --- */}
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6" data-aos="fade-up">
           <div>
-            <span className="text-blue-600 font-bold tracking-widest uppercase text-sm mb-2 block">Selected Works</span>
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900">Featured <br/>Projects.</h2>
+            <span className="text-indigo-600 font-bold tracking-widest uppercase text-xs border border-indigo-100 px-3 py-1 rounded-full bg-indigo-50">
+              Selected Work
+            </span>
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mt-4 mb-2">
+              Featured  <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-blue-500">Project</span>
+            </h2>
+            <p className="text-slate-500 max-w-xl text-lg">
+              High-performance web applications built for scale.
+            </p>
           </div>
-          <p className="text-slate-500 max-w-md text-lg text-right md:text-right">
-            A selection of products built from scratch, focusing on real-world utility and clean code.
-          </p>
+          
+           <a 
+            href="https://github.com/manthanvaghasiya" 
+            target="_blank"
+            rel="noreferrer"
+            className="group flex items-center gap-3 px-6 py-3 bg-white border border-slate-200 rounded-full font-bold text-slate-700 hover:border-indigo-600 hover:text-indigo-600 transition-all shadow-sm hover:shadow-md"
+          >
+            <Github size={20} />
+            <span>View Github</span>
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </a>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* --- GRID LAYOUT (Medium/Compact Size) --- */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
           {projects.map((project, index) => (
             <div 
               key={index}
               onClick={() => setSelectedProject(project)}
-              className="group cursor-pointer flex flex-col gap-4"
+              className="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-indigo-300 hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 cursor-pointer flex flex-col h-full"
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
-              {/* Image Card */}
-              <div className="relative overflow-hidden rounded-2xl aspect-[4/3] bg-slate-100 border border-slate-100 shadow-sm transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-blue-900/10 group-hover:-translate-y-2">
+              
+              {/* Image Area (Smaller Height = Compact) */}
+              <div  className="relative h-60 overflow-hidden shrink-0">
                 <img 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                 />
-                {/* Overlay Icon */}
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0 shadow-lg">
-                  <ArrowUpRight size={20} className="text-slate-900"/>
+                <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-2 py-1 rounded-md shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ArrowUpRight size={16} className="text-slate-900" />
+                </div>
+              </div>
+              
+              {/* Content Area (Compact Padding) */}
+              <div className="p-5 flex flex-col flex-grow">
+                
+                <div className="mb-3">
+                   <div className="flex items-center gap-2 mb-1.5">
+                      <Layers size={14} className="text-indigo-500" />
+                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+                        {project.category.split("·")[0].trim()}
+                      </span>
+                   </div>
+                   <h3 
+                     className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-1 cursor-pointer"
+                   >
+                     {project.title}
+                   </h3>
+                </div>
+
+                <p className="text-slate-500 text-sm leading-relaxed mb-4 line-clamp-2">
+                  {project.shortDescription}
+                </p>
+
+                {/* --- TECH STACK (On Card) --- */}
+                <div className="mt-auto">
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {project.tech.map((t, i) => (
+                      <span key={i} className="px-2 py-0.5 bg-slate-50 text-slate-600 text-[10px] font-bold uppercase tracking-wider rounded border border-slate-100">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="pt-4 border-t border-slate-100">
+                    <span className="text-sm font-bold text-indigo-600 flex items-center gap-2 group-hover:gap-3 transition-all">
+                      Read Case Study <ArrowRight size={16} />
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              {/* Text Info */}
-              <div className="space-y-2 px-1">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-2xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                    {project.title}
-                  </h3>
-                  <span className="text-xs font-bold px-2 py-1 bg-slate-100 text-slate-600 rounded uppercase tracking-wider">
-                    {project.category}
-                  </span>
-                </div>
-                <p className="text-slate-600 line-clamp-2 leading-relaxed">
-                  {project.description}
-                </p>
-                <div className="text-sm font-medium text-slate-400 pt-1">
-                   {project.tech.join(" · ")}
-                </div>
-              </div>
             </div>
           ))}
         </div>
-
       </div>
 
-      {/* --- MODAL (Full Screen Detail) --- */}
+      {/* --- MODAL (Fixed Button Layout & No Scroll for Buttons) --- */}
       {selectedProject && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div 
-            className="absolute inset-0 bg-slate-900/60 backdrop-blur-md transition-opacity" 
+            className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
             onClick={() => setSelectedProject(null)}
-          />
+          ></div>
           
-          <div className="relative bg-white w-full max-w-5xl max-h-[90vh] rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row animate-fade-in-up">
+          {/* Max Height restricted to 85vh to prevent button cutoff on laptops */}
+          <div className="relative bg-white w-full max-w-5xl h-[85vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col lg:flex-row animate-fade-in-up">
             
-            {/* Modal Image (Left/Top) */}
-            <div className="w-full md:w-1/2 bg-slate-100 h-64 md:h-auto relative group">
+            {/* 1. Modal Image (Left) */}
+            <div className="w-full lg:w-[45%] bg-slate-100 relative h-48 lg:h-auto shrink-0">
               <img 
-                src={selectedProject.image} 
+                src={selectedProject.modalImage || selectedProject.image} 
                 alt={selectedProject.title} 
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:hidden" />
               <button 
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-6 left-6 md:hidden bg-white/20 backdrop-blur text-white p-2 rounded-full"
+                className="absolute top-3 left-3 lg:hidden bg-white/20 backdrop-blur text-white p-2 rounded-full z-10"
               >
-                <X size={24} />
+                <X size={20} />
               </button>
             </div>
 
-            {/* Modal Content (Right/Bottom) */}
-            <div className="w-full md:w-1/2 p-8 md:p-12 overflow-y-auto bg-white flex flex-col relative">
-              <button 
-                onClick={() => setSelectedProject(null)}
-                className="hidden md:block absolute top-8 right-8 text-slate-400 hover:text-slate-900 transition-colors bg-slate-50 p-2 rounded-full"
-              >
-                <X size={24} />
-              </button>
-
-              <div className="mb-6">
-                <span className="text-blue-600 font-bold tracking-wider uppercase text-xs mb-2 block">{selectedProject.category}</span>
-                <h3 className="text-3xl md:text-4xl font-black text-slate-900 mb-2">{selectedProject.title}</h3>
-                <p className="text-slate-500 font-medium text-lg">{selectedProject.tagline}</p>
+            {/* 2. Content Side (Right) - Using Flex Column for Sticky Footer */}
+            <div className="w-full lg:w-[55%] flex flex-col h-full bg-white relative">
+              
+              {/* Header (Fixed at Top) */}
+              <div className="p-6 md:p-8 pb-0 shrink-0">
+                 <div className="flex justify-between items-start">
+                    <div>
+                      <span className="text-indigo-600 font-bold tracking-wider uppercase text-[10px] mb-2 block">
+                        {selectedProject.category}
+                      </span>
+                      <h3 className="text-2xl md:text-3xl font-black text-slate-900 leading-tight">
+                        {selectedProject.title}
+                      </h3>
+                    </div>
+                    <button 
+                      onClick={() => setSelectedProject(null)}
+                      className="hidden lg:block text-slate-400 hover:text-slate-900 bg-slate-50 p-2 rounded-full transition-colors"
+                    >
+                      <X size={20} />
+                    </button>
+                 </div>
               </div>
 
-              <div className="prose prose-slate mb-8 text-slate-600 leading-relaxed">
-                <p>{selectedProject.description}</p>
+              {/* Scrollable Body (Middle) */}
+              <div className="p-6 md:p-8 overflow-y-auto flex-grow">
+                 <div className="prose prose-sm prose-slate text-slate-600 leading-relaxed whitespace-pre-line mb-8">
+                    {selectedProject.fullDescription}
+                 </div>
+
+                 {/* Key Features */}
+                 <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wide flex items-center gap-2 mb-4">
+                       <CheckCircle2 size={16} className="text-indigo-500"/> Key Features
+                    </h4>
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                       {selectedProject.features.map((feature, i) => (
+                          <li key={i} className="flex items-start gap-3 text-slate-600 text-sm">
+                             <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 shrink-0"></div>
+                             {feature}
+                          </li>
+                       ))}
+                    </ul>
+                 </div>
               </div>
 
-              <div className="space-y-6 mb-8">
-                <h4 className="font-bold text-slate-900 flex items-center gap-2">
-                  <Zap size={18} className="text-blue-500"/> Key Highlights
-                </h4>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {selectedProject.features.map((feat, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-slate-600">
-                      <div className="w-1.5 h-1.5 bg-blue-500 rounded-full" /> {feat}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mt-auto pt-6 border-t border-slate-100 flex flex-col sm:flex-row gap-4">
-                <a 
-                  href={selectedProject.github} 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="flex-1 py-3.5 flex items-center justify-center gap-2 bg-slate-900 text-white rounded-xl font-bold hover:bg-black transition-all hover:-translate-y-0.5"
-                >
-                  <Github size={18} /> GitHub
-                </a>
-                {selectedProject.live !== '#' && (
+              {/* Footer Buttons (Fixed at Bottom - NEVER SCROLLS) */}
+              <div className="p-6 border-t border-slate-100 shrink-0 bg-white z-20 shadow-[0_-5px_20px_rgba(0,0,0,0.02)]">
+                <div className="flex gap-3">
                   <a 
-                    href={selectedProject.live} 
+                    href={selectedProject.githubLink} 
                     target="_blank" 
                     rel="noreferrer"
-                    className="flex-1 py-3.5 flex items-center justify-center gap-2 bg-blue-50 text-blue-600 rounded-xl font-bold hover:bg-blue-100 transition-all hover:-translate-y-0.5"
+                    className="flex-1 py-3.5 flex items-center justify-center gap-2 bg-slate-900 text-white rounded-xl font-bold hover:bg-black transition-all text-sm shadow-lg"
                   >
-                    <ExternalLink size={18} /> Live Demo
+                    <Github size={18} /> View Code
                   </a>
-                )}
+                  {selectedProject.liveLink !== "#" && (
+                    <a 
+                      href={selectedProject.liveLink} 
+                      target="_blank" 
+                      rel="noreferrer"
+                      className="flex-1 py-3.5 flex items-center justify-center gap-2 bg-white text-indigo-600 rounded-xl font-bold hover:bg-indigo-50 border border-indigo-200 transition-all text-sm"
+                    >
+                      <ExternalLink size={18} /> Live Demo
+                    </a>
+                  )}
+                </div>
               </div>
 
             </div>

@@ -132,11 +132,23 @@ const Contact = () => {
           <p className="text-slate-500 text-sm">
             © {new Date().getFullYear()} Manthan Vaghasiya. Built with React & Tailwind.
           </p>
-          <div className="flex items-center gap-6">
-            <a href="https://github.com/manthanvaghasiya" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors"><Github size={20} /></a>
-            <a href="https://www.linkedin.com/in/manthan-vaghasiya-b213a8267" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-blue-400 transition-colors"><Linkedin size={20} /></a>
-            <a href="https://www.instagram.com/manthan_vaghasiya_07" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-pink-400 transition-colors"><Instagram size={20} /></a>
-          </div>
+         <div className="flex items-center gap-4">
+                     {[
+                       { icon: Github, link: "https://github.com/manthanvaghasiya" },
+                       { icon: Linkedin, link: "https://www.linkedin.com/in/manthan-vaghasiya-b213a8267" },
+                       { icon: Instagram, link: "https://www.instagram.com/manthan_vaghasiya_07" }
+                     ].map((social, idx) => (
+                       <a
+                         key={idx}
+                         href={social.link}
+                         target="_blank"
+                         rel="noreferrer"
+                         className="p-3 rounded-full bg-white/5 text-slate-400 border border-white/5 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-500/20"
+                       >
+                         <social.icon size={20} />
+                       </a>
+                     ))}
+                   </div>
         </div>
 
       </div>
