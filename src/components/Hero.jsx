@@ -3,7 +3,7 @@ import { Github, Linkedin, Instagram, Download } from "lucide-react";
 
 const Hero = () => {
   const line1 = "I turn ideas into";
-  const line2 = "scalable digital products";
+  const line2 = "Scalable digital products";
 
   const [text1, setText1] = React.useState("");
   const [text2, setText2] = React.useState("");
