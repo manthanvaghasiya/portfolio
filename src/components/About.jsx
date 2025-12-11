@@ -18,7 +18,7 @@ const About = () => {
           
           <h2 className="text-3xl md:text-4xl font-black text-slate-900 leading-tight tracking-tight">
             More than just code. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-600">
               I build digital engines for growth.
             </span>
           </h2>
@@ -36,7 +36,7 @@ const About = () => {
             data-aos-delay="100"
           >
             {/* Icon Column */}
-            <div className="w-full md:w-20 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300 py-6 md:py-0">
+            <div className="w-full md:w-20 bg-indigo-50 text-black-600 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300 py-6 md:py-0">
                <Terminal size={32} />
             </div>
 
@@ -60,7 +60,7 @@ const About = () => {
                   <div className="flex flex-wrap gap-2">
                     {['React.js', 'Node.js & Express',  'MongoDB', 'PostgreSQL'].map((tech) => (
                       <span key={tech} className="px-2.5 py-1 bg-slate-50 text-slate-600 text-xs font-semibold rounded-md border border-slate-200 flex items-center gap-1.5">
-                        <Code size={10} className="text-indigo-500" />
+                        <Code size={10} className="text-black-500" />
                         {tech}
                       </span>
                     ))}
@@ -103,7 +103,7 @@ const About = () => {
 
           {/* 3. AI-POWERED EFFICIENCY (Span 1) */}
           <div 
-            className="bg-indigo-600 text-white p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between shadow-xl shadow-indigo-600/20 ring-1 ring-white/20"
+            className="bg-blue-500 text-white p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between shadow-xl shadow-indigo-600/20 ring-1 ring-white/20"
             data-aos="fade-up"
             data-aos-delay="300"
           >
@@ -141,7 +141,7 @@ const About = () => {
             data-aos-delay="400"
           >
             {/* Icon Column */}
-            <div className="w-full md:w-20 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300 py-6 md:py-0">
+            <div className="w-full md:w-20 bg-indigo-50 text-blue-600 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-blue-500 group-hover:text-white transition-colors duration-300 py-6 md:py-0">
                <Rocket size={32} />
             </div>
             
@@ -158,7 +158,7 @@ const About = () => {
                <div className="border-t border-slate-100 pt-4">
                   <div className="flex items-center justify-between mb-3">
                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Toolkit</p>
-                    <span className="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded border border-orange-100">
+                    <span className="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded border border-orange-100">
                       Bug-Free Shipping
                     </span>
                   </div>
@@ -166,7 +166,7 @@ const About = () => {
                   <div className="flex flex-wrap gap-2">
                     {['Vite', 'Git & GitHub', 'Postman', 'Vercel/Netlify'].map((tool) => (
                       <span key={tool} className="px-2.5 py-1 bg-slate-50 text-slate-600 text-xs font-semibold rounded-md border border-slate-200 flex items-center gap-1.5">
-                        <CheckCircle2 size={10} className="text-indigo-500" />
+                        <CheckCircle2 size={10} className="text-blue-500" />
                         {tool}
                       </span>
                     ))}

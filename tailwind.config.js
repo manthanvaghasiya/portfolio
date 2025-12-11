@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         primary: '#0F172A', // Dark Slate (Text/Background)
-        accent: '#2563EB',  // Electric Blue (Buttons/Links)
+        accent: '#2563EB',  // Electric Blue (Buttons/Links)2563EB
         light: '#F8FAFC',   // Off-white background
         dark: '#1E293B',    // Darker background for cards
       },

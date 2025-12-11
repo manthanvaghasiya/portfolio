@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ExternalLink, Github, X, ArrowUpRight, Layers, Zap, CheckCircle2, ArrowRight, ChevronLeft } from "lucide-react";
+import { ExternalLink, Github, X, ArrowUpRight, Layers, CheckCircle2, ArrowRight, ChevronLeft } from "lucide-react";
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -10,7 +10,7 @@ const Projects = () => {
     else document.body.style.overflow = "unset";
   }, [selectedProject]);
 
-  // --- PROJECT DATA ---
+  // --- PROJECT DATA (Unchanged) ---
   const projects = [
     {
       title: "Surat BookCycle",
@@ -85,20 +85,21 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-24 px-6 bg-[#F8FAFC]">
+    <section id="projects" className="py-16 md:py-24 px-4 sm:px-6 bg-[#F8FAFC]">
       <div className="max-w-7xl mx-auto">
         
         {/* --- HEADER --- */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6" data-aos="fade-up">
-          <div>
+        {/* FIX 1: Changed items-end to items-start md:items-end to prevent button cut-off on mobile */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-12 gap-6" data-aos="fade-up">
+          <div className="max-w-2xl">
             <span className="text-indigo-600 font-bold tracking-widest uppercase text-xs border border-indigo-100 px-3 py-1 rounded-full bg-indigo-50">
               Selected Work
             </span>
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mt-4 mb-2">
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mt-4 mb-2 leading-tight">
               Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-600">Project</span>
             </h2>
-            <p className="text-slate-500 max-w-xl text-lg">
-              High-performance web applications built for scale.
+            <p className="text-slate-500 text-base md:text-lg mt-3">
+              High-performance web applications built for scale and user experience.
             </p>
           </div>
           
@@ -106,7 +107,7 @@ const Projects = () => {
             href="https://github.com/manthanvaghasiya" 
             target="_blank"
             rel="noreferrer"
-            className="group flex items-center gap-3 px-6 py-3 bg-white border border-slate-200 rounded-full font-bold text-slate-700 hover:border-indigo-600 hover:text-indigo-600 transition-all shadow-sm hover:shadow-md"
+            className="group flex items-center gap-3 px-6 py-3 bg-white border border-slate-200 rounded-full font-bold text-slate-700 hover:border-indigo-600 hover:text-indigo-600 transition-all shadow-sm hover:shadow-md active:scale-95"
           >
             <Github size={20} />
             <span>View Github</span>
@@ -115,7 +116,8 @@ const Projects = () => {
         </div>
 
         {/* --- GRID LAYOUT --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
+        {/* UX IMPROVEMENT: Adjusted gap for mobile/tablet consistency */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-9">
           {projects.map((project, index) => (
             <div 
               key={index}
@@ -126,7 +128,7 @@ const Projects = () => {
             >
               
               {/* Image Area */}
-              <div  className="relative h-60 overflow-hidden shrink-0">
+              <div  className="relative h-56 md:h-60 overflow-hidden shrink-0">
                 <img 
                   src={project.image} 
                   alt={project.title} 
@@ -141,14 +143,14 @@ const Projects = () => {
               <div className="p-5 flex flex-col flex-grow">
                 
                 <div className="mb-3">
-                   <div className="flex items-center gap-2 mb-1.5">
+                   <div className="flex items-center gap-2 mb-2">
                       <Layers size={14} className="text-indigo-500" />
                       <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
                         {project.category.split("·")[0].trim()}
                       </span>
                    </div>
                    <h3 
-                     className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-1 cursor-pointer"
+                     className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-1"
                    >
                      {project.title}
                    </h3>
@@ -162,7 +164,7 @@ const Projects = () => {
                 <div className="mt-auto">
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {project.tech.map((t, i) => (
-                      <span key={i} className="px-2 py-0.5 bg-slate-50 text-slate-600 text-[10px] font-bold uppercase tracking-wider rounded border border-slate-100">
+                      <span key={i} className="px-2 py-1 bg-slate-50 text-slate-600 text-[10px] font-bold uppercase tracking-wider rounded border border-slate-100">
                         {t}
                       </span>
                     ))}
@@ -185,20 +187,20 @@ const Projects = () => {
       {/* ------------------- FIXED MOBILE MODAL -------------------------- */}
       {/* ------------------------------------------------------------------ */}
       {selectedProject && (
-        <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:p-6">
+        <div className="fixed inset-0 z-[100] flex sm:items-center justify-center">
           
           {/* Backdrop */}
           <div 
-            className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm transition-opacity"
+            className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
             onClick={() => setSelectedProject(null)}
           ></div>
           
           {/* Modal Container */}
-          {/* Mobile: Use 100dvh (Dynamic Viewport Height) to fix browser bar issues */}
-          <div className="relative bg-white w-full h-[100dvh] sm:h-[85vh] sm:max-w-5xl sm:rounded-2xl shadow-2xl overflow-hidden flex flex-col lg:flex-row animate-fade-in-up">
+          {/* FIX: Mobile = fixed inset-0 (full screen) | Desktop = relative with max height */}
+          <div className="fixed inset-0 sm:relative bg-white w-full h-full sm:h-[85vh] sm:max-w-5xl sm:rounded-2xl shadow-2xl overflow-hidden flex flex-col lg:flex-row animate-fade-in-up">
             
             {/* --- MOBILE STICKY HEADER --- */}
-            <div className="flex sm:hidden items-center justify-between p-4 border-b border-slate-100 bg-white shrink-0 z-20 sticky top-0">
+            <div className="flex sm:hidden items-center justify-between p-4 border-b border-slate-100 bg-white shrink-0 z-20">
                <button 
                  onClick={() => setSelectedProject(null)}
                  className="flex items-center gap-1 text-slate-600 font-bold text-sm active:text-indigo-600 transition-colors"
@@ -224,7 +226,7 @@ const Projects = () => {
             <div className="w-full lg:w-[55%] flex flex-col h-full bg-white relative">
               
               {/* Desktop Header */}
-              <div className="hidden sm:flex p-6 border-b border-slate-100 shrink-0 justify-between items-start bg-white">
+              <div className="hidden sm:flex p-6 lg:p-8 border-b border-slate-100 shrink-0 justify-between items-start bg-white">
                  <div>
                     <span className="text-indigo-600 font-bold tracking-wider uppercase text-[10px] mb-1 block">
                       {selectedProject.category}
@@ -235,16 +237,16 @@ const Projects = () => {
                  </div>
                  <button 
                    onClick={() => setSelectedProject(null)}
-                   className="text-slate-400 hover:text-slate-900 bg-slate-50 p-2 rounded-full transition-colors"
+                   className="text-slate-400 hover:text-slate-900 bg-slate-50 p-2 rounded-full transition-colors hover:bg-slate-100"
                  >
                    <X size={20} />
                  </button>
               </div>
 
               {/* Scrollable Body */}
-              <div className="p-5 sm:p-6 overflow-y-auto flex-1 min-h-0 bg-white">
+              <div className="p-5 sm:p-6 lg:p-8 overflow-y-auto flex-1 bg-white overscroll-contain">
                  
-                 {/* Mobile Image (Visible ONLY on Mobile) */}
+                 {/* Mobile Image */}
                  <div className="sm:hidden mb-6 rounded-xl overflow-hidden shadow-sm border border-slate-100 relative group">
                     <img 
                       src={selectedProject.image} 
@@ -273,9 +275,9 @@ const Projects = () => {
                  </div>
               </div>
 
-              {/* Footer Buttons (Mobile Optimized) */}
-              {/* Added 'pb-10' specifically for Mobile to clear the Home Indicator bar */}
-              <div className="p-5 sm:p-6 border-t border-slate-100 shrink-0 bg-white z-20 pb-10 sm:pb-6 shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
+              {/* Footer Buttons */}
+              {/* FIX: Increased padding (pb-12) to clear mobile home bars */}
+              <div className="p-5 sm:p-6 lg:p-8 border-t border-slate-100 shrink-0 bg-white z-20 pb-12 sm:pb-6 lg:pb-8 shadow-[0_-10px_30px_rgba(0,0,0,0.03)]">
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a 
                     href={selectedProject.githubLink} 

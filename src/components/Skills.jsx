@@ -49,7 +49,7 @@ const Skills = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6" data-aos="fade-up">
            <div>
-              <div className="flex items-center gap-2 text-indigo-400 font-mono text-sm mb-4">
+              <div className="flex items-center gap-2 text-blue-400 font-mono text-sm mb-4">
                  <Terminal size={16} />
                  <span>system_capabilities.json</span>
               </div>

@@ -42,7 +42,7 @@ const Navbar = () => {
             </div>
             
             <span className="font-bold text-xl tracking-tight text-slate-900">
-              Manthan<span className="text-indigo-600">.portfolio</span>
+              Manthan<span className="text-blue-600">.portfolio</span>
             </span>
           </a>
 
