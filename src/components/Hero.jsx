@@ -55,7 +55,7 @@ const Hero = () => {
     return (
       <>
         {before}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-rose-500 to-red-500">
+        <span className="text-transparent animate-text-shimmer bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 bg-clip-text ">
           {typedIdeas}
         </span>
         {after}
@@ -71,7 +71,7 @@ const Hero = () => {
 
     if (idx === -1) {
       return (
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-rose-500 to-red-500">
+        <span className="text-transparent animate-text-shimmer bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 bg-clip-text ">
           {text2}
         </span>
       );
@@ -82,7 +82,7 @@ const Hero = () => {
 
     return (
       <>
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-rose-500 to-red-500">
+        <span className="text-transparent animate-text-shimmer bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 bg-clip-text ">
           {before}
         </span>{" "}
         <span className="text-slate-900">{typedProducts}</span>
@@ -187,19 +187,20 @@ const Hero = () => {
             <b>user–friendly interfaces</b>, I focus on{" "}
             <b>performance, maintainability, and real business impact</b>. My
             portfolio includes platforms like{" "}
+             <a
+              href="#projects"
+              className="font-bold text-slate-900 underline underline-offset-4 hover:no-underline transition"
+            >
+              LifeOS
+            </a>{" "}
+             and{" "}
             <a
               href="#projects"
               className="font-bold text-slate-900 underline underline-offset-4 hover:no-underline transition"
             >
               DairyFlow
-            </a>{" "}
-            and{" "}
-            <a
-              href="#projects"
-              className="font-bold text-slate-900 underline underline-offset-4 hover:no-underline transition"
-            >
-              LifeOS
             </a>.
+            
           </p>
 
           {/* CTAs */}

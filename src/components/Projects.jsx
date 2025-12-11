@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ExternalLink, Github, X, ArrowUpRight, Layers, Zap, CheckCircle2, ArrowRight } from "lucide-react";
+import { ExternalLink, Github, X, ArrowUpRight, Layers, Zap, CheckCircle2, ArrowRight, ChevronLeft } from "lucide-react";
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -95,7 +95,7 @@ const Projects = () => {
               Selected Work
             </span>
             <h2 className="text-4xl md:text-5xl font-black text-slate-900 mt-4 mb-2">
-              Featured  <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-blue-500">Project</span>
+              Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-600">Project</span>
             </h2>
             <p className="text-slate-500 max-w-xl text-lg">
               High-performance web applications built for scale.
@@ -114,7 +114,7 @@ const Projects = () => {
           </a>
         </div>
 
-        {/* --- GRID LAYOUT (Medium/Compact Size) --- */}
+        {/* --- GRID LAYOUT --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
           {projects.map((project, index) => (
             <div 
@@ -125,7 +125,7 @@ const Projects = () => {
               data-aos-delay={index * 100}
             >
               
-              {/* Image Area (Smaller Height = Compact) */}
+              {/* Image Area */}
               <div  className="relative h-60 overflow-hidden shrink-0">
                 <img 
                   src={project.image} 
@@ -137,7 +137,7 @@ const Projects = () => {
                 </div>
               </div>
               
-              {/* Content Area (Compact Padding) */}
+              {/* Content Area */}
               <div className="p-5 flex flex-col flex-grow">
                 
                 <div className="mb-3">
@@ -158,7 +158,7 @@ const Projects = () => {
                   {project.shortDescription}
                 </p>
 
-                {/* --- TECH STACK (On Card) --- */}
+                {/* --- TECH STACK --- */}
                 <div className="mt-auto">
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {project.tech.map((t, i) => (
@@ -181,57 +181,78 @@ const Projects = () => {
         </div>
       </div>
 
-      {/* --- MODAL (Fixed Button Layout & No Scroll for Buttons) --- */}
+      {/* ------------------------------------------------------------------ */}
+      {/* ------------------- FIXED MOBILE MODAL -------------------------- */}
+      {/* ------------------------------------------------------------------ */}
       {selectedProject && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:p-6">
+          
+          {/* Backdrop */}
           <div 
-            className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
+            className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm transition-opacity"
             onClick={() => setSelectedProject(null)}
           ></div>
           
-          {/* Max Height restricted to 85vh to prevent button cutoff on laptops */}
-          <div className="relative bg-white w-full max-w-5xl h-[85vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col lg:flex-row animate-fade-in-up">
+          {/* Modal Container */}
+          {/* Mobile: Use 100dvh (Dynamic Viewport Height) to fix browser bar issues */}
+          <div className="relative bg-white w-full h-[100dvh] sm:h-[85vh] sm:max-w-5xl sm:rounded-2xl shadow-2xl overflow-hidden flex flex-col lg:flex-row animate-fade-in-up">
             
-            {/* 1. Modal Image (Left) */}
-            <div className="w-full lg:w-[45%] bg-slate-100 relative h-48 lg:h-auto shrink-0">
+            {/* --- MOBILE STICKY HEADER --- */}
+            <div className="flex sm:hidden items-center justify-between p-4 border-b border-slate-100 bg-white shrink-0 z-20 sticky top-0">
+               <button 
+                 onClick={() => setSelectedProject(null)}
+                 className="flex items-center gap-1 text-slate-600 font-bold text-sm active:text-indigo-600 transition-colors"
+               >
+                 <ChevronLeft size={22} /> Back
+               </button>
+               <span className="font-bold text-slate-900 truncate max-w-[200px]">
+                 {selectedProject.title}
+               </span>
+               <div className="w-6"></div> {/* Spacer for alignment */}
+            </div>
+
+            {/* 1. Modal Image (Hidden on Mobile) */}
+            <div className="hidden sm:block w-full lg:w-[45%] bg-slate-100 relative h-48 lg:h-auto shrink-0">
               <img 
                 src={selectedProject.modalImage || selectedProject.image} 
                 alt={selectedProject.title} 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-top"
               />
-              <button 
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-3 left-3 lg:hidden bg-white/20 backdrop-blur text-white p-2 rounded-full z-10"
-              >
-                <X size={20} />
-              </button>
             </div>
 
-            {/* 2. Content Side (Right) - Using Flex Column for Sticky Footer */}
+            {/* 2. Content Side */}
             <div className="w-full lg:w-[55%] flex flex-col h-full bg-white relative">
               
-              {/* Header (Fixed at Top) */}
-              <div className="p-6 md:p-8 pb-0 shrink-0">
-                 <div className="flex justify-between items-start">
-                    <div>
-                      <span className="text-indigo-600 font-bold tracking-wider uppercase text-[10px] mb-2 block">
-                        {selectedProject.category}
-                      </span>
-                      <h3 className="text-2xl md:text-3xl font-black text-slate-900 leading-tight">
-                        {selectedProject.title}
-                      </h3>
-                    </div>
-                    <button 
-                      onClick={() => setSelectedProject(null)}
-                      className="hidden lg:block text-slate-400 hover:text-slate-900 bg-slate-50 p-2 rounded-full transition-colors"
-                    >
-                      <X size={20} />
-                    </button>
+              {/* Desktop Header */}
+              <div className="hidden sm:flex p-6 border-b border-slate-100 shrink-0 justify-between items-start bg-white">
+                 <div>
+                    <span className="text-indigo-600 font-bold tracking-wider uppercase text-[10px] mb-1 block">
+                      {selectedProject.category}
+                    </span>
+                    <h3 className="text-3xl font-black text-slate-900 leading-tight">
+                      {selectedProject.title}
+                    </h3>
                  </div>
+                 <button 
+                   onClick={() => setSelectedProject(null)}
+                   className="text-slate-400 hover:text-slate-900 bg-slate-50 p-2 rounded-full transition-colors"
+                 >
+                   <X size={20} />
+                 </button>
               </div>
 
-              {/* Scrollable Body (Middle) */}
-              <div className="p-6 md:p-8 overflow-y-auto flex-grow">
+              {/* Scrollable Body */}
+              <div className="p-5 sm:p-6 overflow-y-auto flex-1 min-h-0 bg-white">
+                 
+                 {/* Mobile Image (Visible ONLY on Mobile) */}
+                 <div className="sm:hidden mb-6 rounded-xl overflow-hidden shadow-sm border border-slate-100 relative group">
+                    <img 
+                      src={selectedProject.image} 
+                      alt={selectedProject.title} 
+                      className="w-full h-48 object-cover"
+                    />
+                 </div>
+
                  <div className="prose prose-sm prose-slate text-slate-600 leading-relaxed whitespace-pre-line mb-8">
                     {selectedProject.fullDescription}
                  </div>
@@ -241,10 +262,10 @@ const Projects = () => {
                     <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wide flex items-center gap-2 mb-4">
                        <CheckCircle2 size={16} className="text-indigo-500"/> Key Features
                     </h4>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                        {selectedProject.features.map((feature, i) => (
                           <li key={i} className="flex items-start gap-3 text-slate-600 text-sm">
-                             <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 shrink-0"></div>
+                             <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1.5 shrink-0"></div>
                              {feature}
                           </li>
                        ))}
@@ -252,14 +273,15 @@ const Projects = () => {
                  </div>
               </div>
 
-              {/* Footer Buttons (Fixed at Bottom - NEVER SCROLLS) */}
-              <div className="p-6 border-t border-slate-100 shrink-0 bg-white z-20 shadow-[0_-5px_20px_rgba(0,0,0,0.02)]">
-                <div className="flex gap-3">
+              {/* Footer Buttons (Mobile Optimized) */}
+              {/* Added 'pb-10' specifically for Mobile to clear the Home Indicator bar */}
+              <div className="p-5 sm:p-6 border-t border-slate-100 shrink-0 bg-white z-20 pb-10 sm:pb-6 shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
+                <div className="flex flex-col sm:flex-row gap-3">
                   <a 
                     href={selectedProject.githubLink} 
                     target="_blank" 
                     rel="noreferrer"
-                    className="flex-1 py-3.5 flex items-center justify-center gap-2 bg-slate-900 text-white rounded-xl font-bold hover:bg-black transition-all text-sm shadow-lg"
+                    className="flex-1 py-3.5 flex items-center justify-center gap-2 bg-slate-900 text-white rounded-xl font-bold hover:bg-black transition-all text-sm shadow-lg active:scale-95"
                   >
                     <Github size={18} /> View Code
                   </a>
@@ -268,7 +290,7 @@ const Projects = () => {
                       href={selectedProject.liveLink} 
                       target="_blank" 
                       rel="noreferrer"
-                      className="flex-1 py-3.5 flex items-center justify-center gap-2 bg-white text-indigo-600 rounded-xl font-bold hover:bg-indigo-50 border border-indigo-200 transition-all text-sm"
+                      className="flex-1 py-3.5 flex items-center justify-center gap-2 bg-white text-indigo-600 rounded-xl font-bold hover:bg-indigo-50 border border-indigo-200 transition-all text-sm active:scale-95"
                     >
                       <ExternalLink size={18} /> Live Demo
                     </a>
