@@ -1,3 +1,4 @@
+// this is final navbar but just add dark and loght mode
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
