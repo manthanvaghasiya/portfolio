@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense, lazy } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-// Components
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Experience from './components/Experience';
-import Stats from './components/Stats'; 
-import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Contact from './components/Contact';
-import About from "./components/About";
-import ScrollToTop from './components/ScrollToTop';
-import Preloader from './components/Preloader';
+// Eager Load (Above the Fold)
+import Navbar from './components/layout/Navbar/Navbar';
+import Hero from './components/features/Hero/Hero';
+import ScrollToTop from './components/layout/ScrollToTop';
+import Preloader from './components/layout/Preloader';
 
+// Lazy Load (Below the Fold)
+const Experience = lazy(() => import('./components/features/Experience/Experience'));
+const Stats = lazy(() => import('./components/features/Stats/Stats'));
+const Projects = lazy(() => import('./components/features/Projects/Projects'));
+const Skills = lazy(() => import('./components/features/Skills/Skills'));
+const Contact = lazy(() => import('./components/features/Contact/Contact'));
+const About = lazy(() => import('./components/features/About/About'));
+const GithubStats = lazy(() => import('./components/GithubStats'));
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -37,13 +39,17 @@ function App() {
           <Navbar />
           <main>
             <Hero />
-            <Skills />
-            <Experience />
             <Stats />
             <About />
-            <Projects />
-            
-            <Contact />
+
+            <Suspense fallback={<div className="h-20" />}>
+              <Skills />
+              <Experience />
+              <GithubStats />
+              <Projects />
+              <Contact />
+
+            </Suspense>
           </main>
           <ScrollToTop />
         </div>

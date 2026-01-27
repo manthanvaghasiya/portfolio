@@ -57,3 +57,28 @@ body {
 ::-webkit-scrollbar-thumb:hover { 
   background: #2563EB; /* Turns Accent Blue on hover */
 }
+
+/* --- HERO ANIMATIONS --- */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+.animate-float { 
+  animation: float 6s ease-in-out infinite; 
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+.animate-text-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 2.5s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float, .animate-text-shimmer {
+    animation: none !important;
+    transition: none !important;
+  }
+}

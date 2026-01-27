@@ -14,29 +14,26 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-      }
-    },
-  },
-  plugins: [],
-
-  extend: {
-    backgroundSize: {
-      'size-200': '200% 200%',
-    },
-    animation: {
-      'gradient-x': 'gradient-x 3s ease infinite',
-    },
-    keyframes: {
-      'gradient-x': {
-        '0%, 100%': {
+      },
+      backgroundSize: {
+        'size-200': '200% 200%',
+      },
+      animation: {
+        'gradient-x': 'gradient-x 3s ease infinite',
+      },
+      keyframes: {
+        'gradient-x': {
+          '0%, 100%': {
             'background-size': '200% 200%',
             'background-position': 'left center'
-        },
-        '50%': {
+          },
+          '50%': {
             'background-size': '200% 200%',
             'background-position': 'right center'
+          },
         },
       },
     },
   },
+  plugins: [],
 }
