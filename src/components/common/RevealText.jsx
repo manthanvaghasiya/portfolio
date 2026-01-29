@@ -5,15 +5,15 @@ const RevealText = ({ children, className = "", delay = 0 }) => {
     return (
         <div style={{ overflow: "hidden" }} className={className}>
             <motion.div
-                initial={{ y: "100%", skewY: 5 }}
-                whileInView={{ y: 0, skewY: 0 }}
-                viewport={{ once: true }}
+                initial={{ y: "100%" }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: true, amount: 0 }}
                 transition={{
                     duration: 0.8,
                     ease: "easeOut",
                     delay: delay,
                 }}
-                className="inline-block origin-top-left"
+                className="block origin-top-left"
             >
                 {children}
             </motion.div>
