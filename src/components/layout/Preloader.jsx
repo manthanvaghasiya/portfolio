@@ -60,7 +60,7 @@ const Preloader = ({ onFinish }) => {
                 Loading System...
             </p>
 
-            <style jsx>{`
+            <style>{`
         @keyframes loading {
           0% { transform: translateX(-100%); }
           50% { transform: translateX(100%) scaleX(0.5); }

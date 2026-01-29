@@ -4,11 +4,23 @@ import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-mot
 const ROTATION_RANGE = 20;
 
 const SpotlightOverlay = ({ x, y }) => {
-    const background = useMotionTemplate`radial-gradient(400px circle at ${x}px ${y}px, rgba(99, 102, 241, 0.15), transparent 80%)`;
+    const background = useMotionTemplate`radial-gradient(400px circle at ${x}px ${y}px, rgba(99, 102, 241, 0.10), transparent 80%)`;
 
     return (
         <motion.div
             className="absolute inset-0 z-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-2xl pointer-events-none"
+            style={{ background }}
+        />
+    );
+};
+
+const GlossOverlay = ({ x, y }) => {
+    // A sharper, smaller white highlight that acts as specular reflection
+    const background = useMotionTemplate`radial-gradient(250px circle at ${x}px ${y}px, rgba(255, 255, 255, 0.4), transparent 80%)`;
+
+    return (
+        <motion.div
+            className="absolute inset-0 z-10 transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-2xl pointer-events-none mix-blend-overlay"
             style={{ background }}
         />
     );
@@ -70,6 +82,9 @@ const TiltCard = ({ children, className, delay = 0, withSpotlight = false }) => 
                 className="relative h-full group"
             >
                 {withSpotlight && <SpotlightOverlay x={x} y={y} />}
+                {/* Always add GlossOverlay for that 'Light Reaction' feel */}
+                <GlossOverlay x={x} y={y} />
+
                 <div style={{ transform: "translateZ(50px)", transformStyle: "preserve-3d" }} className="h-full">
                     {children}
                 </div>

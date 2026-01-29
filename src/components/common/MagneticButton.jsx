@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-const MagneticButton = ({ children, className = "", onClick }) => {
+const MagneticButton = ({ children, className = "", onClick, ...props }) => {
     const ref = useRef(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -29,6 +29,7 @@ const MagneticButton = ({ children, className = "", onClick }) => {
             animate={{ x, y }}
             transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
             className={className}
+            {...props}
         >
             {children}
         </motion.button>

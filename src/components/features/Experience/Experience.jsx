@@ -14,7 +14,7 @@ const Experience = () => {
     return (
         <section
             id="experience"
-            className="py-16 md:py-24 px-4 md:px-6 bg-transparent scroll-mt-24 md:scroll-mt-32"
+            className="py-12 md:py-24 px-2 md:px-6 bg-transparent scroll-mt-24 md:scroll-mt-32"
         >
             <div className="max-w-4xl mx-auto" ref={containerRef}>
                 {/* Header */}
@@ -41,7 +41,7 @@ const Experience = () => {
                 </div>
 
                 {/* Timeline Container */}
-                <div className="relative ml-4 md:ml-6 space-y-12">
+                <div className="relative ml-1 md:ml-6 space-y-12">
 
                     {/* Scroll-Linked Line Background */}
                     <div className="absolute left-0 top-0 bottom-0 w-0.5 md:w-1 bg-slate-200 origin-top"></div>
@@ -54,11 +54,11 @@ const Experience = () => {
 
                     {/* EXPERIENCE CARD */}
                     <motion.div
-                        initial={{ opacity: 0, x: -50 }}
+                        initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        className="relative pl-8 md:pl-12"
+                        viewport={{ once: true, margin: "-50px" }}
+                        className="relative pl-5 md:pl-12"
                     >
                         {/* Timeline Dot */}
                         <div className="absolute left-[-5.5px] md:left-[-7px] top-8 h-3 w-3 md:h-5 md:w-5 rounded-full border-2 md:border-4 border-white bg-blue-600 shadow-[0_0_0_4px_rgba(37,99,235,0.2)] z-10"></div>
@@ -66,7 +66,7 @@ const Experience = () => {
                         {/* Interactive Card */}
                         <motion.div
                             whileHover={{ y: -5 }}
-                            className="bg-white p-5 md:p-8 rounded-3xl shadow-xl border border-slate-100 hover:border-blue-200 transition-colors duration-300 group"
+                            className="bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-lg md:shadow-xl border border-slate-100 hover:border-blue-200 transition-colors duration-300 group"
                         >
 
                             {/* Top Row */}

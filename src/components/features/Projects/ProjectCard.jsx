@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { ArrowUpRight, Layers, ArrowRight } from "lucide-react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring, useMotionTemplate, useTransform } from "framer-motion";
 
 const ROTATION_RANGE = 15;
 
@@ -10,8 +10,11 @@ const ProjectCard = ({ project, onClick, index }) => {
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
-    const rotateX = useSpring(useMotionValue(0), { stiffness: 150, damping: 20 });
-    const rotateY = useSpring(useMotionValue(0), { stiffness: 150, damping: 20 });
+    const mouseX = useSpring(x, { stiffness: 150, damping: 20 });
+    const mouseY = useSpring(y, { stiffness: 150, damping: 20 });
+
+    const rotateX = useTransform(mouseY, [-0.5, 0.5], [ROTATION_RANGE, -ROTATION_RANGE]);
+    const rotateY = useTransform(mouseX, [-0.5, 0.5], [-ROTATION_RANGE, ROTATION_RANGE]);
 
     const handleMouseMove = (e) => {
         if (!ref.current) return;
@@ -20,25 +23,26 @@ const ProjectCard = ({ project, onClick, index }) => {
         const width = rect.width;
         const height = rect.height;
 
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
+        const clientX = e.clientX - rect.left;
+        const clientY = e.clientY - rect.top;
 
-        const rX = (mouseY / height - 0.5) * ROTATION_RANGE * -1;
-        const rY = (mouseX / width - 0.5) * ROTATION_RANGE;
+        // Normalize to -0.5 to 0.5 range
+        const xPct = clientX / width - 0.5;
+        const yPct = clientY / height - 0.5;
 
-        x.set(mouseX);
-        y.set(mouseY);
-
-        rotateX.set(rX);
-        rotateY.set(rY);
+        x.set(xPct);
+        y.set(yPct);
     };
 
     const handleMouseLeave = () => {
         x.set(0);
         y.set(0);
-        rotateX.set(0);
-        rotateY.set(0);
     };
+
+    // Gloss Effect: Moves opposite to mouse
+    const glossX = useTransform(x, [-0.5, 0.5], ["100%", "0%"]);
+    const glossY = useTransform(y, [-0.5, 0.5], ["0%", "100%"]);
+    const glossBackground = useMotionTemplate`radial-gradient(circle at ${glossX} ${glossY}, rgba(255, 255, 255, 0.35) 0%, transparent 60%)`;
 
     return (
         <motion.div
@@ -46,7 +50,6 @@ const ProjectCard = ({ project, onClick, index }) => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true, margin: "-50px" }}
-            whileHover={{ y: -10, scale: 1.02, transition: { duration: 0.2, ease: "easeOut" } }}
             className="h-full perspective-1000"
         >
             <motion.div
@@ -61,6 +64,12 @@ const ProjectCard = ({ project, onClick, index }) => {
                 }}
                 className="group relative bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 cursor-pointer flex flex-col h-full transform-gpu"
             >
+                {/* --- REAL GLOSS OVERLAY --- */}
+                <motion.div
+                    className="absolute inset-0 z-50 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay"
+                    style={{ background: glossBackground }}
+                />
+
                 {/* Image Area */}
                 <div className="relative h-56 md:h-60 overflow-hidden shrink-0" style={{ transform: "translateZ(20px)" }}>
                     <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors z-10 duration-500" />
