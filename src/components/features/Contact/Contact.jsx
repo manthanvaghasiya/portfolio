@@ -69,9 +69,9 @@ const Contact = () => {
                         </div>
 
                         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-6 text-white leading-[1.1]">
-                            Let’s build something
+                            Let’s build something <br className="hidden md:block" />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400">
-                                {" "}great together.
+                                great together.
                             </span>
                         </h2>
 
