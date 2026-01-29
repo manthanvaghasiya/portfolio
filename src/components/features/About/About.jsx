@@ -5,7 +5,7 @@ import TiltCard from "../../common/TiltCard";
 
 const About = () => {
     return (
-        <section id="about" className="py-20 px-6 bg-slate-50 relative overflow-hidden">
+        <section id="about" className="py-16 px-4 md:py-20 md:px-6 bg-slate-50 relative overflow-hidden">
 
             {/* Background Texture */}
             <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:20px_20px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
@@ -13,7 +13,7 @@ const About = () => {
             <div className="max-w-6xl mx-auto relative z-10">
 
                 {/* --- HEADER --- */}
-                <div className="mb-12 max-w-2xl">
+                <div className="mb-10 md:mb-12 max-w-2xl">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -28,7 +28,7 @@ const About = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-3xl md:text-4xl font-black text-slate-900 leading-tight tracking-tight"
+                        className="text-2xl md:text-4xl font-black text-slate-900 leading-tight tracking-tight"
                     >
                         More than just code. <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">
@@ -38,14 +38,14 @@ const About = () => {
                 </div>
 
                 {/* --- COMPACT BENTO GRID --- */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-fr">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 auto-rows-fr">
 
                     {/* 1. THE FULL STACK BUILDER (Span 2) */}
                     <TiltCard
                         className="md:col-span-2 lg:col-span-2 h-full"
                         delay={0.1}
                     >
-                        <div className="bg-white rounded-3xl border border-slate-900 p-6 shadow-xl shadow-slate-200/50 hover:shadow-slate-900/50 transition-all duration-300 flex flex-col md:flex-row items-stretch gap-8 h-full">
+                        <div className="bg-white rounded-3xl border border-slate-900 p-5 md:p-6 shadow-xl shadow-slate-200/50 hover:shadow-slate-900/50 transition-all duration-300 flex flex-col md:flex-row items-stretch gap-6 md:gap-8 h-full">
                             {/* Icon Column */}
                             <div className="w-full md:w-20 bg-blue-50 text-black-600 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300 py-6 md:py-0">
                                 <Terminal size={32} />
@@ -83,7 +83,7 @@ const About = () => {
 
                     {/* 2. PRODUCT MINDSET (Span 1) */}
                     <TiltCard className="h-full" delay={0.2}>
-                        <div className="bg-[#0F172A] text-white p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between shadow-2xl shadow-slate-900/20 ring-1 ring-white/10 h-full">
+                        <div className="bg-[#0F172A] text-white p-5 md:p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between shadow-2xl shadow-slate-900/20 ring-1 ring-white/10 h-full">
                             <motion.div
                                 animate={{ y: [0, -10, 0] }}
                                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -117,7 +117,7 @@ const About = () => {
 
                     {/* 3. AI-POWERED EFFICIENCY (Span 1) */}
                     <TiltCard className="h-full" delay={0.3}>
-                        <div className="bg-blue-600 text-white p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between shadow-xl shadow-blue-600/20 ring-1 ring-white/20 h-full">
+                        <div className="bg-blue-600 text-white p-5 md:p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between shadow-xl shadow-blue-600/20 ring-1 ring-white/20 h-full">
                             <motion.div
                                 animate={{ rotate: [0, 10, 0] }}
                                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -152,7 +152,7 @@ const About = () => {
 
                     {/* 4. MODERN EXECUTION (Span 2) */}
                     <TiltCard className="md:col-span-2 lg:col-span-2 h-full" delay={0.4}>
-                        <div className="bg-white rounded-3xl border border-blue-500 p-6 shadow-xl shadow-slate-200/50 hover:shadow-blue-500/50 transition-all duration-300 flex flex-col md:flex-row items-stretch gap-8 h-full bg-gradient-to-br from-white to-slate-50/50">
+                        <div className="bg-white rounded-3xl border border-blue-500 p-5 md:p-6 shadow-xl shadow-slate-200/50 hover:shadow-blue-500/50 transition-all duration-300 flex flex-col md:flex-row items-stretch gap-6 md:gap-8 h-full bg-gradient-to-br from-white to-slate-50/50">
                             {/* Icon Column */}
                             <div className="w-full md:w-20 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 py-6 md:py-0">
                                 <Rocket size={32} />

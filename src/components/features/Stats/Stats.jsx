@@ -41,6 +41,8 @@ const CounterLogic = ({ from, to, suffix }) => {
 };
 
 const Stats = () => {
+    const scrollRef = useRef(null);
+
     const stats = [
         {
             id: 1,
@@ -72,9 +74,38 @@ const Stats = () => {
         }
     ];
 
+    // Auto-Scroll Logic for Mobile
+    useEffect(() => {
+        const container = scrollRef.current;
+        if (!container) return;
+
+        const handleAutoScroll = () => {
+            if (window.innerWidth >= 768) return; // Don't scroll on desktop
+
+            const cardWidth = container.firstElementChild?.clientWidth || 0;
+            const gap = 24; // gap-6 is 24px
+            const scrollAmount = cardWidth + gap;
+
+            const maxScroll = container.scrollWidth - container.clientWidth;
+            const currentScroll = container.scrollLeft;
+
+            // If we are near the end, wrap to start
+            if (currentScroll >= maxScroll - 10) {
+                container.scrollTo({ left: 0, behavior: "smooth" });
+            } else {
+                container.scrollTo({ left: currentScroll + scrollAmount, behavior: "smooth" });
+            }
+        };
+
+        const intervalId = setInterval(handleAutoScroll, 3000); // Scroll every 3 seconds
+
+        // Cleanup
+        return () => clearInterval(intervalId);
+    }, []);
+
     return (
-        <section className="py-12 px-6 relative z-20 mt-0">
-            <div className="max-w-7xl mx-auto">
+        <section className="py-0 md:py-12 md:px-6 relative z-20 mt-0">
+            <div className="md:max-w-7xl md:mx-auto">
                 {/* 
                   Ultra-Premium Dark HUD 
                   - Backdrop Blur
@@ -86,7 +117,7 @@ const Stats = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="relative bg-[#0F172A]/90 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl shadow-black/50 overflow-hidden group"
+                    className="relative bg-[#0F172A] md:bg-[#0F172A]/90 backdrop-blur-2xl border-y md:border border-white/10 md:rounded-3xl py-10 md:p-12 md:shadow-2xl md:shadow-black/50 overflow-hidden group"
                 >
                     {/* Animated Border Gradient */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out pointer-events-none" />
@@ -95,11 +126,15 @@ const Stats = () => {
                     <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent opacity-50" />
                     <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent opacity-50" />
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-4 relative z-10">
+                    {/* Scrollable Container on Mobile */}
+                    <div
+                        ref={scrollRef}
+                        className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-0 md:gap-4 relative z-10 scrollbar-hide"
+                    >
                         {stats.map((stat, index) => (
                             <div
                                 key={stat.id}
-                                className={`flex flex-col items-center justify-center text-center space-y-4 group/item ${index !== stats.length - 1 ? "md:border-r border-white/5" : ""
+                                className={`min-w-full md:min-w-0 snap-center flex flex-col items-center justify-center text-center space-y-4 group/item ${index !== stats.length - 1 ? "md:border-r border-white/5" : ""
                                     }`}
                             >
                                 {/* Icon Circle with Pulse Effect */}

@@ -4,22 +4,38 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+}
+
+#root {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 /* --- GLOBAL STYLES --- */
 body {
-  background-color: #F1F5F9; 
+  background-color: #F1F5F9;
   color: #0F172A;
   font-family: 'Inter', sans-serif;
-  overflow-x: hidden; /* Prevents accidental horizontal scroll */
 }
 
 /* --- 1. VISUAL POLISH: BRAND SELECTION --- */
 /* This makes text highlight in your specific blue accent color */
 ::selection {
-  background-color: #2563EB; /* Your Accent Color */
+  background-color: #2563EB;
+  /* Your Accent Color */
   color: #ffffff;
 }
 
@@ -31,54 +47,94 @@ body {
 
 /* --- ANIMATIONS --- */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
 /* --- 2. VISUAL POLISH: REFINED SCROLLBAR --- */
 /* Made the track slightly darker so it looks good on both Dark and Light sections */
-::-webkit-scrollbar { 
-  width: 10px; 
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-::-webkit-scrollbar-track { 
-  background: #E2E8F0; /* Slightly darker than page bg for contrast */
+::-webkit-scrollbar-track {
+  background: #E2E8F0;
+  /* Slightly darker than page bg for contrast */
 }
 
-::-webkit-scrollbar-thumb { 
-  background: #94a3b8; 
-  border-radius: 5px; 
-  border: 2px solid #E2E8F0; /* Creates a nice 'floating' effect */
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 5px;
+  border: 2px solid #E2E8F0;
+  /* Creates a nice 'floating' effect */
 }
 
-::-webkit-scrollbar-thumb:hover { 
-  background: #2563EB; /* Turns Accent Blue on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2563EB;
+  /* Turns Accent Blue on hover */
 }
 
 /* --- HERO ANIMATIONS --- */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
 }
-.animate-float { 
-  animation: float 6s ease-in-out infinite; 
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
 @keyframes shimmer {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
 }
+
 .animate-text-shimmer {
   background-size: 200% auto;
   animation: shimmer 2.5s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-float, .animate-text-shimmer {
+
+  .animate-float,
+  .animate-text-shimmer {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* --- UTILITY: HIDE SCROLLBAR --- */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari and Opera */
 }

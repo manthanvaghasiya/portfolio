@@ -1,139 +1,217 @@
-import React from "react";
-import { ExternalLink, Github, X, ChevronLeft, CheckCircle2 } from "lucide-react";
-import { motion } from "framer-motion";
+import React, { useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, Github, ExternalLink, Calendar, Code2, Layers } from "lucide-react";
 
-const ProjectModal = ({ selectedProject, onClose }) => {
-    if (!selectedProject) return null;
+// --- ANIMATION VARIANTS ---
+const overlayVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { duration: 0.2 }
+    },
+    exit: {
+        opacity: 0,
+        transition: { duration: 0.2, delay: 0.1 }
+    }
+};
+
+const modalVariants = {
+    hidden: {
+        opacity: 0,
+        y: 100,
+        scale: 0.95,
+    },
+    visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+            type: "spring",
+            damping: 25,
+            stiffness: 300
+        }
+    },
+    exit: {
+        opacity: 0,
+        y: 50,
+        scale: 0.95,
+        transition: { duration: 0.2 }
+    }
+};
+
+const ProjectModal = ({ project, onClose }) => {
+    // Lock Scroll & Handle Escape
+    useEffect(() => {
+        if (project) {
+            document.body.style.overflow = "hidden";
+            const handleKeyDown = (e) => {
+                if (e.key === "Escape") onClose();
+            };
+            window.addEventListener("keydown", handleKeyDown);
+            return () => {
+                window.removeEventListener("keydown", handleKeyDown);
+                document.body.style.overflow = "unset";
+            };
+        }
+    }, [project, onClose]);
+
+    if (!project) return null;
 
     return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex sm:items-center justify-center p-0 sm:p-4"
-        >
-            {/* Backdrop */}
-            <div
-                className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
-                onClick={onClose}
-            ></div>
+        <AnimatePresence>
+            <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6">
 
-            {/* Modal Container */}
-            <motion.div
-                layoutId={`project-${selectedProject.title}`}
-                className="fixed inset-0 sm:relative bg-white w-full h-full sm:h-[90vh] sm:max-w-5xl sm:rounded-2xl shadow-2xl overflow-hidden flex flex-col lg:flex-row"
-                initial={{ y: 50, scale: 0.95 }}
-                animate={{ y: 0, scale: 1 }}
-                exit={{ y: 50, scale: 0.95 }}
-                transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-            >
+                {/* --- BACKDROP --- */}
+                <motion.div
+                    variants={overlayVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    onClick={onClose}
+                    className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" // Lighter backdrop for light mode
+                />
 
-                {/* Mobile Header (Sticky) */}
-                <div className="flex sm:hidden items-center justify-between p-4 border-b border-slate-100 bg-white shrink-0 z-20">
+                {/* --- MODAL CONTENT --- */}
+                <motion.div
+                    variants={modalVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className="relative w-full max-w-4xl max-h-[85vh] flex flex-col bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden"
+                    onClick={(e) => e.stopPropagation()}
+                >
+
+                    {/* CLOSE BUTTON (Sticky Top Right) */}
                     <button
                         onClick={onClose}
-                        className="flex items-center gap-1 text-slate-600 font-bold text-sm active:text-blue-600 transition-colors"
+                        className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/80 text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-all backdrop-blur-md border border-slate-200 shadow-sm"
                     >
-                        <ChevronLeft size={22} /> Back
+                        <X size={20} />
                     </button>
-                    <span className="font-bold text-slate-900 truncate max-w-[200px]">
-                        {selectedProject.title}
-                    </span>
-                    <div className="w-6"></div>
-                </div>
 
-                {/* 1. Image Side */}
-                <div className="hidden sm:flex w-full lg:w-[45%] bg-slate-100 relative h-64 lg:h-auto shrink-0 items-center justify-center p-6 border-r border-blind-100/50">
-                    <div
-                        className="absolute inset-0 bg-cover bg-center opacity-10 blur-xl scale-110"
-                        style={{ backgroundImage: `url(${selectedProject.modalImage || selectedProject.image})` }}
-                    />
+                    {/* --- SCROLLABLE AREA --- */}
+                    <div className="overflow-y-auto custom-scrollbar flex-1">
 
-                    <img
-                        src={selectedProject.modalImage || selectedProject.image}
-                        alt={selectedProject.title}
-                        className="w-full h-auto max-h-full object-contain rounded-lg shadow-lg relative z-10"
-                    />
-                </div>
-
-                {/* 2. Content Side */}
-                <div className="w-full lg:w-[55%] flex flex-col h-full bg-white relative">
-
-                    {/* Desktop Modal Header */}
-                    <div className="hidden sm:flex p-6 lg:p-8 border-b border-slate-100 shrink-0 justify-between items-start bg-white">
-                        <div>
-                            <span className="text-blue-600 font-bold tracking-wider uppercase text-[10px] mb-1 block">
-                                {selectedProject.category}
-                            </span>
-                            <h3 className="text-3xl font-black text-slate-900 leading-tight">
-                                {selectedProject.title}
-                            </h3>
-                        </div>
-                        <button
-                            onClick={onClose}
-                            className="text-slate-400 hover:text-slate-900 bg-slate-50 p-2 rounded-full transition-colors hover:bg-slate-100"
-                        >
-                            <X size={20} />
-                        </button>
-                    </div>
-
-                    {/* Scrollable Body */}
-                    <div className="p-5 sm:p-6 lg:p-8 overflow-y-auto flex-1 bg-white overscroll-contain">
-                        {/* Mobile Image */}
-                        <div className="sm:hidden mb-6 rounded-xl overflow-hidden shadow-sm border border-slate-100 relative group">
+                        {/* 1. HERO IMAGE (Wide Rectangle Preserved) */}
+                        <div className="relative w-full h-auto aspect-video group">
+                            <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-10 opacity-90" />
                             <img
-                                src={selectedProject.image}
-                                alt={selectedProject.title}
-                                className="w-full h-48 object-cover"
+                                src={project.modalImage || project.image}
+                                alt={project.title}
+                                className="w-full h-full object-cover object-top"
                             />
-                        </div>
 
-                        <div className="prose prose-sm prose-slate text-slate-600 leading-relaxed whitespace-pre-line mb-8">
-                            {selectedProject.fullDescription}
-                        </div>
-
-                        <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
-                            <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wide flex items-center gap-2 mb-4">
-                                <CheckCircle2 size={16} className="text-blue-500" /> Key Features
-                            </h4>
-                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                {selectedProject.features.map((feature, i) => (
-                                    <li key={i} className="flex items-start gap-3 text-slate-600 text-sm">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0"></div>
-                                        {feature}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-
-                    {/* Footer Buttons */}
-                    <div className="p-5 sm:p-6 lg:p-8 border-t border-slate-100 shrink-0 bg-white z-20 pb-12 sm:pb-6 lg:pb-8 shadow-[0_-10px_30px_rgba(0,0,0,0.03)]">
-                        <div className="flex flex-col sm:flex-row gap-3">
-                            <a
-                                href={selectedProject.githubLink}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="flex-1 py-3.5 flex items-center justify-center gap-2 bg-slate-900 text-white rounded-xl font-bold hover:bg-black transition-all text-sm shadow-lg active:scale-95"
-                            >
-                                <Github size={18} /> View Code
-                            </a>
-                            {selectedProject.liveLink !== "#" && (
-                                <a
-                                    href={selectedProject.liveLink}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="flex-1 py-3.5 flex items-center justify-center gap-2 bg-white text-blue-600 rounded-xl font-bold hover:bg-blue-50 border border-blue-200 transition-all text-sm active:scale-95"
+                            {/* Floating Title on Image */}
+                            <div className="absolute bottom-6 left-6 z-20 md:bottom-8 md:left-8">
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.2 }}
+                                    className="flex items-center gap-3 mb-2"
                                 >
-                                    <ExternalLink size={18} /> Live Demo
-                                </a>
-                            )}
+                                    <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-blue-600 bg-white/90 backdrop-blur-md rounded-full border border-blue-100 shadow-sm">
+                                        {project.category}
+                                    </span>
+                                </motion.div>
+                                <motion.h2
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.3 }}
+                                    className="text-3xl md:text-5xl font-black text-slate-900 drop-shadow-sm"
+                                >
+                                    {project.title}
+                                </motion.h2>
+                            </div>
+                        </div>
+
+                        {/* 2. CONTENT CONTAINER */}
+                        <div className="p-6 md:p-10 space-y-8 bg-white">
+
+                            {/* Description & Date */}
+                            <div className="flex flex-col md:flex-row gap-8">
+                                <div className="flex-1">
+                                    <motion.p
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.4 }}
+                                        className="text-lg md:text-xl font-medium text-slate-700 leading-relaxed mb-6"
+                                    >
+                                        {project.shortDescription}
+                                    </motion.p>
+                                    <motion.div
+                                        initial={{ scaleX: 0 }}
+                                        animate={{ scaleX: 1 }}
+                                        transition={{ delay: 0.5, duration: 0.6 }}
+                                        className="h-px w-full bg-slate-100 mb-6 origin-left"
+                                    />
+                                    <motion.div
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ delay: 0.6 }}
+                                        className="text-slate-500 text-sm md:text-base leading-loose whitespace-pre-line"
+                                    >
+                                        {project.fullDescription}
+                                    </motion.div>
+                                </div>
+
+                                {/* Sidebar / Metadata (Right side on Desktop) */}
+                                <div className="w-full md:w-64 space-y-6 flex-shrink-0">
+
+                                    {/* Technologies */}
+                                    <motion.div
+                                        initial={{ opacity: 0, x: 20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.5 }}
+                                    >
+                                        <h4 className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">
+                                            <Code2 size={14} className="text-blue-500" /> Tech Stack
+                                        </h4>
+                                        <div className="flex flex-wrap gap-2">
+                                            {project.tech.map((tech) => (
+                                                <span key={tech} className="px-3 py-1 text-xs font-semibold text-slate-600 bg-slate-50 border border-slate-200 rounded-md hover:border-blue-200 transition-colors">
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </motion.div>
+
+                                    {/* Links */}
+                                    <div className="space-y-3 pt-2">
+                                        {project.liveLink && (
+                                            <motion.a
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: 0.6 }}
+                                                href={project.liveLink}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="flex items-center justify-center gap-2 w-full py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-lg shadow-blue-200 transition-all active:scale-95 hover:-translate-y-0.5"
+                                            >
+                                                <ExternalLink size={16} /> Live Demo
+                                            </motion.a>
+                                        )}
+                                        {project.githubLink && (
+                                            <motion.a
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: 0.7 }}
+                                                href={project.githubLink}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-sm font-bold rounded-xl transition-all active:scale-95 hover:bg-slate-50"
+                                            >
+                                                <Github size={16} /> Source Code
+                                            </motion.a>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-
-                </div>
-            </motion.div>
-        </motion.div>
+                </motion.div>
+            </div>
+        </AnimatePresence>
     );
 };
 

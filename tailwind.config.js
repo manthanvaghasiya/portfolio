@@ -8,9 +8,13 @@ export default {
     extend: {
       colors: {
         primary: '#0F172A', // Dark Slate (Text/Background)
-        accent: '#2563EB',  // Electric Blue (Buttons/Links)2563EB
+        accent: '#2563EB',  // Electric Blue (Buttons/Links)
+        'accent-glow': '#3B82F6', // Lighter Blue for hover states
         light: '#F8FAFC',   // Off-white background
         dark: '#1E293B',    // Darker background for cards
+        'bg-card': '#1E293B', // Dark card background for modals/cards
+        'text-main': '#F8FAFC', // Main text color for dark backgrounds
+        'text-muted': '#94a3b8', // Muted text color
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

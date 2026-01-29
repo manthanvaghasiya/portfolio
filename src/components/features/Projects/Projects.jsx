@@ -71,7 +71,7 @@ const Projects = () => {
             <AnimatePresence>
                 {selectedProject && (
                     <ProjectModal
-                        selectedProject={selectedProject}
+                        project={selectedProject}
                         onClose={() => setSelectedProject(null)}
                     />
                 )}
