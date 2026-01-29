@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Send, Loader2, ArrowRight } from "lucide-react";
+import { Mail, MapPin, Send, Loader2, ArrowRight, Github, Linkedin, Instagram } from "lucide-react";
 import MagneticButton from "../../common/MagneticButton";
 
 const Contact = () => {
@@ -102,6 +102,18 @@ const Contact = () => {
                                     <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-0.5">Location</p>
                                     <p className="text-sm md:text-lg font-semibold text-white group-hover:text-emerald-200 transition-colors">Surat, Gujarat, India</p>
                                 </div>
+                            </div>
+
+                            <div className="flex items-center gap-4 pt-6 mt-2">
+                                <a href="https://github.com/manthanvaghasiya" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 border border-white/5 flex items-center justify-center text-slate-400 hover:bg-white hover:text-slate-900 transition-all hover:-translate-y-1">
+                                    <Github size={20} />
+                                </a>
+                                <a href="https://www.linkedin.com/in/manthan-vaghasiya-b213a8267" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 border border-white/5 flex items-center justify-center text-slate-400 hover:bg-[#0077b5] hover:text-white transition-all hover:-translate-y-1">
+                                    <Linkedin size={20} />
+                                </a>
+                                <a href="https://www.instagram.com/manthan_vaghasiya_07" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 border border-white/5 flex items-center justify-center text-slate-400 hover:bg-pink-600 hover:text-white transition-all hover:-translate-y-1">
+                                    <Instagram size={20} />
+                                </a>
                             </div>
                         </div>
                     </motion.div>
