@@ -43,6 +43,7 @@ const Projects = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
+                        whileTap={{ scale: 0.95 }}
                         href="https://github.com/manthanvaghasiya"
                         target="_blank"
                         rel="noreferrer"

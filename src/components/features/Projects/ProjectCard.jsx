@@ -46,6 +46,7 @@ const ProjectCard = ({ project, onClick, index }) => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true, margin: "-50px" }}
+            whileHover={{ y: -10, scale: 1.02, transition: { duration: 0.2, ease: "easeOut" } }}
             className="h-full perspective-1000"
         >
             <motion.div

@@ -3,6 +3,7 @@ import { Menu, X, Mail } from "lucide-react";
 import NavLogo from "./NavLogo";
 import DesktopNav from "./DesktopNav";
 import MobileMenu from "./MobileMenu";
+import MagneticButton from "../../common/MagneticButton";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -46,14 +47,13 @@ const Navbar = () => {
                     <DesktopNav activeSection={activeSection} />
 
                     {/* LET'S TALK BUTTON (DESKTOP) */}
-                    <a
-                        href="https://wa.me/919664736245"
-                        target="_blank"
-                        className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                    <MagneticButton
+                        onClick={() => window.open("https://wa.me/919664736245", "_blank")}
+                        className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all shadow-md hover:shadow-lg focus:outline-none"
                     >
                         <Mail size={18} />
                         <span>Let's Talk</span>
-                    </a>
+                    </MagneticButton>
 
                     {/* MOBILE MENU TOGGLE */}
                     <button
