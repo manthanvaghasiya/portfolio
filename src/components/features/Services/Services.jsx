@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
+    ChevronLeft,
+    ChevronRight,
     Globe2,
     Cpu,
     ShoppingCart,
@@ -14,7 +16,14 @@ import {
     Zap,
     ShieldCheck,
     Layers,
-    Building2
+    Building2,
+    Gauge,
+    Server,
+    Activity,
+    ArrowRight,
+    Terminal,
+    Code2,
+    Database
 } from "lucide-react";
 import ProcessRoadmap from "./ProcessRoadmap";
 
@@ -22,706 +31,644 @@ const pillars = [
     {
         id: "web-engineering",
         number: "01",
-        icon: Globe2,
-        badge: "Digital Flagships",
-        kpiBadge: "Dealership Architecture",
-        title: "Enterprise Web Engineering & Digital Flagships",
-        tagline: "High-speed custom web architectures built from scratch—avoiding generic page builders.",
-        gradient: "from-blue-600 via-indigo-600 to-sky-500",
-        iconGradient: "bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/25",
-        items: [
-            {
-                name: "Custom Web Platforms",
-                desc: "Zero page-builder bloat. Handcrafted, high-velocity responsive platforms.",
-            },
-            {
-                name: "Performance & Core Web Vitals",
-                desc: "Sub-second (<1s) page loads, global edge caching & clean technical SEO.",
-            },
-            {
-                name: "Commercial Industry Solutions",
-                desc: "Automotive dealerships, live vehicle inventories & instant WhatsApp lead capture.",
-            },
+        name: "WEB FLAGSHIPS",
+        category: "Digital Flagships",
+        headline: "Stand Out With Sub-Second Velocity",
+        description:
+            "It's not just about responsive layout. It's about engineering bespoke, high-velocity Next.js platforms from scratch that eliminate page-builder lag, maximize conversion rates, and dominate local search.",
+        slogan: "Confidence, wrapped in sub-second speed.",
+        primaryMetric: "< 0.8s",
+        primaryMetricLabel: "Page Load Time",
+        comparisonMetric: "~3.8s",
+        comparisonLabel: "Legacy WP / CMS templates",
+        secondaryMetric: "100/100",
+        secondaryLabel: "Core Web Vitals",
+        accentColor: "#10B981", // Emerald
+        themeGradient: "from-emerald-950 via-slate-900 to-slate-950",
+        ambientAura: "rgba(16, 185, 129, 0.22)",
+        configs: [
+            { name: "Next.js 14+", desc: "Server components & edge routing" },
+            { name: "Cloudflare CDN", desc: "Sub-second global static cache" },
+            { name: "Dealership SEO", desc: "AutoDealer rich snippets schema" },
         ],
-        tech: ["Next.js", "React.js", "Node.js", "Tailwind CSS", "Cloudflare CDN"],
-        whatsappQuery: "Hi Manthan, I want to discuss Enterprise Web Engineering for a custom digital flagship with Webiox!",
+        liveProject: {
+            name: "Sadguru Car Surat",
+            category: "Commercial Dealership Platform",
+            badge: "150+ Inventory",
+            image: "/sadguru.png",
+            url: "https://sadgurucarsurat.com/",
+        },
+        tags: ["Next.js", "React", "Node.js", "Tailwind CSS", "Cloudflare"],
+        whatsappQuery:
+            "Hi Manthan, I want to discuss Enterprise Web Engineering for a custom digital flagship with Webiox!",
+        centerType: "cockpit",
     },
     {
         id: "saas-engineering",
         number: "02",
-        icon: Cpu,
-        badge: "SaaS & Custom Software",
-        kpiBadge: "Multi-Tenant Cloud",
-        title: "SaaS Product Engineering & Custom Software",
-        tagline: "End-to-end web applications, multi-tenant architectures, and robust internal portals.",
-        gradient: "from-indigo-600 via-violet-600 to-purple-500",
-        iconGradient: "bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-600 text-white shadow-md shadow-indigo-500/25",
-        items: [
-            {
-                name: "Full-Stack Application Development",
-                desc: "End-to-end database design, server-side APIs & responsive UI engineering.",
-            },
-            {
-                name: "Multi-Tenant Architectures",
-                desc: "Scalable SaaS MVPs engineered for high concurrency & secure tenant isolation.",
-            },
-            {
-                name: "Internal Tools & Portals",
-                desc: "Role-based admin panels (JWT auth), staff PWAs & real-time inventory systems.",
-            },
+        name: "SAAS PRODUCTS",
+        category: "SaaS & Custom Software",
+        headline: "Multi-Tenant SaaS Built To Scale",
+        description:
+            "From conceptual MVP to enterprise cloud software. We engineer resilient full-stack systems featuring multi-tenant database isolation, JWT role-based security, and lightning-fast analytics dashboards.",
+        slogan: "Engineered for high concurrency & zero downtime.",
+        primaryMetric: "99.9%",
+        primaryMetricLabel: "Guaranteed Uptime",
+        comparisonMetric: "97.5%",
+        comparisonLabel: "Average legacy apps",
+        secondaryMetric: "<150ms",
+        secondaryLabel: "Database Query Speed",
+        accentColor: "#3B82F6", // Blue
+        themeGradient: "from-blue-950 via-slate-900 to-slate-950",
+        ambientAura: "rgba(59, 130, 246, 0.22)",
+        configs: [
+            { name: "Multi-Tenant", desc: "Isolated organizational schemas" },
+            { name: "JWT Auth & RBAC", desc: "Role-based access security" },
+            { name: "Real-Time DB", desc: "MongoDB aggregation pipelines" },
         ],
-        tech: ["MongoDB", "PostgreSQL", "Express.js", "RESTful APIs", "JWT Security"],
-        whatsappQuery: "Hi Manthan, I have a SaaS product or custom software application to build with Webiox!",
+        liveProject: {
+            name: "LifeOS Productivity",
+            category: "Habit & Financial Dashboard",
+            badge: "Live SaaS MVP",
+            image: "/lifeos.png",
+            url: "https://lifeos-by-manthan.vercel.app/",
+        },
+        tags: ["MongoDB", "Express.js", "React", "Node.js", "PostgreSQL"],
+        whatsappQuery:
+            "Hi Manthan, I have a SaaS product or custom software application to build with Webiox!",
+        centerType: "server",
     },
     {
         id: "ecommerce",
         number: "03",
-        icon: ShoppingCart,
-        badge: "High-Conversion Commerce",
-        kpiBadge: "Headless Storefronts",
-        title: "High-Conversion E-Commerce",
-        tagline: "Headless storefronts and frictionless checkout flows engineered for high sales velocity.",
-        gradient: "from-emerald-600 via-teal-600 to-cyan-500",
-        iconGradient: "bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-500/25",
-        items: [
-            {
-                name: "Headless & Custom Storefronts",
-                desc: "High-throughput digital stores with zero vendor lock-in and instant checkout.",
-            },
-            {
-                name: "Optimized Checkout & Payments",
-                desc: "Frictionless multi-currency gateways (Stripe, Razorpay) to minimize cart dropoff.",
-            },
-            {
-                name: "Inventory & Order Management",
-                desc: "Real-time stock synchronization, SKU tracking & automated order fulfillment.",
-            },
+        name: "COMMERCE ENGINES",
+        category: "Headless E-Commerce",
+        headline: "Frictionless Commerce That Converts",
+        description:
+            "Say goodbye to rigid storefront limits. We build headless commerce platforms and real-time inventory management with instant checkout flows, multi-gateway payments, and automated WhatsApp order alerts.",
+        slogan: "Zero checkout friction. Maximum sales velocity.",
+        primaryMetric: "< 1.2s",
+        primaryMetricLabel: "Checkout Latency",
+        comparisonMetric: "~5.5s",
+        comparisonLabel: "Bloated plugin apps",
+        secondaryMetric: "150+",
+        secondaryLabel: "Live Inventory Sync",
+        accentColor: "#8B5CF6", // Violet
+        themeGradient: "from-violet-950 via-slate-900 to-slate-950",
+        ambientAura: "rgba(139, 92, 246, 0.22)",
+        configs: [
+            { name: "Headless Next", desc: "Zero vendor lock-in architecture" },
+            { name: "Payment Gateways", desc: "Frictionless Stripe & Razorpay" },
+            { name: "Automated POS", desc: "Instant stock synchronization" },
         ],
-        tech: ["Next.js Commerce", "Node.js", "Stripe", "Razorpay", "Redis"],
-        whatsappQuery: "Hi Manthan, I need a high-conversion custom or headless e-commerce store with Webiox!",
+        liveProject: {
+            name: "Hariram Motors",
+            category: "Luxury Pre-Owned Platform",
+            badge: "Commercial Dealership",
+            image: "/hariram.png",
+            url: "https://www.hariramcars.com/",
+        },
+        tags: ["Next.js Commerce", "Node.js", "Stripe", "Razorpay", "Redis"],
+        whatsappQuery:
+            "Hi Manthan, I need a high-conversion custom or headless e-commerce store with Webiox!",
+        centerType: "commerce",
     },
     {
         id: "ai-automation",
         number: "04",
-        icon: Bot,
-        badge: "AI & Workflow Systems",
-        kpiBadge: "Autonomous AI Agents",
-        title: "AI & Workflow Automation",
-        tagline: "Autonomous AI agents and operational data pipelines that eliminate manual bottlenecks.",
-        gradient: "from-slate-900 via-blue-900 to-indigo-900",
-        iconGradient: "bg-gradient-to-br from-slate-900 to-indigo-950 text-white shadow-md shadow-slate-900/25",
-        items: [
-            {
-                name: "Autonomous AI Agents",
-                desc: "24/7 intelligent chatbots & custom LLM pipelines for automated lead qualification.",
-            },
-            {
-                name: "Operational Data Pipelines",
-                desc: "Event-driven webhooks & automated backend sync eliminating manual admin tasks.",
-            },
+        name: "AI & WORKFLOWS",
+        category: "AI & Automation",
+        headline: "Autonomous AI & Webhook Workflows",
+        description:
+            "Supercharge business operations with 24/7 autonomous agents and automated event pipelines. We integrate custom LLM assistants, CRM sync webhooks, and intelligent document validation.",
+        slogan: "Eliminate manual bottlenecks forever.",
+        primaryMetric: "24/7",
+        primaryMetricLabel: "Automated Uptime",
+        comparisonMetric: "~4.5 hrs",
+        comparisonLabel: "Manual human response lag",
+        secondaryMetric: "100%",
+        secondaryLabel: "Data Sync Reliability",
+        accentColor: "#F59E0B", // Amber
+        themeGradient: "from-amber-950 via-slate-900 to-slate-950",
+        ambientAura: "rgba(245, 158, 11, 0.22)",
+        configs: [
+            { name: "LLM Assistant", desc: "Trained on your business data" },
+            { name: "Event Webhooks", desc: "Instant CRM & inventory sync" },
+            { name: "Document AI", desc: "Real-time compliance validation" },
         ],
-        tech: ["AI Model APIs", "Webhooks", "Node.js / Python", "Data Pipelines"],
-        whatsappQuery: "Hi Manthan, I want to implement AI agents and workflow automation for my business with Webiox!",
+        liveProject: {
+            name: "GovDoc Verification",
+            category: "Document Compliance System",
+            badge: "Enterprise Pipeline",
+            image: "/govdoc.png",
+            url: "https://webiox.tech/portfolio#",
+        },
+        tags: ["Python", "FastAPI", "OpenAI", "Webhooks", "Node.js"],
+        whatsappQuery:
+            "Hi Manthan, I want to explore AI agents and automated backend workflows with Webiox!",
+        centerType: "ai",
     },
     {
-        id: "mobile-ux",
+        id: "mobile-pwa",
         number: "05",
-        icon: Smartphone,
-        badge: "Mobile & Product Design",
-        kpiBadge: "Cross-Platform iOS & Android",
-        title: "Mobile App Engineering & UI/UX Design",
-        tagline: "Cross-platform mobile applications and friction-free user experience design.",
-        gradient: "from-sky-600 via-blue-700 to-indigo-700",
-        iconGradient: "bg-gradient-to-br from-sky-500 to-blue-600 text-white shadow-md shadow-sky-500/25",
-        items: [
-            {
-                name: "Cross-Platform Mobile Apps",
-                desc: "Native-feel iOS & Android apps built with React Native for unified cross-device codebases.",
-            },
-            {
-                name: "Product Design & Prototyping",
-                desc: "High-fidelity Figma wireframes & interactive prototypes focused on user retention.",
-            },
+        name: "MOBILE PWAS",
+        category: "Mobile-First Applications",
+        headline: "Mobile-First PWAs & Offline Portals",
+        description:
+            "Give your users the speed and native feel of an app with zero app-store download friction. Progressive Web Apps engineered with offline service workers, push notifications, and instant home-screen installation.",
+        slogan: "Native app power. Instant web accessibility.",
+        primaryMetric: "0 MB",
+        primaryMetricLabel: "App Store Friction",
+        comparisonMetric: "~45 MB",
+        comparisonLabel: "Heavy native downloads",
+        secondaryMetric: "Instant",
+        secondaryLabel: "Offline Availability",
+        accentColor: "#06B6D4", // Cyan
+        themeGradient: "from-cyan-950 via-slate-900 to-slate-950",
+        ambientAura: "rgba(6, 182, 212, 0.22)",
+        configs: [
+            { name: "Offline Cache", desc: "Service workers & IndexedDB" },
+            { name: "Staff Portals", desc: "Fast on-the-go stock updates" },
+            { name: "Push Notifications", desc: "Direct customer re-engagement" },
         ],
-        tech: ["React Native", "Expo", "Figma", "Design Systems", "Prototyping"],
-        whatsappQuery: "Hi Manthan, I am looking for Mobile App development or UI/UX product design with Webiox!",
+        liveProject: {
+            name: "Dealership Staff PWA",
+            category: "Real-Time Inventory Mobile Portal",
+            badge: "Production Tool",
+            image: "/sadguru.png",
+            url: "https://sadgurucarsurat.com/",
+        },
+        tags: ["PWA", "Service Workers", "React", "IndexedDB", "Tailwind CSS"],
+        whatsappQuery:
+            "Hi Manthan, I want to build a high-performance PWA or internal mobile portal with Webiox!",
+        centerType: "mobile",
     },
 ];
 
 const Services = () => {
-    const [activePillar, setActivePillar] = useState("all");
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [selectedConfigIdx, setSelectedConfigIdx] = useState(0);
 
-    const displayedPillars =
-        activePillar === "all"
-            ? pillars
-            : pillars.filter((p) => p.id === activePillar);
+    const activePillar = pillars[activeIndex];
+
+    // Reset selected config when switching pillars
+    useEffect(() => {
+        setSelectedConfigIdx(0);
+    }, [activeIndex]);
+
+    const handleNext = () => {
+        setActiveIndex((prev) => (prev + 1) % pillars.length);
+    };
+
+    const handlePrev = () => {
+        setActiveIndex((prev) => (prev - 1 + pillars.length) % pillars.length);
+    };
 
     return (
-        <section id="services" className="py-20 md:py-28 px-4 sm:px-6 bg-white relative overflow-hidden">
-            {/* AMBIENT BACKGROUND GLOW */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-gradient-to-tr from-blue-50/70 via-indigo-50/50 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+        <section
+            id="services"
+            className="py-20 md:py-28 px-4 sm:px-6 bg-[#F8FAFC] relative overflow-hidden"
+        >
+            {/* Ambient Background Aura */}
+            <div
+                className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full blur-3xl pointer-events-none transition-all duration-700 -z-10"
+                style={{
+                    backgroundColor: activePillar.ambientAura,
+                }}
+            />
 
-            <div className="max-w-7xl mx-auto">
-                {/* --- OFFICIAL WEBIOX AGENCY HERO CARD (LUXURY LIGHT ARCHITECTURE) --- */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="mb-14 p-6 sm:p-8 md:p-10 rounded-3xl bg-gradient-to-br from-white via-slate-50/90 to-blue-50/40 border border-slate-200/90 relative overflow-hidden shadow-[0_12px_36px_rgba(15,23,42,0.05),0_2px_8px_rgba(15,23,42,0.02)] group"
-                >
-                    {/* Top Multi-Stop Accent Gradient Line */}
-                    <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-emerald-500 pointer-events-none" />
-
-                    {/* Ambient Subtle Sheen */}
-                    <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-                    <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-
-                    <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                        <div className="max-w-3xl">
-                            <div className="flex flex-wrap items-center gap-2.5 mb-3.5">
-                                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 shadow-2xs">
-                                    Software Engineering Studio
-                                </span>
-                                <span className="text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-3 py-1 rounded-full font-bold text-xs flex items-center gap-1.5 shadow-2xs">
-                                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                                    Active Client Deployments
-                                </span>
-                            </div>
-
-                            <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 mb-3">
-                                Webiox Digital Solutions
-                            </h3>
-
-                            <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-                                Webiox Digital Solutions provides end-to-end software engineering, high-performance web platforms, and business automation tailored for growing businesses, startups, and commercial enterprises.
-                            </p>
-                        </div>
-
-                        {/* Direct Agency Website Link & WhatsApp Inquire */}
-                        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
-                            <a
-                                href="https://webiox.tech/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white hover:bg-slate-50 text-slate-900 font-bold text-xs sm:text-sm border border-slate-200/90 shadow-xs hover:shadow-md transition-all group/link"
-                            >
-                                <span>webiox.tech</span>
-                                <ExternalLink
-                                    size={15}
-                                    className="text-slate-500 group-hover/link:text-slate-950 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform"
-                                />
-                            </a>
-
-                            <a
-                                href="https://wa.me/919664736245?text=Hi%20Manthan,%20I'd%20like%20to%20consult%20with%20Webiox%20Digital%20Solutions%20about%20a%20new%20project!"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs sm:text-sm shadow-[0_4px_16px_rgba(37,211,102,0.35)] hover:shadow-[0_6px_22px_rgba(37,211,102,0.5)] transition-all active:scale-95"
-                            >
-                                <MessageCircle size={16} />
-                                <span>Discuss Project</span>
-                            </a>
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* --- 3-STEP CHEVRON PROCESS ROADMAP (INFORMATIVE INFOGRAPHIC) --- */}
-                <ProcessRoadmap />
-
+            <div className="max-w-7xl mx-auto relative z-10">
                 {/* --- SECTION HEADER --- */}
-                <div className="mb-10 text-center max-w-3xl mx-auto">
+                <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
                     <motion.div
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-600 text-xs font-bold uppercase tracking-wider mb-4 shadow-2xs"
                     >
-                        <Sparkles size={13} />
+                        <Sparkles size={13} className="text-blue-500" />
                         Core Service Capabilities
                     </motion.div>
 
                     <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
                         viewport={{ once: true }}
-                        className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 tracking-tight leading-tight"
+                        transition={{ delay: 0.1 }}
+                        className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-950 tracking-tight leading-tight"
                     >
-                        Engineering Pillars &amp;{" "}
+                        Engineering Pillars &{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600">
                             Solutions
                         </span>
                     </motion.h2>
 
                     <motion.p
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
                         viewport={{ once: true }}
-                        className="mt-3.5 text-slate-600 text-base md:text-lg leading-relaxed font-normal"
+                        transition={{ delay: 0.2 }}
+                        className="text-slate-600 text-base md:text-lg mt-3 leading-relaxed"
                     >
-                        From custom digital flagships to scalable SaaS platforms and autonomous AI workflows—explore how Webiox delivers measurable commercial impact.
+                        Explore our technical architectures, performance benchmarks, and production deliverables built for high-velocity commercial brands.
                     </motion.p>
                 </div>
 
-                {/* --- INTERACTIVE PILLAR FILTER TABS --- */}
-                <div className="flex flex-wrap justify-center items-center gap-2 mb-12">
-                    <button
-                        onClick={() => setActivePillar("all")}
-                        className={`relative px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all select-none ${
-                            activePillar === "all"
-                                ? "bg-slate-950 text-white shadow-sm"
-                                : "bg-white text-slate-600 hover:text-slate-950 hover:bg-slate-50 border border-slate-200/80 shadow-2xs"
-                        }`}
-                    >
-                        All Capabilities (5)
-                    </button>
-                    {pillars.map((p) => (
-                        <button
-                            key={p.id}
-                            onClick={() => setActivePillar(p.id)}
-                            className={`relative px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all select-none ${
-                                activePillar === p.id
-                                    ? "bg-slate-950 text-white shadow-sm"
-                                    : "bg-white text-slate-600 hover:text-slate-950 hover:bg-slate-50 border border-slate-200/80 shadow-2xs"
-                            }`}
-                        >
-                            {p.badge}
-                        </button>
-                    ))}
-                </div>
+                {/* --- THE GRAND PINTEREST-INSPIRED INTERACTIVE STAGE CARD --- */}
+                <div className="relative rounded-[32px] md:rounded-[40px] bg-gradient-to-br from-[#0B1120] via-[#0F172A] to-[#020617] border border-slate-800 shadow-[0_30px_90px_-20px_rgba(2,6,23,0.7)] text-white overflow-hidden p-6 sm:p-8 lg:p-12 transition-all duration-700">
+                    {/* Interior Ambient Glow reacting to active pillar */}
+                    <div
+                        className="absolute -top-24 -right-24 w-96 h-96 rounded-full blur-[110px] pointer-events-none transition-all duration-700 opacity-60"
+                        style={{ backgroundColor: activePillar.accentColor }}
+                    />
+                    <div
+                        className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full blur-[110px] pointer-events-none transition-all duration-700 opacity-40"
+                        style={{ backgroundColor: activePillar.accentColor }}
+                    />
 
-                {/* --- 5 PILLARS BALANCED BENTO GRID ARCHITECTURE --- */}
-                {activePillar === "all" ? (
-                    <div className="space-y-6">
-                        {/* ROW 1: FLAGSHIP ENTERPRISE WEB (7 COLS) + SAAS PRODUCT ENGINEERING (5 COLS) */}
-                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-                            {/* 1. ENTERPRISE WEB ENGINEERING & DIGITAL FLAGSHIPS (Col Span 7) */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.4 }}
-                                className="lg:col-span-7 bg-white rounded-3xl p-7 sm:p-8 md:p-9 border border-slate-200/90 shadow-[0_4px_24px_rgba(15,23,42,0.03)] hover:shadow-[0_20px_45px_-10px_rgba(15,23,42,0.08)] hover:border-slate-300 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
-                            >
-                                {/* Top Multi-Stop Accent Line */}
-                                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-500" />
-
-                                <div>
-                                    {/* Meta Header */}
-                                    <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-100">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center shadow-md shadow-blue-500/25 group-hover:scale-105 transition-transform">
-                                                <Globe2 size={24} />
-                                            </div>
-                                            <div>
-                                                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80">
-                                                    Flagship Specialty
-                                                </span>
-                                                <h4 className="font-mono text-xs font-bold text-slate-400 mt-0.5">
-                                                    Pillar 01
-                                                </h4>
-                                            </div>
-                                        </div>
-
-                                        <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                                            Commercial Dealerships
-                                        </span>
-                                    </div>
-
-                                    {/* Title & Tagline */}
-                                    <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight mb-2.5 group-hover:text-blue-600 transition-colors">
-                                        Enterprise Web Engineering &amp; Digital Flagships
-                                    </h3>
-                                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 font-normal">
-                                        High-speed custom web architectures built from scratch—avoiding generic page builders and bloatware.
-                                    </p>
-
-                                    {/* Two-Column Showcase: Specs Terminal + Deliverables */}
-                                    <div className="grid grid-cols-1 md:grid-cols-12 gap-5 mb-6">
-                                        {/* Specs Terminal */}
-                                        <div className="md:col-span-6 p-4 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-3">
-                                            <div className="flex items-center justify-between text-xs pb-2 border-b border-slate-200/70">
-                                                <span className="font-bold text-slate-900">
-                                                    Production Benchmark
-                                                </span>
-                                                <span className="font-mono text-[11px] font-bold text-blue-700 bg-blue-100/70 px-2 py-0.5 rounded-md">
-                                                    Sadguru &amp; Hariram
-                                                </span>
-                                            </div>
-                                            <div className="space-y-2">
-                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200/80 flex items-center justify-between">
-                                                    <span className="text-xs text-slate-500 font-medium">Inventory Volume</span>
-                                                    <span className="text-xs font-extrabold text-slate-900">150+ Dynamic Cars</span>
-                                                </div>
-                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200/80 flex items-center justify-between">
-                                                    <span className="text-xs text-slate-500 font-medium">Core Web Vitals</span>
-                                                    <span className="text-xs font-extrabold text-emerald-600">&lt;1s Page Load</span>
-                                                </div>
-                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200/80 flex items-center justify-between">
-                                                    <span className="text-xs text-slate-500 font-medium">Lead Conversion</span>
-                                                    <span className="text-xs font-extrabold text-blue-600">WhatsApp Engine</span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Deliverables Checklist */}
-                                        <div className="md:col-span-6 flex flex-col justify-center space-y-3">
-                                            {pillars[0].items.map((item, iIdx) => (
-                                                <div key={iIdx} className="space-y-0.5">
-                                                    <div className="flex items-start gap-2 text-xs sm:text-sm font-bold text-slate-900">
-                                                        <CheckCircle2 size={15} className="text-blue-600 shrink-0 mt-0.5" />
-                                                        <span>{item.name}</span>
-                                                    </div>
-                                                    <p className="pl-6 text-xs text-slate-500 leading-snug">
-                                                        {item.desc}
-                                                    </p>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Tech Stack + WhatsApp Trigger */}
-                                <div className="pt-5 border-t border-slate-100 mt-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-                                    <div className="flex flex-wrap gap-1.5">
-                                        {pillars[0].tech.map((t) => (
-                                            <span
-                                                key={t}
-                                                className="px-2.5 py-1 rounded-md bg-slate-50 border border-slate-200/80 text-[11px] font-semibold text-slate-600"
-                                            >
-                                                {t}
-                                            </span>
-                                        ))}
-                                    </div>
-
-                                    <a
-                                        href={`https://wa.me/919664736245?text=${encodeURIComponent(pillars[0].whatsappQuery)}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-slate-950 hover:bg-black text-white text-xs sm:text-sm font-bold tracking-wide shadow-md transition-all active:scale-[0.98] group/btn shrink-0"
-                                    >
-                                        <MessageCircle size={15} className="text-emerald-400" />
-                                        <span>Discuss Flagship</span>
-                                        <ArrowUpRight
-                                            size={14}
-                                            className="text-slate-400 group-hover/btn:text-white group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
-                                        />
-                                    </a>
-                                </div>
-                            </motion.div>
-
-                            {/* 2. SAAS PRODUCT ENGINEERING & CUSTOM SOFTWARE (Col Span 5) */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.4, delay: 0.1 }}
-                                className="lg:col-span-5 bg-white rounded-3xl p-7 sm:p-8 border border-slate-200/90 shadow-[0_4px_24px_rgba(15,23,42,0.03)] hover:shadow-[0_20px_45px_-10px_rgba(15,23,42,0.08)] hover:border-slate-300 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
-                            >
-                                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-500" />
-
-                                <div>
-                                    {/* Meta Header */}
-                                    <div className="flex items-center justify-between gap-3 mb-5 pb-3 border-b border-slate-100">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-600 text-white flex items-center justify-center shadow-md shadow-indigo-500/25 group-hover:scale-105 transition-transform">
-                                                <Cpu size={24} />
-                                            </div>
-                                            <div>
-                                                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-purple-50 text-purple-700 border border-purple-200">
-                                                    SaaS &amp; Custom Apps
-                                                </span>
-                                                <h4 className="font-mono text-xs font-bold text-slate-400 mt-0.5">
-                                                    Pillar 02
-                                                </h4>
-                                            </div>
-                                        </div>
-
-                                        <span className="font-mono text-xs font-bold text-slate-400">
-                                            02
-                                        </span>
-                                    </div>
-
-                                    {/* Title & Tagline */}
-                                    <h3 className="text-xl sm:text-2xl font-extrabold text-slate-950 tracking-tight mb-2 group-hover:text-indigo-600 transition-colors">
-                                        SaaS Product Engineering &amp; Custom Software
-                                    </h3>
-                                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-5 font-normal">
-                                        End-to-end web applications, multi-tenant architectures, and robust internal portals.
-                                    </p>
-
-                                    {/* Deliverables Checklist */}
-                                    <div className="space-y-3 mb-6">
-                                        {pillars[1].items.map((item, iIdx) => (
-                                            <div key={iIdx} className="space-y-0.5">
-                                                <div className="flex items-start gap-2 text-xs sm:text-sm font-bold text-slate-900">
-                                                    <CheckCircle2 size={14} className="text-indigo-600 shrink-0 mt-0.5" />
-                                                    <span>{item.name}</span>
-                                                </div>
-                                                <p className="pl-6 text-xs text-slate-500 leading-snug">
-                                                    {item.desc}
-                                                </p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* Tech Stack + WhatsApp Trigger */}
-                                <div className="pt-4 border-t border-slate-100 mt-auto">
-                                    <div className="flex flex-wrap gap-1.5 mb-4">
-                                        {pillars[1].tech.map((t) => (
-                                            <span
-                                                key={t}
-                                                className="px-2.5 py-0.5 rounded-md bg-slate-50 border border-slate-200/80 text-[11px] font-semibold text-slate-600"
-                                            >
-                                                {t}
-                                            </span>
-                                        ))}
-                                    </div>
-
-                                    <a
-                                        href={`https://wa.me/919664736245?text=${encodeURIComponent(pillars[1].whatsappQuery)}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-slate-900 hover:bg-black text-white text-xs sm:text-sm font-bold tracking-wide shadow-xs transition-all active:scale-[0.98] group/btn"
-                                    >
-                                        <MessageCircle size={15} className="text-emerald-400" />
-                                        <span>Discuss SaaS Architecture</span>
-                                        <ArrowUpRight
-                                            size={14}
-                                            className="text-slate-400 group-hover/btn:text-white group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
-                                        />
-                                    </a>
-                                </div>
-                            </motion.div>
+                    {/* --- TOP FLOATING PILL NAVIGATION BAR --- */}
+                    <div className="relative z-20 flex flex-col md:flex-row items-center justify-between gap-4 pb-8 mb-8 border-b border-slate-800/80">
+                        {/* Brand Badge */}
+                        <div className="flex items-center gap-2.5">
+                            <span className="w-2.5 h-2.5 rounded-full animate-ping" style={{ backgroundColor: activePillar.accentColor }} />
+                            <span className="text-xs font-black tracking-widest text-slate-300 uppercase">
+                                WEBIOX CORE ARCHITECTURE
+                            </span>
                         </div>
 
-                        {/* ROW 2: 3 BALANCED CARDS (4 COLS + 4 COLS + 4 COLS) */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-                            {pillars.slice(2).map((pillar, idx) => {
-                                const Icon = pillar.icon;
-                                const whatsappUrl = `https://wa.me/919664736245?text=${encodeURIComponent(
-                                    pillar.whatsappQuery
-                                )}`;
-
+                        {/* 5 Capsule Navigation Tabs */}
+                        <div className="flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-full bg-slate-900/90 border border-slate-800 backdrop-blur-xl shadow-inner">
+                            {pillars.map((pillar, idx) => {
+                                const isActive = activeIndex === idx;
                                 return (
-                                    <motion.div
+                                    <button
                                         key={pillar.id}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.4, delay: 0.15 + idx * 0.08 }}
-                                        className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_16px_36px_-8px_rgba(15,23,42,0.08)] hover:border-slate-300 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+                                        onClick={() => setActiveIndex(idx)}
+                                        className={`relative px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-300 select-none cursor-pointer ${
+                                            isActive
+                                                ? "text-slate-950 font-black"
+                                                : "text-slate-400 hover:text-white hover:bg-slate-800/50"
+                                        }`}
                                     >
-                                        {/* Top Accent Strip */}
-                                        <div
-                                            className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${pillar.gradient}`}
-                                        />
-
-                                        <div>
-                                            {/* Meta Header */}
-                                            <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-100">
-                                                <div className={`w-11 h-11 rounded-xl ${pillar.iconGradient} flex items-center justify-center group-hover:scale-105 transition-transform`}>
-                                                    <Icon size={20} />
-                                                </div>
-                                                <div className="flex items-center gap-2">
-                                                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700">
-                                                        {pillar.badge}
-                                                    </span>
-                                                    <span className="font-mono text-xs font-bold text-slate-400">
-                                                        {pillar.number}
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            {/* KPI Micro Badge */}
-                                            <div className="mb-2">
-                                                <span className="inline-block px-2.5 py-0.5 rounded-md text-[10px] font-bold tracking-wide bg-blue-50 text-blue-700 border border-blue-100">
-                                                    {pillar.kpiBadge}
-                                                </span>
-                                            </div>
-
-                                            {/* Title & Tagline */}
-                                            <h3 className="text-lg sm:text-xl font-extrabold text-slate-950 tracking-tight mb-1.5 group-hover:text-blue-600 transition-colors leading-snug">
-                                                {pillar.title}
-                                            </h3>
-                                            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4 font-normal">
-                                                {pillar.tagline}
-                                            </p>
-
-                                            {/* Deliverables Checklist */}
-                                            <div className="space-y-2 mb-5">
-                                                {pillar.items.map((item, iIdx) => (
-                                                    <div key={iIdx} className="space-y-0.5">
-                                                        <div className="flex items-start gap-1.5 text-xs font-bold text-slate-900">
-                                                            <CheckCircle2
-                                                                size={13}
-                                                                className="text-blue-600 shrink-0 mt-0.5"
-                                                            />
-                                                            <span>{item.name}</span>
-                                                        </div>
-                                                        <p className="pl-5 text-[11px] text-slate-500 leading-snug">
-                                                            {item.desc}
-                                                        </p>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-
-                                        {/* Footer: Tech Chips + Inquiry Button */}
-                                        <div className="pt-4 border-t border-slate-100 mt-auto">
-                                            <div className="flex flex-wrap gap-1 mb-4">
-                                                {pillar.tech.slice(0, 3).map((t) => (
-                                                    <span
-                                                        key={t}
-                                                        className="px-2 py-0.5 rounded bg-slate-50 border border-slate-200/70 text-[10px] font-semibold text-slate-600"
-                                                    >
-                                                        {t}
-                                                    </span>
-                                                ))}
-                                            </div>
-
-                                            <a
-                                                href={whatsappUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-black text-white text-xs font-bold tracking-wide shadow-xs transition-all active:scale-[0.98] group/btn"
-                                            >
-                                                <MessageCircle size={14} className="text-emerald-400" />
-                                                <span>Inquire on WhatsApp</span>
-                                                <ArrowUpRight
-                                                    size={13}
-                                                    className="text-slate-400 group-hover/btn:text-white group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
-                                                />
-                                            </a>
-                                        </div>
-                                    </motion.div>
+                                        {isActive && (
+                                            <motion.div
+                                                layoutId="active-pillar-capsule"
+                                                className="absolute inset-0 bg-white rounded-full shadow-md -z-10"
+                                                transition={{ type: "spring", stiffness: 450, damping: 35 }}
+                                            />
+                                        )}
+                                        <span className="relative z-10">{pillar.name}</span>
+                                    </button>
                                 );
                             })}
                         </div>
-                    </div>
-                ) : (
-                    /* --- SINGLE FILTERED VIEW SPOTLIGHT --- */
-                    <div className="max-w-4xl mx-auto">
-                        {displayedPillars.map((pillar) => {
-                            const Icon = pillar.icon;
-                            const whatsappUrl = `https://wa.me/919664736245?text=${encodeURIComponent(
-                                pillar.whatsappQuery
-                            )}`;
 
-                            return (
+                        {/* Availability Pill */}
+                        <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/60 border border-slate-800 text-[11px] font-semibold text-slate-300">
+                            <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                            <span>Available For New Projects</span>
+                        </div>
+                    </div>
+
+                    {/* --- 3-COLUMN INTERACTIVE STAGE CONTENT --- */}
+                    <div className="relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+                        {/* === LEFT COLUMN: NARRATIVE & PRIMARY CTA (Span 4) === */}
+                        <div className="lg:col-span-4 flex flex-col justify-between">
+                            {/* Pagination Controls */}
+                            <div className="flex items-center gap-3 mb-6">
+                                <div className="flex items-center gap-1.5">
+                                    <button
+                                        onClick={handlePrev}
+                                        aria-label="Previous capability"
+                                        className="w-8 h-8 rounded-full bg-slate-800/80 hover:bg-white hover:text-slate-950 border border-slate-700/80 text-slate-300 flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-90"
+                                    >
+                                        <ChevronLeft size={16} />
+                                    </button>
+                                    <button
+                                        onClick={handleNext}
+                                        aria-label="Next capability"
+                                        className="w-8 h-8 rounded-full bg-slate-800/80 hover:bg-white hover:text-slate-950 border border-slate-700/80 text-slate-300 flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-90"
+                                    >
+                                        <ChevronRight size={16} />
+                                    </button>
+                                </div>
+                                <span className="text-xs font-mono font-bold text-slate-400">
+                                    {activePillar.number} / 05
+                                </span>
+                            </div>
+
+                            {/* Headline */}
+                            <AnimatePresence mode="wait">
                                 <motion.div
-                                    key={pillar.id}
-                                    initial={{ opacity: 0, scale: 0.97 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    className="bg-white rounded-3xl p-8 sm:p-10 md:p-12 border border-slate-200/90 shadow-[0_12px_36px_rgba(15,23,42,0.06)] relative overflow-hidden"
+                                    key={activePillar.id}
+                                    initial={{ opacity: 0, y: 15 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -15 }}
+                                    transition={{ duration: 0.35 }}
                                 >
-                                    <div
-                                        className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${pillar.gradient}`}
-                                    />
-                                    <div className="flex items-center justify-between mb-6">
-                                        <div className={`w-14 h-14 rounded-2xl ${pillar.iconGradient} flex items-center justify-center shadow-lg`}>
-                                            <Icon size={28} />
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-700">
-                                                {pillar.badge}
-                                            </span>
-                                            <span className="font-mono text-xs font-bold text-slate-400">
-                                                {pillar.number}
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight mb-3">
-                                        {pillar.title}
+                                    <span className="text-[11px] font-extrabold uppercase tracking-widest text-slate-400 block mb-2">
+                                        {activePillar.category}
+                                    </span>
+                                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight tracking-tight mb-4">
+                                        {activePillar.headline}
                                     </h3>
-                                    <p className="text-slate-600 text-base leading-relaxed mb-6 font-normal">
-                                        {pillar.tagline}
+                                    <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                                        {activePillar.description}
                                     </p>
-                                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                                        {pillar.items.map((item, iIdx) => (
-                                            <div key={iIdx} className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
-                                                <div className="flex items-center gap-2 font-bold text-sm text-slate-900 mb-1">
-                                                    <CheckCircle2 size={15} className="text-blue-600" />
-                                                    <span>{item.name}</span>
-                                                </div>
-                                                <p className="text-xs text-slate-500 leading-relaxed">
-                                                    {item.desc}
-                                                </p>
-                                            </div>
-                                        ))}
+
+                                    {/* Primary CTA Capsule Button */}
+                                    <div className="mb-6">
+                                        <a
+                                            href={`https://wa.me/919664736245?text=${encodeURIComponent(
+                                                activePillar.whatsappQuery
+                                            )}`}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-slate-950 font-black text-sm hover:bg-slate-100 hover:shadow-[0_10px_25px_rgba(255,255,255,0.2)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                                        >
+                                            <MessageCircle size={17} className="text-emerald-600" />
+                                            <span>Consult On Architecture</span>
+                                            <ArrowRight size={14} />
+                                        </a>
                                     </div>
-                                    <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                                        <div className="flex flex-wrap gap-1.5">
-                                            {pillar.tech.map((t) => (
-                                                <span key={t} className="px-3 py-1 rounded-md bg-slate-100 text-xs font-semibold text-slate-700">
+
+                                    {/* Slogan Quote */}
+                                    <div className="pt-4 border-t border-slate-800/80">
+                                        <p className="text-xs font-medium text-slate-400 italic">
+                                            "{activePillar.slogan}"
+                                        </p>
+                                        <div className="flex flex-wrap gap-1.5 mt-3">
+                                            {activePillar.tags.map((t, i) => (
+                                                <span
+                                                    key={i}
+                                                    className="px-2 py-0.5 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-bold text-slate-300"
+                                                >
                                                     {t}
                                                 </span>
                                             ))}
                                         </div>
-                                        <a
-                                            href={whatsappUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-slate-950 hover:bg-black text-white text-sm font-bold shadow-md transition-all"
-                                        >
-                                            <MessageCircle size={16} className="text-emerald-400" />
-                                            <span>Discuss on WhatsApp</span>
-                                            <ArrowUpRight size={15} />
-                                        </a>
                                     </div>
                                 </motion.div>
-                            );
-                        })}
-                    </div>
-                )}
-
-                {/* --- BOTTOM QUICK CALLOUT BANNER --- */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mt-14 p-6 sm:p-8 rounded-3xl bg-slate-50/90 border border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left shadow-2xs"
-                >
-                    <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center shrink-0 hidden sm:flex">
-                            <Zap size={22} />
+                            </AnimatePresence>
                         </div>
-                        <div>
-                            <h4 className="font-extrabold text-slate-950 text-base sm:text-lg tracking-tight">
-                                Have an upcoming project or need a reliable technical partner?
-                            </h4>
-                            <p className="text-slate-600 text-xs sm:text-sm mt-0.5">
-                                Visit our studio at <a href="https://webiox.tech/" target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:underline">webiox.tech</a> or chat with Manthan on WhatsApp.
-                            </p>
+
+                        {/* === CENTER COLUMN: 3D LEVITATING SPOTLIGHT VISUAL (Span 4) === */}
+                        <div className="lg:col-span-4 flex flex-col items-center justify-center min-h-[320px] sm:min-h-[380px] relative">
+                            {/* Floating 3D Graphic */}
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={activePillar.id}
+                                    initial={{ opacity: 0, scale: 0.88, y: 20 }}
+                                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                                    exit={{ opacity: 0, scale: 0.88, y: -20 }}
+                                    transition={{ duration: 0.4 }}
+                                    className="relative flex flex-col items-center justify-center w-full"
+                                >
+                                    {/* Continuous Smooth Levitation Animation */}
+                                    <motion.div
+                                        animate={{
+                                            y: [-8, 8, -8],
+                                            rotateZ: [-1, 1, -1],
+                                        }}
+                                        transition={{
+                                            duration: 4,
+                                            repeat: Infinity,
+                                            ease: "easeInOut",
+                                        }}
+                                        className="relative z-10 w-full max-w-[280px] sm:max-w-[320px] rounded-3xl p-5 bg-gradient-to-b from-slate-800/90 to-slate-900/95 border border-slate-700/80 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] backdrop-blur-xl flex flex-col"
+                                    >
+                                        {/* Cockpit / Visual Header */}
+                                        <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-700/60">
+                                            <div className="flex items-center gap-2">
+                                                <span
+                                                    className="w-3 h-3 rounded-full"
+                                                    style={{ backgroundColor: activePillar.accentColor }}
+                                                />
+                                                <span className="text-xs font-mono font-bold text-slate-200">
+                                                    SYSTEM.ACTIVE
+                                                </span>
+                                            </div>
+                                            <span className="text-[10px] font-mono text-slate-400 bg-slate-950 px-2 py-0.5 rounded-full border border-slate-800">
+                                                LIVE BENCHMARK
+                                            </span>
+                                        </div>
+
+                                        {/* Central Core Display */}
+                                        <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 flex flex-col items-center justify-center p-4">
+                                            {activePillar.centerType === "cockpit" && (
+                                                <div className="flex flex-col items-center text-center">
+                                                    <Gauge
+                                                        size={44}
+                                                        className="text-emerald-400 mb-2 animate-pulse"
+                                                    />
+                                                    <span className="text-2xl font-black text-white tracking-tight">
+                                                        0.65s TTFB
+                                                    </span>
+                                                    <span className="text-[10px] font-mono text-emerald-400 mt-1">
+                                                        EDGE CACHE • CORE WEB VITALS 100%
+                                                    </span>
+                                                </div>
+                                            )}
+
+                                            {activePillar.centerType === "server" && (
+                                                <div className="flex flex-col items-center text-center">
+                                                    <Server
+                                                        size={44}
+                                                        className="text-blue-400 mb-2 animate-pulse"
+                                                    />
+                                                    <span className="text-2xl font-black text-white tracking-tight">
+                                                        99.9% UPTIME
+                                                    </span>
+                                                    <span className="text-[10px] font-mono text-blue-400 mt-1">
+                                                        MULTI-TENANT ISOLATION • JWT SECURE
+                                                    </span>
+                                                </div>
+                                            )}
+
+                                            {activePillar.centerType === "commerce" && (
+                                                <div className="flex flex-col items-center text-center">
+                                                    <ShoppingCart
+                                                        size={44}
+                                                        className="text-violet-400 mb-2 animate-pulse"
+                                                    />
+                                                    <span className="text-2xl font-black text-white tracking-tight">
+                                                        1.2s CHECKOUT
+                                                    </span>
+                                                    <span className="text-[10px] font-mono text-violet-400 mt-1">
+                                                        HEADLESS STOREFRONT • STRIPE READY
+                                                    </span>
+                                                </div>
+                                            )}
+
+                                            {activePillar.centerType === "ai" && (
+                                                <div className="flex flex-col items-center text-center">
+                                                    <Bot
+                                                        size={44}
+                                                        className="text-amber-400 mb-2 animate-pulse"
+                                                    />
+                                                    <span className="text-2xl font-black text-white tracking-tight">
+                                                        24/7 AI AGENTS
+                                                    </span>
+                                                    <span className="text-[10px] font-mono text-amber-400 mt-1">
+                                                        AUTOMATED WEBHOOKS • LEAD GEN
+                                                    </span>
+                                                </div>
+                                            )}
+
+                                            {activePillar.centerType === "mobile" && (
+                                                <div className="flex flex-col items-center text-center">
+                                                    <Smartphone
+                                                        size={44}
+                                                        className="text-cyan-400 mb-2 animate-pulse"
+                                                    />
+                                                    <span className="text-2xl font-black text-white tracking-tight">
+                                                        OFFLINE PWA
+                                                    </span>
+                                                    <span className="text-[10px] font-mono text-cyan-400 mt-1">
+                                                        0MB DOWNLOAD • INSTANT INSTALL
+                                                    </span>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Dynamic Spec Footer */}
+                                        <div className="mt-3 pt-2.5 border-t border-slate-700/60 flex items-center justify-between text-[11px] font-mono text-slate-300">
+                                            <span>Tier: {activePillar.configs[selectedConfigIdx]?.name}</span>
+                                            <span style={{ color: activePillar.accentColor }}>● Verified</span>
+                                        </div>
+                                    </motion.div>
+
+                                    {/* Realistic Dynamic Ground Shadow */}
+                                    <motion.div
+                                        animate={{
+                                            scale: [0.85, 1.05, 0.85],
+                                            opacity: [0.35, 0.55, 0.35],
+                                        }}
+                                        transition={{
+                                            duration: 4,
+                                            repeat: Infinity,
+                                            ease: "easeInOut",
+                                        }}
+                                        className="w-48 h-6 rounded-full bg-black/70 blur-md mt-4 pointer-events-none"
+                                    />
+                                </motion.div>
+                            </AnimatePresence>
+                        </div>
+
+                        {/* === RIGHT COLUMN: METRICS, CONFIG SELECTOR & LIVE THUMBNAIL (Span 4) === */}
+                        <div className="lg:col-span-4 flex flex-col justify-between space-y-6">
+                            {/* Top Comparison Metric Badge (Mirroring $149 bold vs $199- struck through) */}
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={activePillar.id}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -20 }}
+                                    transition={{ duration: 0.35 }}
+                                    className="p-5 rounded-3xl bg-slate-900/90 border border-slate-800 shadow-inner"
+                                >
+                                    <div className="flex items-baseline justify-between mb-1">
+                                        <div className="flex items-baseline gap-3">
+                                            <span
+                                                className="text-3xl sm:text-4xl font-black tracking-tight"
+                                                style={{ color: activePillar.accentColor }}
+                                            >
+                                                {activePillar.primaryMetric}
+                                            </span>
+                                            <span className="text-slate-500 line-through text-lg font-bold font-mono">
+                                                {activePillar.comparisonMetric}
+                                            </span>
+                                        </div>
+                                        <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider bg-slate-950 px-2 py-0.5 rounded-full border border-slate-800">
+                                            Benchmarked
+                                        </span>
+                                    </div>
+                                    <span className="text-xs font-bold text-slate-300 block">
+                                        {activePillar.primaryMetricLabel}
+                                    </span>
+                                    <span className="text-[11px] text-slate-500 font-normal">
+                                        vs. {activePillar.comparisonLabel}
+                                    </span>
+                                </motion.div>
+                            </AnimatePresence>
+
+                            {/* Option / Configuration Tier Selector (Mirroring "Choose your size: [36] [38] [40]") */}
+                            <div>
+                                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2.5">
+                                    Select Architecture Configuration:
+                                </span>
+                                <div className="flex flex-wrap gap-2">
+                                    {activePillar.configs.map((cfg, i) => {
+                                        const isSelected = selectedConfigIdx === i;
+                                        return (
+                                            <button
+                                                key={i}
+                                                onClick={() => setSelectedConfigIdx(i)}
+                                                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer select-none flex items-center gap-1.5 ${
+                                                    isSelected
+                                                        ? "bg-white text-slate-950 font-black shadow-md scale-105"
+                                                        : "bg-slate-900 text-slate-400 border border-slate-800 hover:text-white hover:bg-slate-800"
+                                                }`}
+                                            >
+                                                <span>{cfg.name}</span>
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                                <p className="text-[11px] text-slate-400 mt-2 font-mono">
+                                    › {activePillar.configs[selectedConfigIdx]?.desc}
+                                </p>
+                            </div>
+
+                            {/* Bottom Anchored Live Project Preview Thumbnail (Mirroring floating pink jacket thumbnail) */}
+                            {activePillar.liveProject && (
+                                <motion.a
+                                    key={activePillar.liveProject.name}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    whileHover={{ scale: 1.02 }}
+                                    href={activePillar.liveProject.url}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="group flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 shadow-md transition-all cursor-pointer select-none"
+                                >
+                                    {/* Mini Thumbnail */}
+                                    <div className="w-14 h-14 rounded-xl overflow-hidden bg-slate-950 border border-slate-800 shrink-0 relative">
+                                        <img
+                                            src={activePillar.liveProject.image}
+                                            alt={activePillar.liveProject.name}
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                        />
+                                    </div>
+
+                                    {/* Text Info */}
+                                    <div className="flex-grow min-w-0">
+                                        <div className="flex items-center gap-1.5">
+                                            <span className="text-[10px] font-extrabold uppercase tracking-widest text-emerald-400">
+                                                Live Deployment
+                                            </span>
+                                        </div>
+                                        <h4 className="text-sm font-bold text-white group-hover:text-emerald-400 transition-colors truncate">
+                                            {activePillar.liveProject.name}
+                                        </h4>
+                                        <span className="text-[11px] text-slate-400 truncate block">
+                                            {activePillar.liveProject.category}
+                                        </span>
+                                    </div>
+
+                                    <div className="shrink-0 p-2 rounded-xl bg-slate-800 text-slate-400 group-hover:text-white group-hover:bg-emerald-600 transition-all">
+                                        <ExternalLink size={14} />
+                                    </div>
+                                </motion.a>
+                            )}
                         </div>
                     </div>
+                </div>
 
-                    <div className="flex items-center gap-3 shrink-0 w-full sm:w-auto">
-                        <a
-                            href="https://webiox.tech/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-5 py-3 rounded-full bg-white hover:bg-slate-100 text-slate-800 font-bold text-xs sm:text-sm border border-slate-200/90 shadow-2xs transition-all"
-                        >
-                            <span>Visit webiox.tech</span>
-                            <ExternalLink size={13} className="text-slate-400" />
-                        </a>
-
-                        <a
-                            href="https://wa.me/919664736245?text=Hi%20Manthan,%20I'd%20like%20to%20consult%20with%20Webiox%20on%20a%20new%20build!"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs sm:text-sm shadow-[0_4px_16px_rgba(37,211,102,0.35)] hover:shadow-[0_6px_22px_rgba(37,211,102,0.5)] transition-all active:scale-95"
-                        >
-                            <MessageCircle size={16} />
-                            <span>WhatsApp Chat</span>
-                        </a>
-                    </div>
-                </motion.div>
+                {/* --- ENGINEERING WORKFLOW PROCESS ROADMAP (Retained underneath) --- */}
+                <div className="mt-16 md:mt-24">
+                    <ProcessRoadmap />
+                </div>
             </div>
         </section>
     );
