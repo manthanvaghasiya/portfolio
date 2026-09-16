@@ -24,9 +24,11 @@ const pillars = [
         number: "01",
         icon: Globe2,
         badge: "Digital Flagships",
+        kpiBadge: "Dealership Architecture",
         title: "Enterprise Web Engineering & Digital Flagships",
         tagline: "High-speed custom web architectures built from scratch—avoiding generic page builders.",
         gradient: "from-blue-600 via-indigo-600 to-sky-500",
+        iconGradient: "bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/25",
         items: [
             {
                 name: "Custom Web Platforms",
@@ -49,9 +51,11 @@ const pillars = [
         number: "02",
         icon: Cpu,
         badge: "SaaS & Custom Software",
+        kpiBadge: "Multi-Tenant Cloud",
         title: "SaaS Product Engineering & Custom Software",
         tagline: "End-to-end web applications, multi-tenant architectures, and robust internal portals.",
         gradient: "from-indigo-600 via-violet-600 to-purple-500",
+        iconGradient: "bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-600 text-white shadow-md shadow-indigo-500/25",
         items: [
             {
                 name: "Full-Stack Application Development",
@@ -74,9 +78,11 @@ const pillars = [
         number: "03",
         icon: ShoppingCart,
         badge: "High-Conversion Commerce",
+        kpiBadge: "Headless Storefronts",
         title: "High-Conversion E-Commerce",
         tagline: "Headless storefronts and frictionless checkout flows engineered for high sales velocity.",
         gradient: "from-emerald-600 via-teal-600 to-cyan-500",
+        iconGradient: "bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-500/25",
         items: [
             {
                 name: "Headless & Custom Storefronts",
@@ -99,9 +105,11 @@ const pillars = [
         number: "04",
         icon: Bot,
         badge: "AI & Workflow Systems",
+        kpiBadge: "Autonomous AI Agents",
         title: "AI & Workflow Automation",
         tagline: "Autonomous AI agents and operational data pipelines that eliminate manual bottlenecks.",
         gradient: "from-slate-900 via-blue-900 to-indigo-900",
+        iconGradient: "bg-gradient-to-br from-slate-900 to-indigo-950 text-white shadow-md shadow-slate-900/25",
         items: [
             {
                 name: "Autonomous AI Agents",
@@ -120,9 +128,11 @@ const pillars = [
         number: "05",
         icon: Smartphone,
         badge: "Mobile & Product Design",
+        kpiBadge: "Cross-Platform iOS & Android",
         title: "Mobile App Engineering & UI/UX Design",
         tagline: "Cross-platform mobile applications and friction-free user experience design.",
         gradient: "from-sky-600 via-blue-700 to-indigo-700",
+        iconGradient: "bg-gradient-to-br from-sky-500 to-blue-600 text-white shadow-md shadow-sky-500/25",
         items: [
             {
                 name: "Cross-Platform Mobile Apps",
@@ -282,10 +292,321 @@ const Services = () => {
                     ))}
                 </div>
 
-                {/* --- 5 PILLARS BENTO GRID --- */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                    <AnimatePresence mode="popLayout">
-                        {displayedPillars.map((pillar, idx) => {
+                {/* --- 5 PILLARS BALANCED BENTO GRID ARCHITECTURE --- */}
+                {activePillar === "all" ? (
+                    <div className="space-y-6">
+                        {/* ROW 1: FLAGSHIP ENTERPRISE WEB (7 COLS) + SAAS PRODUCT ENGINEERING (5 COLS) */}
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                            {/* 1. ENTERPRISE WEB ENGINEERING & DIGITAL FLAGSHIPS (Col Span 7) */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.4 }}
+                                className="lg:col-span-7 bg-white rounded-3xl p-7 sm:p-8 md:p-9 border border-slate-200/90 shadow-[0_4px_24px_rgba(15,23,42,0.03)] hover:shadow-[0_20px_45px_-10px_rgba(15,23,42,0.08)] hover:border-slate-300 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+                            >
+                                {/* Top Multi-Stop Accent Line */}
+                                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-500" />
+
+                                <div>
+                                    {/* Meta Header */}
+                                    <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-100">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center shadow-md shadow-blue-500/25 group-hover:scale-105 transition-transform">
+                                                <Globe2 size={24} />
+                                            </div>
+                                            <div>
+                                                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80">
+                                                    Flagship Specialty
+                                                </span>
+                                                <h4 className="font-mono text-xs font-bold text-slate-400 mt-0.5">
+                                                    Pillar 01
+                                                </h4>
+                                            </div>
+                                        </div>
+
+                                        <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                                            Commercial Dealerships
+                                        </span>
+                                    </div>
+
+                                    {/* Title & Tagline */}
+                                    <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight mb-2.5 group-hover:text-blue-600 transition-colors">
+                                        Enterprise Web Engineering &amp; Digital Flagships
+                                    </h3>
+                                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                                        High-speed custom web architectures built from scratch—avoiding generic page builders and bloatware.
+                                    </p>
+
+                                    {/* Two-Column Showcase: Specs Terminal + Deliverables */}
+                                    <div className="grid grid-cols-1 md:grid-cols-12 gap-5 mb-6">
+                                        {/* Specs Terminal */}
+                                        <div className="md:col-span-6 p-4 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-3">
+                                            <div className="flex items-center justify-between text-xs pb-2 border-b border-slate-200/70">
+                                                <span className="font-bold text-slate-900">
+                                                    Production Benchmark
+                                                </span>
+                                                <span className="font-mono text-[11px] font-bold text-blue-700 bg-blue-100/70 px-2 py-0.5 rounded-md">
+                                                    Sadguru &amp; Hariram
+                                                </span>
+                                            </div>
+                                            <div className="space-y-2">
+                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200/80 flex items-center justify-between">
+                                                    <span className="text-xs text-slate-500 font-medium">Inventory Volume</span>
+                                                    <span className="text-xs font-extrabold text-slate-900">150+ Dynamic Cars</span>
+                                                </div>
+                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200/80 flex items-center justify-between">
+                                                    <span className="text-xs text-slate-500 font-medium">Core Web Vitals</span>
+                                                    <span className="text-xs font-extrabold text-emerald-600">&lt;1s Page Load</span>
+                                                </div>
+                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200/80 flex items-center justify-between">
+                                                    <span className="text-xs text-slate-500 font-medium">Lead Conversion</span>
+                                                    <span className="text-xs font-extrabold text-blue-600">WhatsApp Engine</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Deliverables Checklist */}
+                                        <div className="md:col-span-6 flex flex-col justify-center space-y-3">
+                                            {pillars[0].items.map((item, iIdx) => (
+                                                <div key={iIdx} className="space-y-0.5">
+                                                    <div className="flex items-start gap-2 text-xs sm:text-sm font-bold text-slate-900">
+                                                        <CheckCircle2 size={15} className="text-blue-600 shrink-0 mt-0.5" />
+                                                        <span>{item.name}</span>
+                                                    </div>
+                                                    <p className="pl-6 text-xs text-slate-500 leading-snug">
+                                                        {item.desc}
+                                                    </p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Tech Stack + WhatsApp Trigger */}
+                                <div className="pt-5 border-t border-slate-100 mt-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                                    <div className="flex flex-wrap gap-1.5">
+                                        {pillars[0].tech.map((t) => (
+                                            <span
+                                                key={t}
+                                                className="px-2.5 py-1 rounded-md bg-slate-50 border border-slate-200/80 text-[11px] font-semibold text-slate-600"
+                                            >
+                                                {t}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    <a
+                                        href={`https://wa.me/919664736245?text=${encodeURIComponent(pillars[0].whatsappQuery)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-slate-950 hover:bg-black text-white text-xs sm:text-sm font-bold tracking-wide shadow-md transition-all active:scale-[0.98] group/btn shrink-0"
+                                    >
+                                        <MessageCircle size={15} className="text-emerald-400" />
+                                        <span>Discuss Flagship</span>
+                                        <ArrowUpRight
+                                            size={14}
+                                            className="text-slate-400 group-hover/btn:text-white group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
+                                        />
+                                    </a>
+                                </div>
+                            </motion.div>
+
+                            {/* 2. SAAS PRODUCT ENGINEERING & CUSTOM SOFTWARE (Col Span 5) */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.4, delay: 0.1 }}
+                                className="lg:col-span-5 bg-white rounded-3xl p-7 sm:p-8 border border-slate-200/90 shadow-[0_4px_24px_rgba(15,23,42,0.03)] hover:shadow-[0_20px_45px_-10px_rgba(15,23,42,0.08)] hover:border-slate-300 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+                            >
+                                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-500" />
+
+                                <div>
+                                    {/* Meta Header */}
+                                    <div className="flex items-center justify-between gap-3 mb-5 pb-3 border-b border-slate-100">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-600 text-white flex items-center justify-center shadow-md shadow-indigo-500/25 group-hover:scale-105 transition-transform">
+                                                <Cpu size={24} />
+                                            </div>
+                                            <div>
+                                                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-purple-50 text-purple-700 border border-purple-200">
+                                                    SaaS &amp; Custom Apps
+                                                </span>
+                                                <h4 className="font-mono text-xs font-bold text-slate-400 mt-0.5">
+                                                    Pillar 02
+                                                </h4>
+                                            </div>
+                                        </div>
+
+                                        <span className="font-mono text-xs font-bold text-slate-400">
+                                            02
+                                        </span>
+                                    </div>
+
+                                    {/* Title & Tagline */}
+                                    <h3 className="text-xl sm:text-2xl font-extrabold text-slate-950 tracking-tight mb-2 group-hover:text-indigo-600 transition-colors">
+                                        SaaS Product Engineering &amp; Custom Software
+                                    </h3>
+                                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-5 font-normal">
+                                        End-to-end web applications, multi-tenant architectures, and robust internal portals.
+                                    </p>
+
+                                    {/* Deliverables Checklist */}
+                                    <div className="space-y-3 mb-6">
+                                        {pillars[1].items.map((item, iIdx) => (
+                                            <div key={iIdx} className="space-y-0.5">
+                                                <div className="flex items-start gap-2 text-xs sm:text-sm font-bold text-slate-900">
+                                                    <CheckCircle2 size={14} className="text-indigo-600 shrink-0 mt-0.5" />
+                                                    <span>{item.name}</span>
+                                                </div>
+                                                <p className="pl-6 text-xs text-slate-500 leading-snug">
+                                                    {item.desc}
+                                                </p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Tech Stack + WhatsApp Trigger */}
+                                <div className="pt-4 border-t border-slate-100 mt-auto">
+                                    <div className="flex flex-wrap gap-1.5 mb-4">
+                                        {pillars[1].tech.map((t) => (
+                                            <span
+                                                key={t}
+                                                className="px-2.5 py-0.5 rounded-md bg-slate-50 border border-slate-200/80 text-[11px] font-semibold text-slate-600"
+                                            >
+                                                {t}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    <a
+                                        href={`https://wa.me/919664736245?text=${encodeURIComponent(pillars[1].whatsappQuery)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-slate-900 hover:bg-black text-white text-xs sm:text-sm font-bold tracking-wide shadow-xs transition-all active:scale-[0.98] group/btn"
+                                    >
+                                        <MessageCircle size={15} className="text-emerald-400" />
+                                        <span>Discuss SaaS Architecture</span>
+                                        <ArrowUpRight
+                                            size={14}
+                                            className="text-slate-400 group-hover/btn:text-white group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
+                                        />
+                                    </a>
+                                </div>
+                            </motion.div>
+                        </div>
+
+                        {/* ROW 2: 3 BALANCED CARDS (4 COLS + 4 COLS + 4 COLS) */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+                            {pillars.slice(2).map((pillar, idx) => {
+                                const Icon = pillar.icon;
+                                const whatsappUrl = `https://wa.me/919664736245?text=${encodeURIComponent(
+                                    pillar.whatsappQuery
+                                )}`;
+
+                                return (
+                                    <motion.div
+                                        key={pillar.id}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.4, delay: 0.15 + idx * 0.08 }}
+                                        className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_16px_36px_-8px_rgba(15,23,42,0.08)] hover:border-slate-300 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+                                    >
+                                        {/* Top Accent Strip */}
+                                        <div
+                                            className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${pillar.gradient}`}
+                                        />
+
+                                        <div>
+                                            {/* Meta Header */}
+                                            <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-100">
+                                                <div className={`w-11 h-11 rounded-xl ${pillar.iconGradient} flex items-center justify-center group-hover:scale-105 transition-transform`}>
+                                                    <Icon size={20} />
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700">
+                                                        {pillar.badge}
+                                                    </span>
+                                                    <span className="font-mono text-xs font-bold text-slate-400">
+                                                        {pillar.number}
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            {/* KPI Micro Badge */}
+                                            <div className="mb-2">
+                                                <span className="inline-block px-2.5 py-0.5 rounded-md text-[10px] font-bold tracking-wide bg-blue-50 text-blue-700 border border-blue-100">
+                                                    {pillar.kpiBadge}
+                                                </span>
+                                            </div>
+
+                                            {/* Title & Tagline */}
+                                            <h3 className="text-lg sm:text-xl font-extrabold text-slate-950 tracking-tight mb-1.5 group-hover:text-blue-600 transition-colors leading-snug">
+                                                {pillar.title}
+                                            </h3>
+                                            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4 font-normal">
+                                                {pillar.tagline}
+                                            </p>
+
+                                            {/* Deliverables Checklist */}
+                                            <div className="space-y-2 mb-5">
+                                                {pillar.items.map((item, iIdx) => (
+                                                    <div key={iIdx} className="space-y-0.5">
+                                                        <div className="flex items-start gap-1.5 text-xs font-bold text-slate-900">
+                                                            <CheckCircle2
+                                                                size={13}
+                                                                className="text-blue-600 shrink-0 mt-0.5"
+                                                            />
+                                                            <span>{item.name}</span>
+                                                        </div>
+                                                        <p className="pl-5 text-[11px] text-slate-500 leading-snug">
+                                                            {item.desc}
+                                                        </p>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        {/* Footer: Tech Chips + Inquiry Button */}
+                                        <div className="pt-4 border-t border-slate-100 mt-auto">
+                                            <div className="flex flex-wrap gap-1 mb-4">
+                                                {pillar.tech.slice(0, 3).map((t) => (
+                                                    <span
+                                                        key={t}
+                                                        className="px-2 py-0.5 rounded bg-slate-50 border border-slate-200/70 text-[10px] font-semibold text-slate-600"
+                                                    >
+                                                        {t}
+                                                    </span>
+                                                ))}
+                                            </div>
+
+                                            <a
+                                                href={whatsappUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-black text-white text-xs font-bold tracking-wide shadow-xs transition-all active:scale-[0.98] group/btn"
+                                            >
+                                                <MessageCircle size={14} className="text-emerald-400" />
+                                                <span>Inquire on WhatsApp</span>
+                                                <ArrowUpRight
+                                                    size={13}
+                                                    className="text-slate-400 group-hover/btn:text-white group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
+                                                />
+                                            </a>
+                                        </div>
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                ) : (
+                    /* --- SINGLE FILTERED VIEW SPOTLIGHT --- */
+                    <div className="max-w-4xl mx-auto">
+                        {displayedPillars.map((pillar) => {
                             const Icon = pillar.icon;
                             const whatsappUrl = `https://wa.me/919664736245?text=${encodeURIComponent(
                                 pillar.whatsappQuery
@@ -294,93 +615,69 @@ const Services = () => {
                             return (
                                 <motion.div
                                     key={pillar.id}
-                                    layout
-                                    initial={{ opacity: 0, scale: 0.96 }}
+                                    initial={{ opacity: 0, scale: 0.97 }}
                                     animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.96 }}
-                                    transition={{ duration: 0.35, delay: idx * 0.05 }}
-                                    className="bg-white rounded-3xl p-7 sm:p-8 border border-slate-200/90 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_20px_45px_-10px_rgba(15,23,42,0.09)] hover:border-slate-300 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+                                    className="bg-white rounded-3xl p-8 sm:p-10 md:p-12 border border-slate-200/90 shadow-[0_12px_36px_rgba(15,23,42,0.06)] relative overflow-hidden"
                                 >
-                                    {/* Top Gradient Highlight */}
                                     <div
                                         className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${pillar.gradient}`}
                                     />
-
-                                    <div>
-                                        {/* Top Meta: Icon + Number */}
-                                        <div className="flex items-center justify-between gap-3 mb-6">
-                                            <div className="w-12 h-12 rounded-2xl bg-blue-50/80 border border-blue-100 flex items-center justify-center text-blue-600 shadow-2xs group-hover:scale-105 transition-transform duration-200">
-                                                <Icon size={22} />
-                                            </div>
-                                            <div className="flex items-center gap-2">
-                                                <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700">
-                                                    {pillar.badge}
-                                                </span>
-                                                <span className="font-mono text-xs font-bold text-slate-400">
-                                                    {pillar.number}
-                                                </span>
-                                            </div>
+                                    <div className="flex items-center justify-between mb-6">
+                                        <div className={`w-14 h-14 rounded-2xl ${pillar.iconGradient} flex items-center justify-center shadow-lg`}>
+                                            <Icon size={28} />
                                         </div>
-
-                                        {/* Title & Tagline */}
-                                        <h3 className="text-xl sm:text-2xl font-extrabold text-slate-950 tracking-tight mb-2 group-hover:text-blue-600 transition-colors">
-                                            {pillar.title}
-                                        </h3>
-                                        <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 font-medium">
-                                            {pillar.tagline}
-                                        </p>
-
-                                        {/* Detailed Capabilities List */}
-                                        <div className="space-y-4 mb-6 pt-5 border-t border-slate-100">
-                                            {pillar.items.map((item, iIdx) => (
-                                                <div key={iIdx} className="space-y-1">
-                                                    <div className="flex items-start gap-2 text-xs sm:text-sm font-bold text-slate-900">
-                                                        <CheckCircle2
-                                                            size={15}
-                                                            className="text-blue-600 shrink-0 mt-0.5"
-                                                        />
-                                                        <span>{item.name}</span>
-                                                    </div>
-                                                    <p className="pl-6 text-xs text-slate-500 leading-relaxed font-normal">
-                                                        {item.desc}
-                                                    </p>
-                                                </div>
-                                            ))}
+                                        <div className="flex items-center gap-2">
+                                            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-700">
+                                                {pillar.badge}
+                                            </span>
+                                            <span className="font-mono text-xs font-bold text-slate-400">
+                                                {pillar.number}
+                                            </span>
                                         </div>
                                     </div>
-
-                                    {/* Footer: Tech Stack + WhatsApp Trigger */}
-                                    <div className="pt-5 border-t border-slate-100 mt-2">
-                                        <div className="flex flex-wrap gap-1.5 mb-5">
+                                    <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight mb-3">
+                                        {pillar.title}
+                                    </h3>
+                                    <p className="text-slate-600 text-base leading-relaxed mb-6 font-normal">
+                                        {pillar.tagline}
+                                    </p>
+                                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                                        {pillar.items.map((item, iIdx) => (
+                                            <div key={iIdx} className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                                                <div className="flex items-center gap-2 font-bold text-sm text-slate-900 mb-1">
+                                                    <CheckCircle2 size={15} className="text-blue-600" />
+                                                    <span>{item.name}</span>
+                                                </div>
+                                                <p className="text-xs text-slate-500 leading-relaxed">
+                                                    {item.desc}
+                                                </p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                        <div className="flex flex-wrap gap-1.5">
                                             {pillar.tech.map((t) => (
-                                                <span
-                                                    key={t}
-                                                    className="px-2.5 py-1 rounded-md bg-slate-50 border border-slate-200/80 text-[11px] font-semibold text-slate-600"
-                                                >
+                                                <span key={t} className="px-3 py-1 rounded-md bg-slate-100 text-xs font-semibold text-slate-700">
                                                     {t}
                                                 </span>
                                             ))}
                                         </div>
-
                                         <a
                                             href={whatsappUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-slate-900 hover:bg-black text-white text-xs sm:text-sm font-bold tracking-wide shadow-xs hover:shadow-md transition-all active:scale-[0.98] group/btn"
+                                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-slate-950 hover:bg-black text-white text-sm font-bold shadow-md transition-all"
                                         >
-                                            <MessageCircle size={15} className="text-emerald-400" />
-                                            <span>Inquire on WhatsApp</span>
-                                            <ArrowUpRight
-                                                size={14}
-                                                className="text-slate-400 group-hover/btn:text-white group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
-                                            />
+                                            <MessageCircle size={16} className="text-emerald-400" />
+                                            <span>Discuss on WhatsApp</span>
+                                            <ArrowUpRight size={15} />
                                         </a>
                                     </div>
                                 </motion.div>
                             );
                         })}
-                    </AnimatePresence>
-                </div>
+                    </div>
+                )}
 
                 {/* --- BOTTOM QUICK CALLOUT BANNER --- */}
                 <motion.div
