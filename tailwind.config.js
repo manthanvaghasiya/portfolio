@@ -17,7 +17,8 @@ export default {
         'text-muted': '#94a3b8', // Muted text color
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+        brand: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
       },
       backgroundSize: {
         'size-200': '200% 200%',

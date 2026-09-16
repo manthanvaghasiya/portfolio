@@ -4,18 +4,11 @@ const NavLogo = ({ setIsOpen }) => {
     return (
         <a
             href="#home"
-            className="flex items-center gap-2 group relative z-50"
-            onClick={() => setIsOpen(false)}
+            className="flex items-center group relative z-50 select-none py-1 transition-all duration-200"
+            onClick={() => setIsOpen && setIsOpen(false)}
         >
-            <div className="relative w-8 h-8 rounded-lg overflow-hidden shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform">
-                <img
-                    src="/iconblack.jpg"
-                    alt="Logo"
-                    className="w-full h-full object-cover"
-                />
-            </div>
-            <span className="font-bold text-slate-800 text-lg tracking-tight group-hover:text-blue-600 transition-colors">
-                Manthan<span className="text-blue-600">.portfolio</span>
+            <span className="font-extrabold text-base sm:text-lg md:text-xl tracking-tight text-slate-950 group-hover:text-blue-600 transition-colors duration-200">
+                Manthan Vaghasiya
             </span>
         </a>
     );

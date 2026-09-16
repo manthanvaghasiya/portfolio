@@ -1,80 +1,87 @@
 import React from "react";
+import { Github, Code2, GitCommit } from "lucide-react";
+import { motion } from "framer-motion";
 
 const GithubStats = () => {
-  return (
-    <section className="py-16 md:py-20 px-6 bg-[#0F172A] text-white border-t border-white/5">
-      <div className="max-w-7xl mx-auto">
-        
-        {/* Header */}
-        <div className="text-center mb-12" data-aos="fade-up">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
-            Code <span className="text-accent">Activity</span>
-          </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
-            Real-time data from my GitHub repository. I believe in consistent contribution and continuous learning.
-          </p>
-        </div>
+    return (
+        <section className="py-20 md:py-24 px-4 sm:px-6 bg-slate-50/70 relative overflow-hidden border-t border-slate-200/80">
+            <div className="max-w-7xl mx-auto relative z-10">
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center items-center">
-          
-          {/* Card 1: Overall Stats */}
-          <div 
-            className="bg-white/5 p-4 rounded-3xl border border-white/10 hover:border-accent/50 transition-all duration-300 shadow-xl group"
-            data-aos="fade-right"
-          >
-            <img 
-              src="https://github-readme-stats.vercel.app/api?username=manthanvaghasiya&show_icons=true&theme=tokyonight&bg_color=00000000&hide_border=true&title_color=3b82f6&icon_color=3b82f6&text_color=cbd5e1" 
-              alt="Manthan's GitHub Stats"
-              className="w-full h-auto transform group-hover:scale-[1.02] transition-transform duration-300"
-            />
-          </div>
+                {/* --- HEADER --- */}
+                <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-950 tracking-tight leading-tight">
+                        Open-Source &{" "}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600">
+                            Code Activity
+                        </span>
+                    </h2>
 
-          {/* Card 2: Top Languages & Streak */}
-          <div className="space-y-8">
-             {/* Streak Stats */}
-            <div 
-              className="bg-white/5 p-4 rounded-3xl border border-white/10 hover:border-accent/50 transition-all duration-300 shadow-xl group"
-              data-aos="fade-left"
-              data-aos-delay="100"
-            >
-              <img 
-                src="https://github-readme-streak-stats.herokuapp.com/?user=manthanvaghasiya&theme=tokyonight&bg_color=00000000&hide_border=true&ring=3b82f6&currStreakLabel=3b82f6" 
-                alt="Manthan's Streak"
-                className="w-full h-auto transform group-hover:scale-[1.02] transition-transform duration-300"
-              />
+                    <p className="mt-3 text-slate-600 text-base md:text-lg font-normal">
+                        Real-time metrics from my GitHub profile. I believe in consistent contribution, reliable shipping, and clean code.
+                    </p>
+                </div>
+
+                {/* --- STATS CARDS GRID --- */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-start max-w-5xl mx-auto">
+
+                    {/* CARD 1: OVERALL STATS */}
+                    <div className="bg-white p-5 sm:p-7 rounded-3xl border border-slate-200/90 hover:border-slate-300 shadow-sm hover:shadow-md transition-all duration-300 group">
+                        <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+                            <div className="flex items-center gap-2 text-slate-900 font-bold text-sm">
+                                <Github size={18} className="text-slate-700" />
+                                <span>GitHub Summary</span>
+                            </div>
+                            <span className="text-[11px] font-bold text-blue-600 uppercase tracking-wider">
+                                @manthanvaghasiya
+                            </span>
+                        </div>
+
+                        <img
+                            src="https://github-readme-stats.vercel.app/api?username=manthanvaghasiya&show_icons=true&theme=default&bg_color=ffffff&hide_border=true&title_color=0f172a&icon_color=2563eb&text_color=475569"
+                            alt="Manthan's GitHub Stats"
+                            loading="lazy"
+                            className="w-full h-auto transform group-hover:scale-[1.01] transition-transform duration-300"
+                        />
+                    </div>
+
+                    {/* CARD 2: STREAK & TOP LANGUAGES */}
+                    <div className="space-y-6">
+                        {/* STREAK */}
+                        <div className="bg-white p-5 sm:p-7 rounded-3xl border border-slate-200/90 hover:border-slate-300 shadow-sm hover:shadow-md transition-all duration-300 group">
+                            <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+                                <div className="flex items-center gap-2 text-slate-900 font-bold text-sm">
+                                    <Code2 size={18} className="text-blue-600" />
+                                    <span>Contribution Consistency</span>
+                                </div>
+                                <span className="text-[11px] font-bold text-emerald-600 uppercase tracking-wider">
+                                    Active Streak
+                                </span>
+                            </div>
+
+                            <img
+                                src="https://github-readme-streak-stats.herokuapp.com/?user=manthanvaghasiya&theme=default&bg_color=ffffff&hide_border=true&ring=2563eb&currStreakLabel=2563eb&stroke=e2e8f0"
+                                alt="Manthan's Streak"
+                                loading="lazy"
+                                className="w-full h-auto transform group-hover:scale-[1.01] transition-transform duration-300"
+                            />
+                        </div>
+
+                        {/* TOP LANGUAGES */}
+                        <div className="bg-white p-5 sm:p-7 rounded-3xl border border-slate-200/90 hover:border-slate-300 shadow-sm hover:shadow-md transition-all duration-300 group">
+                            <img
+                                src="https://github-readme-stats.vercel.app/api/top-langs/?username=manthanvaghasiya&layout=compact&theme=default&bg_color=ffffff&hide_border=true&title_color=0f172a&text_color=475569"
+                                alt="Manthan's Top Languages"
+                                loading="lazy"
+                                className="w-full h-auto transform group-hover:scale-[1.01] transition-transform duration-300"
+                            />
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
-
-            {/* Top Languages */}
-            <div 
-              className="bg-white/5 p-4 rounded-3xl border border-white/10 hover:border-accent/50 transition-all duration-300 shadow-xl group"
-              data-aos="fade-left"
-              data-aos-delay="200"
-            >
-              <img 
-                src="https://github-readme-stats.vercel.app/api/top-langs/?username=manthanvaghasiya&layout=compact&theme=tokyonight&bg_color=00000000&hide_border=true&title_color=3b82f6&text_color=cbd5e1" 
-                alt="Manthan's Top Languages"
-                className="w-full h-auto transform group-hover:scale-[1.02] transition-transform duration-300"
-              />
-            </div>
-          </div>
-
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-12" data-aos="fade-up" data-aos-delay="300">
-          <a 
-            href="https://github.com/manthanvaghasiya" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-slate-400 hover:text-accent font-semibold transition-colors"
-          >
-            Visit my GitHub Profile →
-          </a>
-        </div>
-      </div>
-    </section>
-  );
+        </section>
+    );
 };
 
 export default GithubStats;

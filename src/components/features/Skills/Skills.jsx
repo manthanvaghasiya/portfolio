@@ -1,145 +1,182 @@
-import React, { useRef, useState } from "react";
-import { Database, Layout, Server, Settings, Terminal, Cpu } from "lucide-react";
-import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
-import TiltCard from "../../common/TiltCard";
+import React from "react";
+import { Layout, Server, Database, Cloud, Zap, Cpu, Sparkles, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
+
+const skillCategories = [
+    {
+        title: "Frontend Engineering",
+        subtitle: "High-performance, responsive interfaces",
+        badge: "Architecture",
+        icon: <Layout className="text-blue-600" size={22} />,
+        accent: "from-blue-600 to-indigo-600",
+        skills: [
+            "Next.js (App Router, SSR / SSG)",
+            "React.js (Custom Hooks, Concurrent UI)",
+            "TypeScript & Modern JavaScript (ES6+)",
+            "Tailwind CSS & Utility Design Systems",
+            "CSS Flexbox, Grid & Media Queries",
+            "Mobile-First Responsive Optimization",
+        ],
+    },
+    {
+        title: "Backend & APIs",
+        subtitle: "Scalable server logic & secure endpoints",
+        badge: "Server & Microservices",
+        icon: <Server className="text-indigo-600" size={22} />,
+        accent: "from-indigo-600 to-violet-600",
+        skills: [
+            "Node.js & Express.js Microservices",
+            "RESTful API Architecture & Contract Design",
+            "JWT Authentication & Role Authorization",
+            "Middleware & Secure Request Pipelines",
+            "Third-Party API Integrations & Webhooks",
+            "Server-Side State & Session Handling",
+        ],
+    },
+    {
+        title: "Databases & Storage",
+        subtitle: "Relational & NoSQL data schemas",
+        badge: "Data Modeling",
+        icon: <Database className="text-emerald-600" size={22} />,
+        accent: "from-emerald-600 to-teal-600",
+        skills: [
+            "MongoDB & Mongoose Schema Validation",
+            "PostgreSQL (Relational Design & Indexing)",
+            "Supabase (Auth & Realtime DB)",
+            "MySQL Database Modeling",
+            "Complex Aggregation Pipelines & Queries",
+            "Data Integrity & Query Performance Tuning",
+        ],
+    },
+    {
+        title: "DevOps & Cloud Infrastructure",
+        subtitle: "Global edge networks & cloud deployments",
+        badge: "Deployment & CDN",
+        icon: <Cloud className="text-sky-600" size={22} />,
+        accent: "from-sky-500 to-blue-600",
+        skills: [
+            "Vercel Edge Network Deployment",
+            "Render Cloud Hosting & Microservices",
+            "Cloudflare CDN & Edge Caching",
+            "ImageKit & Media Delivery Optimization",
+            "Git & GitHub Collaborative Workflows",
+            "Core Web Vitals & Sub-Second Tuning",
+        ],
+    },
+    {
+        title: "Commercial Web Solutions",
+        subtitle: "Conversion architectures & client impact",
+        badge: "Business Value",
+        icon: <Zap className="text-amber-600" size={22} />,
+        accent: "from-amber-500 to-orange-500",
+        skills: [
+            "AutoDealer Schema & Technical Local SEO",
+            "Dynamic Inventory Filtering & Showcase",
+            "Custom Admin Dashboards & PWA Staff Portals",
+            "Frictionless Inquiry & Booking Flows",
+            "Clean Code & Architectural Audits",
+            "High-Throughput Storefront Architecture",
+        ],
+    },
+];
 
 const Skills = () => {
-    const categories = [
-        {
-            title: "Frontend",
-            icon: <Layout className="text-indigo-400" size={28} />,
-            skills: ["React.js (Hooks, Component Arch.)",
-                "Tailwind CSS & Responsive Layouts",
-                "JavaScript (ES6+)",
-                "Reusable UI & State Management",]
-        },
-        {
-            title: "Backend",
-            icon: <Server className="text-emerald-400" size={28} />,
-            skills: ["Node.js & Express.js",
-                "REST API Design & Routing",
-                "JWT Authentication & Security",
-                "Validation, Error Handling & Middleware",]
-        },
-        {
-            title: "Database",
-            icon: <Database className="text-orange-400" size={28} />,
-            skills: ["MongoDB + Mongoose (Schemas)",
-                "PostgreSQL Basics",
-                "Query Design & Indexing",
-                "Data Modeling for SaaS Apps",]
-        },
-        {
-            title: "DevOps",
-            icon: <Settings className="text-pink-400" size={28} />,
-            skills: ["Git & GitHub (Version Control)",
-                "Postman / API Testing",
-                "Vercel & Render Deployments",
-                "VS Code & Developer Productivity",]
-        }
-    ];
-
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.15
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                type: "spring",
-                stiffness: 120,
-                damping: 10
-            }
-        }
-    };
-
-    const listVariants = {
-        hidden: { opacity: 0, x: -10 },
-        visible: { opacity: 1, x: 0 }
-    };
-
     return (
-        <section id="skills" className="py-12 md:py-24 px-4 md:px-6 bg-[#0F172A] relative overflow-hidden perspective-1000">
-
-            {/* Background Decor */}
-            <div className="absolute top-0 left-0 w-[200px] md:w-[500px] h-[200px] md:h-[500px] bg-blue-600/10 rounded-full blur-[80px] md:blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-[200px] md:w-[500px] h-[200px] md:h-[500px] bg-blue-600/10 rounded-full blur-[80px] md:blur-[120px] pointer-events-none" />
+        <section id="skills" className="py-20 md:py-28 px-4 sm:px-6 bg-slate-50/50 relative overflow-hidden">
+            {/* Ambient Lighting */}
+            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-tr from-blue-50/70 via-indigo-50/40 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-
-                {/* Header */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
+                {/* --- HEADER --- */}
+                <div className="mb-14 md:mb-18 text-center max-w-3xl mx-auto">
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
+                        className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-600 text-xs font-bold uppercase tracking-wider mb-4 shadow-2xs"
                     >
-                        <div className="flex items-center gap-2 text-blue-400 font-mono text-xs md:text-sm mb-4 bg-blue-500/10 w-fit px-3 py-1 rounded-full border border-blue-500/20">
-                            <Terminal size={14} />
-                            <span>system_capabilities.json</span>
-                            <span className="w-1.5 h-4 bg-blue-400 animate-pulse ml-1" />
-                        </div>
-                        <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
-                            Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Stack</span>
-                        </h2>
+                        <Cpu size={13} />
+                        Technical Architecture &amp; Stack
                     </motion.div>
-                    <motion.p
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
+
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-slate-400 max-w-md text-base md:text-lg leading-relaxed"
+                        transition={{ delay: 0.1 }}
+                        className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 tracking-tight leading-tight"
                     >
-                        A comprehensive toolkit for building scalable, high-performance web applications.
+                        Engineered for{" "}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600">
+                            Speed, Scale &amp; Precision.
+                        </span>
+                    </motion.h2>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="text-slate-600 text-base md:text-lg mt-3.5 font-normal leading-relaxed"
+                    >
+                        A battle-tested technical toolkit spanning modern React/Next.js frontends, scalable Node.js architectures, relational and NoSQL databases, and global edge cloud infrastructure.
                     </motion.p>
                 </div>
 
-                {/* Grid */}
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6"
-                >
-                    {categories.map((cat, index) => (
-                        <motion.div key={index} variants={itemVariants} className="h-full">
-                            <TiltCard
-                                withSpotlight={true}
-                                className="bg-white/5 backdrop-blur-sm border border-white/10 p-5 md:p-6 rounded-2xl hover:border-blue-500/50 transition-all duration-300 group h-full flex flex-col"
-                            >
-                                <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-6 shadow-inner shadow-white/5 group-hover:bg-blue-500/20 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300">
-                                    {cat.icon}
+                {/* --- SKILLS BENTO GRID --- */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    {skillCategories.map((category, idx) => (
+                        <motion.div
+                            key={category.title}
+                            initial={{ opacity: 0, y: 25 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.45, delay: idx * 0.08 }}
+                            className={`bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_16px_36px_-8px_rgba(15,23,42,0.08)] hover:border-slate-300 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden ${
+                                idx === 4 ? "md:col-span-2 lg:col-span-2" : ""
+                            }`}
+                        >
+                            {/* Top Subtle Accent Strip */}
+                            <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${category.accent}`} />
+
+                            <div>
+                                {/* Header Row */}
+                                <div className="flex items-start justify-between gap-3.5 mb-5">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-12 h-12 rounded-2xl bg-slate-50/90 border border-slate-200/80 shadow-2xs flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                                            {category.icon}
+                                        </div>
+                                        <div>
+                                            <h3 className="text-lg sm:text-xl font-extrabold text-slate-950 tracking-tight group-hover:text-blue-600 transition-colors">
+                                                {category.title}
+                                            </h3>
+                                            <p className="text-xs text-slate-500 font-medium mt-0.5">
+                                                {category.subtitle}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 border border-slate-200/60 shrink-0">
+                                        {category.badge}
+                                    </span>
                                 </div>
 
-                                <h3 className="text-xl font-bold text-white mb-4 tracking-tight group-hover:text-blue-200 transition-colors">{cat.title}</h3>
-
-                                <div className="flex flex-wrap gap-2 mt-auto">
-                                    {cat.skills.map((skill, i) => (
-                                        <motion.span
-                                            key={i}
-                                            variants={listVariants}
-                                            className="px-2.5 py-1.5 text-[11px] md:text-xs font-medium bg-white/5 border border-white/5 text-slate-300 rounded-lg group-hover:border-blue-500/30 group-hover:bg-blue-500/10 group-hover:text-blue-200 transition-all duration-300 cursor-default hover:!scale-105 hover:!border-blue-400 hover:!text-white hover:!bg-blue-600"
+                                {/* Skills List */}
+                                <div className={`grid gap-2 pt-2 ${idx === 4 ? "sm:grid-cols-2" : "grid-cols-1"}`}>
+                                    {category.skills.map((skill) => (
+                                        <div
+                                            key={skill}
+                                            className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-slate-50/80 border border-slate-200/70 text-xs sm:text-sm font-semibold text-slate-700 hover:bg-blue-50/70 hover:border-blue-200 hover:text-blue-950 transition-all shadow-2xs group/chip"
                                         >
-                                            {skill}
-                                        </motion.span>
+                                            <CheckCircle2 size={15} className="text-blue-600 shrink-0 group-hover/chip:scale-110 transition-transform" />
+                                            <span>{skill}</span>
+                                        </div>
                                     ))}
                                 </div>
-                            </TiltCard>
+                            </div>
                         </motion.div>
                     ))}
-                </motion.div>
-
+                </div>
             </div>
         </section>
     );
