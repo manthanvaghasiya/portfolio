@@ -256,13 +256,9 @@ const Projects = () => {
                                     <HangingProjectCard
                                         project={project}
                                         onClick={() => {
-                                            if (config.isCenter) {
-                                                setSelectedProject(project);
-                                            } else {
-                                                setCenterIndex(
-                                                    (centerIndex + config.offset + total * 10) % total
-                                                );
-                                            }
+                                            const targetIndex = (centerIndex + config.offset + total * 10) % total;
+                                            setCenterIndex(targetIndex);
+                                            setSelectedProject(project);
                                         }}
                                         isCenter={config.isCenter}
                                         rotation={config.rotation}

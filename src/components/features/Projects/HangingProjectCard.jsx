@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 
 const HangingProjectCard = ({
@@ -64,10 +64,22 @@ const HangingProjectCard = ({
                         {/* Gradient scrim on hover */}
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                        {/* Hover Quick Action Indicator */}
-                        <div className="absolute top-2.5 right-2.5 z-10 w-7 h-7 rounded-full bg-white/90 backdrop-blur-md text-slate-800 flex items-center justify-center shadow-xs border border-white/60 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110">
-                            <ArrowUpRight size={14} />
-                        </div>
+                        {/* Direct Live Link Action Button (Opens live link in new tab without closing or toggling card) */}
+                        {project.liveLink && project.liveLink !== "#" && (
+                            <a
+                                href={project.liveLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                }}
+                                className="absolute top-2.5 right-2.5 z-20 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white text-[11px] font-bold shadow-md opacity-90 group-hover:opacity-100 transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+                                title={`Open ${project.title} live website`}
+                            >
+                                <span>Live</span>
+                                <ExternalLink size={11} />
+                            </a>
+                        )}
                     </div>
                 </div>
 

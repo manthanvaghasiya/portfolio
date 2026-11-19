@@ -58,28 +58,27 @@ const ProjectModal = ({ project, onClose }) => {
     if (!project) return null;
 
     return (
-        <AnimatePresence>
-            <div className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-6 overflow-hidden">
+        <div className="fixed inset-0 z-[99999] flex items-center justify-center p-3 sm:p-6 overflow-hidden">
 
-                {/* --- BACKDROP --- */}
-                <motion.div
-                    variants={overlayVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    onClick={onClose}
-                    className="absolute inset-0 bg-slate-950/60 backdrop-blur-md"
-                />
+            {/* --- BACKDROP --- */}
+            <motion.div
+                variants={overlayVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                onClick={onClose}
+                className="absolute inset-0 bg-slate-950/70 backdrop-blur-md cursor-pointer"
+            />
 
-                {/* --- MODAL CONTENT --- */}
-                <motion.div
-                    variants={modalVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    className="relative w-full max-w-4xl max-h-[90vh] flex flex-col bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden z-10"
-                    onClick={(e) => e.stopPropagation()}
-                >
+            {/* --- MODAL CONTENT --- */}
+            <motion.div
+                variants={modalVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="relative w-full max-w-4xl max-h-[90vh] flex flex-col bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden z-10"
+                onClick={(e) => e.stopPropagation()}
+            >
 
                     {/* CLOSE BUTTON */}
                     <button
@@ -241,7 +240,6 @@ const ProjectModal = ({ project, onClose }) => {
                     </div>
                 </motion.div>
             </div>
-        </AnimatePresence>
     );
 };
 
