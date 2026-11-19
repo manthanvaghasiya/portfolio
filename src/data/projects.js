@@ -267,8 +267,8 @@ export const projects = [
             "High-Concurrency Flash-Sale Scalability",
         ],
         tech: ["Shopify Plus", "React", "Global Multi-Currency", "Stripe", "Video CDN"],
-        image: "/projects/brightsport.png",
-        modalImage: "/projects/brightsport.png",
+        image: "/projects/brightsport.jpg",
+        modalImage: "/projects/brightsport.jpg",
         liveLink: "https://brightsport.com",
     },
     {
