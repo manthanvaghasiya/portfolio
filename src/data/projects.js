@@ -213,8 +213,8 @@ export const projects = [
             "Lightning-Fast Instant Checkout",
         ],
         tech: ["Shopify", "Liquid", "Tailwind CSS", "Shiprocket API", "Cashfree"],
-        image: "/projects/kidsty.webp",
-        modalImage: "/projects/kidsty.webp",
+        image: "/projects/kidsty.jpg",
+        modalImage: "/projects/kidsty.jpg",
         liveLink: "https://kidsty.in/",
     },
     {
