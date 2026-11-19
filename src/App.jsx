@@ -15,7 +15,6 @@ import FloatingWhatsApp from './components/common/FloatingWhatsApp';
 // Lazy Load (Below the Fold)
 const Services = lazy(() => import('./components/features/Services/Services'));
 const Experience = lazy(() => import('./components/features/Experience/Experience'));
-const Stats = lazy(() => import('./components/features/Stats/Stats'));
 const Projects = lazy(() => import('./components/features/Projects/Projects'));
 const Skills = lazy(() => import('./components/features/Skills/Skills'));
 const Contact = lazy(() => import('./components/features/Contact/Contact'));
@@ -52,7 +51,6 @@ function App() {
           <Navbar />
           <main>
             <Hero />
-            <Stats />
             <About />
 
             <Suspense fallback={<div className="h-20" />}>
