@@ -10,7 +10,7 @@ const FloatingWhatsApp = () => {
     return (
         <aside
             aria-label="Contact options"
-            className="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-50 flex items-center gap-3 select-none"
+            className="fixed bottom-20 right-4 sm:bottom-7 sm:right-7 z-40 flex items-center gap-3 select-none"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >

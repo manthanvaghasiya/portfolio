@@ -115,7 +115,7 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-20 md:py-28 px-4 sm:px-6 bg-slate-50/70 relative overflow-hidden border-t border-slate-200/80">
+        <section id="contact" className="py-20 md:py-28 pb-32 md:pb-28 px-4 sm:px-6 bg-slate-50/70 relative overflow-hidden border-t border-slate-200/80">
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
                     {/* --- LEFT COLUMN: VALUE PROPOSITION & DIRECT CONTACT (Span 5) --- */}
@@ -264,7 +264,7 @@ const Contact = () => {
                                         onChange={handleChange}
                                         required
                                         placeholder="Alex Johnson"
-                                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium"
+                                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium"
                                     />
                                 </div>
 
@@ -279,7 +279,7 @@ const Contact = () => {
                                         onChange={handleChange}
                                         required
                                         placeholder="alex@company.com"
-                                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium"
+                                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium"
                                     />
                                 </div>
                             </div>
@@ -294,7 +294,7 @@ const Contact = () => {
                                     value={formData.subject}
                                     onChange={handleChange}
                                     placeholder="e.g. Next.js Web App, Dealership Platform, Agency Partner"
-                                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium"
+                                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium"
                                 />
                             </div>
 
@@ -309,7 +309,7 @@ const Contact = () => {
                                     required
                                     rows={4}
                                     placeholder="Briefly describe your project requirements, goals, or timeline..."
-                                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none font-medium"
+                                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none font-medium"
                                 />
                             </div>
 

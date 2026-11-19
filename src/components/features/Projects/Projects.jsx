@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-    Sparkles,
-    ChevronLeft,
-    ChevronRight,
-} from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 import { projects } from "../../../data/projects";
-import HangingProjectCard from "./HangingProjectCard";
+import DesktopProjects from "./DesktopProjects";
+import MobileProjectsCarousel from "./MobileProjectsCarousel";
 import ProjectModal from "./ProjectModal";
 
 const categories = ["All", "Web Development", "SaaS Development", "UI/UX Design"];
@@ -14,7 +11,7 @@ const categories = ["All", "Web Development", "SaaS Development", "UI/UX Design"
 const Projects = () => {
     const [selectedProject, setSelectedProject] = useState(null);
     const [activeCategory, setActiveCategory] = useState("All");
-    const [centerIndex, setCenterIndex] = useState(1); // Default center project
+    const [centerIndex, setCenterIndex] = useState(1);
 
     // Filter projects based on category
     const filteredProjects =
@@ -35,122 +32,49 @@ const Projects = () => {
         else document.body.style.overflow = "unset";
     }, [selectedProject]);
 
-    // Navigation handlers for clothesline
-    const handleNext = () => {
-        if (filteredProjects.length === 0) return;
-        setCenterIndex((prev) => (prev + 1) % filteredProjects.length);
-    };
-
-    const handlePrev = () => {
-        if (filteredProjects.length === 0) return;
-        setCenterIndex((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
-    };
-
-    const total = filteredProjects.length;
-    const getProjectAtOffset = (offset) => {
-        if (total === 0) return null;
-        const targetIndex = (centerIndex + offset + total * 10) % total;
-        return filteredProjects[targetIndex];
-    };
-
-    // Deep, dramatic curve configuration matching the user's reference image:
-    // Slot 0: Far Left (tilted -18deg counter-clockwise, elevated high)
-    // Slot 1: Mid Left (tilted -9deg counter-clockwise, mid sag)
-    // Slot 2: Center (0deg upright, at lowest sag point of curve)
-    // Slot 3: Mid Right (tilted +9deg clockwise, mid sag)
-    // Slot 4: Far Right (tilted +18deg clockwise, elevated high)
-    const slotConfigs = [
-        {
-            offset: -2,
-            rotation: -18,
-            paddingTop: 80, // High up on wire
-            zIndex: 10,
-        },
-        {
-            offset: -1,
-            rotation: -9,
-            paddingTop: 149, // Mid drop along curve
-            zIndex: 20,
-        },
-        {
-            offset: 0,
-            rotation: 0, // Perfectly vertical center at lowest sag
-            paddingTop: 174,
-            zIndex: 30,
-            isCenter: true,
-        },
-        {
-            offset: 1,
-            rotation: 9,
-            paddingTop: 149, // Mid rise along curve
-            zIndex: 20,
-        },
-        {
-            offset: 2,
-            rotation: 18,
-            paddingTop: 80, // High up on wire
-            zIndex: 10,
-        },
-    ];
-
     return (
         <section
             id="projects"
-            className="py-20 md:py-28 px-4 sm:px-6 bg-gradient-to-b from-[#FAFBFD] via-[#F8FAFC] to-[#F1F5F9] relative overflow-hidden"
+            className="py-16 md:py-28 px-4 sm:px-6 bg-gradient-to-b from-[#FAFBFD] via-[#F8FAFC] to-[#F1F5F9] relative overflow-hidden"
         >
-            {/* Ambient Lighting matching reference */}
-            <div className="absolute bottom-10 -left-40 w-[550px] h-[550px] bg-amber-100/40 rounded-full blur-[130px] pointer-events-none -z-10" />
-            <div className="absolute bottom-10 -right-40 w-[550px] h-[550px] bg-emerald-100/50 rounded-full blur-[130px] pointer-events-none -z-10" />
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-50/40 rounded-full blur-3xl pointer-events-none -z-10" />
-
             <div className="max-w-7xl mx-auto relative z-10">
-                {/* --- HEADER MATCHING REFERENCE IMAGE --- */}
-                <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
-                    {/* Small Pill Badge */}
+                {/* Section Header */}
+                <div className="text-center max-w-3xl mx-auto mb-8 md:mb-14">
                     <motion.div
-                        initial={{ opacity: 0, y: 15 }}
+                        initial={{ opacity: 0, y: -10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-slate-200/90 text-slate-700 text-xs font-bold shadow-2xs mb-5"
+                        className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-700 text-xs font-bold uppercase tracking-wider mb-4 shadow-2xs"
                     >
                         <Sparkles size={13} className="text-emerald-500" />
-                        <span>Selected Work & Production Platforms</span>
+                        Curated Works • 18+ Platforms
                     </motion.div>
 
-                    {/* Massive Bold Headline with Green Accent */}
                     <motion.h2
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-3xl sm:text-5xl md:text-6xl font-black text-slate-950 uppercase tracking-tight leading-[1.08] mb-4"
+                        className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 tracking-tight leading-tight mb-3"
                     >
-                        FEATURED{" "}
-                        <span className="text-emerald-500">
-                            PROJECTS
-                        </span>{" "}
-                        ENGINEERED TO GROW
+                        Commercial Web Flagships &amp;{" "}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600">
+                            Custom Client Portals.
+                        </span>
                     </motion.h2>
 
-                    {/* Subtitle */}
                     <motion.p
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-slate-600 text-base sm:text-lg font-normal max-w-2xl mx-auto mb-8"
+                        className="text-slate-600 text-xs sm:text-base md:text-lg font-normal max-w-2xl mx-auto mb-6"
                     >
-                        With Built-In High Performance, Scalable Architectures & Clean Code
+                        With Built-In High Performance, Scalable Architectures &amp; Clean Code
                     </motion.p>
 
-                    {/* Central Category Pills (Matching Screenshot Exactly) */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.25 }}
-                        className="flex flex-wrap items-center justify-center gap-2 sm:gap-3"
-                    >
+                    {/* Category Filter Pills */}
+                    <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
                         {categories.map((category) => {
                             const count =
                                 category === "All"
@@ -165,7 +89,7 @@ const Projects = () => {
                                         setActiveCategory(category);
                                         setCenterIndex(0);
                                     }}
-                                    className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 select-none flex items-center gap-2 cursor-pointer shadow-xs ${
+                                    className={`px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 select-none flex items-center gap-1.5 sm:gap-2 cursor-pointer shadow-2xs ${
                                         isActive
                                             ? "bg-[#10b981] hover:bg-emerald-600 text-white shadow-md shadow-emerald-500/25 scale-105"
                                             : "bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/90"
@@ -173,7 +97,7 @@ const Projects = () => {
                                 >
                                     <span>{category}</span>
                                     <span
-                                        className={`px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
+                                        className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
                                             isActive
                                                 ? "bg-white/20 text-white"
                                                 : "bg-slate-100 text-slate-500"
@@ -184,176 +108,33 @@ const Projects = () => {
                                 </button>
                             );
                         })}
-                    </motion.div>
-                </div>
-
-                {/* --- DRAMATIC HANGING CLOTHESLINE SHOWCASE (DESKTOP) --- */}
-                <div className="hidden lg:block relative min-h-[660px] pb-16 select-none">
-                    {/* The Deep Curved Tension Cable (SVG) with 140px Sag */}
-                    <div className="absolute top-0 left-0 right-0 z-10 pointer-events-none">
-                        <svg
-                            className="w-full h-[260px] overflow-visible"
-                            viewBox="0 0 1200 240"
-                            fill="none"
-                            preserveAspectRatio="none"
-                        >
-                            {/* Cable Soft Blur Shadow */}
-                            <path
-                                d="M -30 23 Q 600 303 1230 23"
-                                stroke="rgba(15,23,42,0.06)"
-                                strokeWidth="4.5"
-                                strokeLinecap="round"
-                            />
-                            {/* Main Wire Cable */}
-                            <path
-                                d="M -30 20 Q 600 300 1230 20"
-                                stroke="#94A3B8"
-                                strokeWidth="2.5"
-                                strokeLinecap="round"
-                            />
-                            {/* Left & Right Anchor Pegs */}
-                            <circle cx="-15" cy="20" r="5.5" fill="#64748B" />
-                            <circle cx="1215" cy="20" r="5.5" fill="#64748B" />
-                        </svg>
-                    </div>
-
-                    {/* Navigation Arrow Controls (Floating on Sides) */}
-                    <button
-                        onClick={handlePrev}
-                        aria-label="Previous project"
-                        className="absolute left-2 top-1/2 -translate-y-1/2 z-40 w-11 h-11 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 shadow-md hover:border-emerald-300 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 flex items-center justify-center transition-all cursor-pointer active:scale-95"
-                    >
-                        <ChevronLeft size={20} />
-                    </button>
-                    <button
-                        onClick={handleNext}
-                        aria-label="Next project"
-                        className="absolute right-2 top-1/2 -translate-y-1/2 z-40 w-11 h-11 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 shadow-md hover:border-emerald-300 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 flex items-center justify-center transition-all cursor-pointer active:scale-95"
-                    >
-                        <ChevronRight size={20} />
-                    </button>
-
-                    {/* 5 Hanging Polaroid Cards Positioned Along the Deep Curve */}
-                    <div className="grid grid-cols-5 gap-4 xl:gap-6 relative z-20 items-start px-4 sm:px-8">
-                        {slotConfigs.map((config, slotIdx) => {
-                            const project = getProjectAtOffset(config.offset);
-                            if (!project) return <div key={slotIdx} />;
-
-                            // If filtered set has fewer than 5 items, only render valid offsets
-                            if (total < 5 && Math.abs(config.offset) > Math.floor(total / 2)) {
-                                return <div key={slotIdx} />;
-                            }
-
-                            return (
-                                <div
-                                    key={`${project.title}-${slotIdx}`}
-                                    className="relative flex flex-col items-center"
-                                    style={{
-                                        paddingTop: `${config.paddingTop}px`,
-                                        zIndex: config.zIndex,
-                                    }}
-                                >
-                                    <HangingProjectCard
-                                        project={project}
-                                        onClick={() => {
-                                            const targetIndex = (centerIndex + config.offset + total * 10) % total;
-                                            setCenterIndex(targetIndex);
-                                            setSelectedProject(project);
-                                        }}
-                                        isCenter={config.isCenter}
-                                        rotation={config.rotation}
-                                        className="w-full"
-                                    />
-                                </div>
-                            );
-                        })}
                     </div>
                 </div>
 
-                {/* --- MOBILE & TABLET HANGING CAROUSEL (SCREENS < LG) --- */}
-                <div className="block lg:hidden relative pt-6 pb-10">
-                    {/* Top Curved Wire for Mobile */}
-                    <div className="relative mb-6">
-                        <svg
-                            className="w-full h-12 overflow-visible"
-                            viewBox="0 0 400 40"
-                            fill="none"
-                            preserveAspectRatio="none"
-                        >
-                            <path
-                                d="M -10 12 Q 200 38 410 12"
-                                stroke="#94A3B8"
-                                strokeWidth="2.2"
-                                strokeLinecap="round"
-                            />
-                        </svg>
-                    </div>
+                {/* --- 1. SIGNATURE DESKTOP HANGING CLOTHESLINE (>= 1024px) --- */}
+                <div className="hidden lg:block">
+                    <DesktopProjects
+                        filteredProjects={filteredProjects}
+                        centerIndex={centerIndex}
+                        setCenterIndex={setCenterIndex}
+                        setSelectedProject={setSelectedProject}
+                    />
+                </div>
 
-                    {/* Active Featured Card on Mobile */}
-                    {filteredProjects.length > 0 && (
-                        <div className="relative max-w-xs mx-auto">
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={filteredProjects[centerIndex]?.title}
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.95 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <HangingProjectCard
-                                        project={filteredProjects[centerIndex]}
-                                        onClick={() => setSelectedProject(filteredProjects[centerIndex])}
-                                        isCenter={true}
-                                        rotation={0}
-                                    />
-                                </motion.div>
-                            </AnimatePresence>
-
-                            {/* Mobile Dot & Arrow Navigation */}
-                            <div className="flex items-center justify-between mt-6 px-4">
-                                <button
-                                    onClick={handlePrev}
-                                    aria-label="Previous project"
-                                    className="p-2 rounded-full bg-white border border-slate-200 shadow-xs text-slate-700"
-                                >
-                                    <ChevronLeft size={18} />
-                                </button>
-                                <div className="flex items-center gap-1.5">
-                                    {filteredProjects.map((_, idx) => (
-                                        <button
-                                            key={idx}
-                                            onClick={() => setCenterIndex(idx)}
-                                            aria-label={`Go to slide ${idx + 1}`}
-                                            className={`h-2 rounded-full transition-all duration-300 ${
-                                                centerIndex === idx
-                                                    ? "w-7 bg-emerald-500"
-                                                    : "w-2 bg-slate-300"
-                                            }`}
-                                        />
-                                    ))}
-                                </div>
-                                <button
-                                    onClick={handleNext}
-                                    aria-label="Next project"
-                                    className="p-2 rounded-full bg-white border border-slate-200 shadow-xs text-slate-700"
-                                >
-                                    <ChevronRight size={18} />
-                                </button>
-                            </div>
-                        </div>
-                    )}
+                {/* --- 2. DEDICATED MOBILE SWIPEABLE CAROUSEL (< 1024px) --- */}
+                <div className="block lg:hidden">
+                    <MobileProjectsCarousel
+                        filteredProjects={filteredProjects}
+                        setSelectedProject={setSelectedProject}
+                    />
                 </div>
             </div>
 
-            {/* --- CASE STUDY MODAL --- */}
-            <AnimatePresence>
-                {selectedProject && (
-                    <ProjectModal
-                        project={selectedProject}
-                        onClose={() => setSelectedProject(null)}
-                    />
-                )}
-            </AnimatePresence>
+            {/* Shared Fullscreen / Bottom-Sheet Project Modal */}
+            <ProjectModal
+                project={selectedProject}
+                onClose={() => setSelectedProject(null)}
+            />
         </section>
     );
 };
