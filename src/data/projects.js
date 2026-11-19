@@ -2,7 +2,7 @@ export const projects = [
     {
         title: "Qissa — A Tale of Food",
         year: "2024",
-        category: "Hospitality & Dining",
+        category: "Web Development",
         location: "Sevenoaks, Kent, UK",
         countryFlag: "🇬🇧",
         badge: "UK Restaurant Flagship",
@@ -27,9 +27,65 @@ export const projects = [
         liveLink: "https://www.qissa.co.uk/",
     },
     {
+        title: "Hariram Motors",
+        year: "2024",
+        category: "Web Development",
+        location: "Surat, Gujarat, India",
+        countryFlag: "🇮🇳",
+        badge: "Certified Pre-Owned",
+        featured: true,
+        shortDescription:
+            "A digital dealership platform for verified second-hand cars in Surat, designed to deliver a luxury browsing experience.",
+        fullDescription:
+            "Hariram Motors is a digital dealership platform for verified second-hand cars in Surat, designed to deliver a luxury browsing experience.\n\n" +
+            "• Developed a high-performance inventory showcase for certified pre-owned vehicles with advanced filtering.\n" +
+            "• Implemented responsive, modern UI/UX with smooth micro-animations to enhance user engagement.\n" +
+            "• Integrated local SEO best practices and AutoDealer schema to dominate local search rankings.\n" +
+            "• Built an intuitive mobile-first interface allowing users to explore cars and book test drives seamlessly.",
+        features: [
+            "Certified Pre-Owned Inventory Showcase",
+            "Advanced Multi-Parameter Car Filtering",
+            "AutoDealer Schema & Local SEO Optimization",
+            "Mobile-First Test Drive Booking Flow",
+        ],
+        tech: ["React", "Next.js", "Node.js", "Tailwind CSS", "AutoDealer Schema"],
+        image: "/hariram.png",
+        modalImage: "/hariram.png",
+        githubLink: "https://github.com/manthanvaghasiya/Hariram-Motors-web",
+        liveLink: "https://hariramcars.com/",
+    },
+    {
+        title: "Sadguru Car Surat",
+        year: "2024",
+        category: "Web Development",
+        location: "Surat, Gujarat, India",
+        countryFlag: "🇮🇳",
+        badge: "150+ Inventory & Staff PWA",
+        featured: true,
+        shortDescription:
+            "A comprehensive digital dealership platform built to streamline the buying, selling, and exchanging of 150+ pre-owned cars in Surat.",
+        fullDescription:
+            "Sadguru Car Melo is a comprehensive digital dealership platform built to streamline the buying, selling, and exchanging of pre-owned cars in Surat.\n\n" +
+            "• Integrated a dynamic vehicle inventory management system for 150+ certified cars.\n" +
+            "• Built a dedicated Staff Portal with PWA capabilities for on-the-go dealership lot management.\n" +
+            "• Optimized for high local search visibility using AutoDealer rich snippets and JSON-LD schema.\n" +
+            "• Designed a responsive, high-performance customer interface for browsing available inventory.",
+        features: [
+            "Dynamic Inventory Management (150+ Cars)",
+            "Staff Management Portal with PWA Support",
+            "AutoDealer Rich Snippets & JSON-LD SEO",
+            "Multi-Language Customer Browsing Interface",
+        ],
+        tech: ["React", "Vite", "Node.js", "Express", "PWA Portal"],
+        image: "/sadguru.png",
+        modalImage: "/sadguru.png",
+        githubLink: "https://github.com/manthanvaghasiya/sadgurucarmelo",
+        liveLink: "https://sadgurucarsurat.com/inventory",
+    },
+    {
         title: "Royal Drive Luxury Cars",
         year: "2024",
-        category: "Automotive & Luxury",
+        category: "Web Development",
         location: "Kerala, India",
         countryFlag: "🇮🇳",
         badge: "Exotic Supercar Dealership",
@@ -56,7 +112,7 @@ export const projects = [
     {
         title: "Mr. Pal Geneva",
         year: "2024",
-        category: "Hospitality & Dining",
+        category: "Web Development",
         location: "Geneva, Switzerland",
         countryFlag: "🇨🇭",
         badge: "Swiss Gastronomy",
@@ -83,7 +139,7 @@ export const projects = [
     {
         title: "Rodeo Werkz Dallas",
         year: "2025",
-        category: "Automotive & Luxury",
+        category: "Web Development",
         location: "Dallas, Texas, USA",
         countryFlag: "🇺🇸",
         badge: "USA PPF & Styling",
@@ -110,7 +166,7 @@ export const projects = [
     {
         title: "Fine Wine Cosmetics",
         year: "2024",
-        category: "E-Commerce & D2C",
+        category: "Web Development",
         location: "India",
         countryFlag: "🇮🇳",
         badge: "Vegan Beauty D2C",
@@ -135,65 +191,9 @@ export const projects = [
         liveLink: "https://finewine-cosmetics.com/",
     },
     {
-        title: "Hariram Motors",
-        year: "2024",
-        category: "Automotive & Luxury",
-        location: "Surat, Gujarat, India",
-        countryFlag: "🇮🇳",
-        badge: "Certified Pre-Owned",
-        featured: false,
-        shortDescription:
-            "A digital dealership platform for verified second-hand cars in Surat, designed to deliver a luxury browsing experience.",
-        fullDescription:
-            "Hariram Motors is a digital dealership platform for verified second-hand cars in Surat, designed to deliver a luxury browsing experience.\n\n" +
-            "• Developed a high-performance inventory showcase for certified pre-owned vehicles with advanced filtering.\n" +
-            "• Implemented responsive, modern UI/UX with smooth micro-animations to enhance user engagement.\n" +
-            "• Integrated local SEO best practices and AutoDealer schema to dominate local search rankings.\n" +
-            "• Built an intuitive mobile-first interface allowing users to explore cars and book test drives seamlessly.",
-        features: [
-            "Certified Pre-Owned Inventory Showcase",
-            "Advanced Multi-Parameter Car Filtering",
-            "AutoDealer Schema & Local SEO Optimization",
-            "Mobile-First Test Drive Booking Flow",
-        ],
-        tech: ["React", "Next.js", "Node.js", "Tailwind CSS", "AutoDealer Schema"],
-        image: "/hariram.png",
-        modalImage: "/hariram.png",
-        githubLink: "https://github.com/manthanvaghasiya/Hariram-Motors-web",
-        liveLink: "https://hariramcars.com/",
-    },
-    {
-        title: "Sadguru Car Surat",
-        year: "2024",
-        category: "Automotive & Luxury",
-        location: "Surat, Gujarat, India",
-        countryFlag: "🇮🇳",
-        badge: "150+ Inventory & Staff PWA",
-        featured: false,
-        shortDescription:
-            "A comprehensive digital dealership platform built to streamline the buying, selling, and exchanging of 150+ pre-owned cars in Surat.",
-        fullDescription:
-            "Sadguru Car Melo is a comprehensive digital dealership platform built to streamline the buying, selling, and exchanging of pre-owned cars in Surat.\n\n" +
-            "• Integrated a dynamic vehicle inventory management system for 150+ certified cars.\n" +
-            "• Built a dedicated Staff Portal with PWA capabilities for on-the-go dealership lot management.\n" +
-            "• Optimized for high local search visibility using AutoDealer rich snippets and JSON-LD schema.\n" +
-            "• Designed a responsive, high-performance customer interface for browsing available inventory.",
-        features: [
-            "Dynamic Inventory Management (150+ Cars)",
-            "Staff Management Portal with PWA Support",
-            "AutoDealer Rich Snippets & JSON-LD SEO",
-            "Multi-Language Customer Browsing Interface",
-        ],
-        tech: ["React", "Vite", "Node.js", "Express", "PWA Portal"],
-        image: "/sadguru.png",
-        modalImage: "/sadguru.png",
-        githubLink: "https://github.com/manthanvaghasiya/sadgurucarmelo",
-        liveLink: "https://sadgurucarsurat.com/inventory",
-    },
-    {
         title: "Kidsty — Trendy Kidswear",
         year: "2025",
-        category: "E-Commerce & D2C",
+        category: "Web Development",
         location: "India",
         countryFlag: "🇮🇳",
         badge: "Kids Fashion D2C",
@@ -220,7 +220,7 @@ export const projects = [
     {
         title: "Huggler — Kids' Night Suits",
         year: "2025",
-        category: "E-Commerce & D2C",
+        category: "Web Development",
         location: "Tirupur, India",
         countryFlag: "🇮🇳",
         badge: "Cotton Wear (20k+ Families)",
@@ -247,7 +247,7 @@ export const projects = [
     {
         title: "BRIGHT™ Sport Europe",
         year: "2024",
-        category: "E-Commerce & D2C",
+        category: "Web Development",
         location: "Europe / Global",
         countryFlag: "🇪🇺",
         badge: "Global Holographic Sports",
@@ -274,7 +274,7 @@ export const projects = [
     {
         title: "Jisha Label Manufacturing",
         year: "2025",
-        category: "Corporate & B2B",
+        category: "Web Development",
         location: "Surat, Gujarat, India",
         countryFlag: "🇮🇳",
         badge: "ISO 9001 (5000+ Clients)",
@@ -299,9 +299,9 @@ export const projects = [
         liveLink: "https://jishalabel.com",
     },
     {
-        title: "Julie Epis — Gestion de Patrimoine",
+        title: "Julie Epis — Patrimoine",
         year: "2024",
-        category: "Corporate & B2B",
+        category: "Web Development",
         location: "Meaux, France",
         countryFlag: "🇫🇷",
         badge: "French Wealth Advisory",
@@ -326,9 +326,9 @@ export const projects = [
         liveLink: "https://julie-epis.fr/",
     },
     {
-        title: "ProHandyman Services Platform",
+        title: "ProHandyman Platform",
         year: "2024",
-        category: "SaaS & Web Platforms",
+        category: "Web Development",
         location: "Global / Agency",
         countryFlag: "🌐",
         badge: "Home Services & Booking",
@@ -355,7 +355,7 @@ export const projects = [
     {
         title: "Chaaya Lifestyle & Studio",
         year: "2025",
-        category: "E-Commerce & D2C",
+        category: "Web Development",
         location: "Surat, Gujarat, India",
         countryFlag: "🇮🇳",
         badge: "Apparel & Studio",
@@ -380,37 +380,9 @@ export const projects = [
         liveLink: "https://chaaya.microlevelsolution.com/",
     },
     {
-        title: "LifeOS Productivity SaaS",
-        year: "2025",
-        category: "SaaS & Web Platforms",
-        location: "Production Cloud",
-        countryFlag: "🌐",
-        badge: "Full-Stack SaaS",
-        featured: false,
-        shortDescription:
-            "A MERN-based productivity platform that unifies financial tracking and habit building into a single interface.",
-        fullDescription:
-            "LifeOS is a MERN-based productivity platform that unifies financial tracking and habit building into a single interface.\n\n" +
-            "• Built a financial analytics dashboard using Recharts (area and donut charts) to visualize income vs expense.\n" +
-            "• Implemented a GitHub-style habit tracker with optimistic UI updates for instant feedback.\n" +
-            "• Used MongoDB aggregations to calculate consistency, streaks, and financial summaries.\n" +
-            "• Secured the platform with JWT auth and role-based access for future extensibility.",
-        features: [
-            "Financial Analytics Dashboard with Recharts",
-            "GitHub-Style Habit Tracker with Optimistic UI",
-            "MongoDB Aggregation Pipelines for Streaks",
-            "JWT Authentication & Role-Based Access",
-        ],
-        tech: ["React", "Socket.io", "Node.js", "Express", "MongoDB"],
-        image: "/lifeos.png",
-        modalImage: "/lifeos-full.png",
-        githubLink: "https://github.com/manthanvaghasiya/LifeOS",
-        liveLink: "https://lifeos-by-manthan.vercel.app/",
-    },
-    {
         title: "Surat BookCycle",
         year: "2025",
-        category: "SaaS & Web Platforms",
+        category: "Web Development",
         location: "Surat, Gujarat, India",
         countryFlag: "🇮🇳",
         badge: "P2P Marketplace",
@@ -436,13 +408,41 @@ export const projects = [
         liveLink: "https://surat-bookcycle.vercel.app",
     },
     {
-        title: "DairyFlow POS & Ledger",
+        title: "LifeOS",
         year: "2025",
-        category: "SaaS & Web Platforms",
+        category: "SaaS Development",
+        location: "Production Cloud",
+        countryFlag: "🌐",
+        badge: "Full-Stack SaaS",
+        featured: true,
+        shortDescription:
+            "A MERN-based productivity platform that unifies financial tracking and habit building into a single interface.",
+        fullDescription:
+            "LifeOS is a MERN-based productivity platform that unifies financial tracking and habit building into a single interface.\n\n" +
+            "• Built a financial analytics dashboard using Recharts (area and donut charts) to visualize income vs expense.\n" +
+            "• Implemented a GitHub-style habit tracker with optimistic UI updates for instant feedback.\n" +
+            "• Used MongoDB aggregations to calculate consistency, streaks, and financial summaries.\n" +
+            "• Secured the platform with JWT auth and role-based access for future extensibility.",
+        features: [
+            "Financial Analytics Dashboard with Recharts",
+            "GitHub-Style Habit Tracker with Optimistic UI",
+            "MongoDB Aggregation Pipelines for Streaks",
+            "JWT Authentication & Role-Based Access",
+        ],
+        tech: ["React", "Socket.io", "Node.js", "Express", "MongoDB"],
+        image: "/lifeos.png",
+        modalImage: "/lifeos-full.png",
+        githubLink: "https://github.com/manthanvaghasiya/LifeOS",
+        liveLink: "https://lifeos-by-manthan.vercel.app/",
+    },
+    {
+        title: "DairyFlow",
+        year: "2025",
+        category: "SaaS Development",
         location: "Gujarat, India",
         countryFlag: "🇮🇳",
         badge: "Commercial Dairy POS",
-        featured: false,
+        featured: true,
         shortDescription:
             "A SaaS-style system built specifically for small and mid-size dairy businesses in India.",
         fullDescription:
@@ -466,11 +466,11 @@ export const projects = [
     {
         title: "GovDoc Verify Platform",
         year: "2026",
-        category: "SaaS & Web Platforms",
+        category: "UI/UX Design",
         location: "Production Cloud",
         countryFlag: "🌐",
         badge: "Document Compliance",
-        featured: false,
+        featured: true,
         shortDescription:
             "A comprehensive document verification system designed to streamline government service applications.",
         fullDescription:

@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowUpRight, ExternalLink, MapPin } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const HangingProjectCard = ({
@@ -27,7 +27,7 @@ const HangingProjectCard = ({
             {/* --- TOP GREEN CLIP TAG (Clamped directly over wire) --- */}
             <div className="absolute -top-5 z-30 flex flex-col items-center pointer-events-none">
                 {/* Clip Body */}
-                <div className="w-6 h-8 rounded-t-md rounded-b-xs bg-emerald-500 shadow-md flex items-start justify-center pt-1.5 relative border-t border-emerald-300/70">
+                <div className="w-6 h-8 rounded-t-md rounded-b-xs bg-[#10b981] shadow-md flex items-start justify-center pt-1.5 relative border-t border-emerald-300/70">
                     {/* Metal Eyelet Hole Intersected by Cable */}
                     <div className="w-2.5 h-2.5 rounded-full bg-white shadow-inner flex items-center justify-center">
                         <div className="w-1 h-1 rounded-full bg-slate-900/60" />
@@ -52,53 +52,39 @@ const HangingProjectCard = ({
                 }`}
             >
                 {/* Image Container with Polaroid Margin */}
-                <div className="relative aspect-[4/3] rounded-[18px] sm:rounded-[22px] overflow-hidden bg-slate-100 shadow-inner border border-slate-100/80">
-                    <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-700 ease-out"
-                        loading="lazy"
-                    />
+                <div className="relative aspect-[4/3] rounded-[18px] sm:rounded-[22px] overflow-hidden bg-gradient-to-tr from-amber-500 via-rose-500 to-indigo-600 p-[1.5px] shadow-inner">
+                    <div className="w-full h-full rounded-[17px] sm:rounded-[21px] overflow-hidden bg-slate-950 flex items-center justify-center relative">
+                        <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-700 ease-out"
+                            loading="lazy"
+                        />
 
-                    {/* Gradient scrim on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        {/* Gradient scrim on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                    {/* Top Left: Country Flag & Location Tag */}
-                    {project.countryFlag && (
-                        <div className="absolute top-2.5 left-2.5 z-10">
-                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-md text-slate-800 text-[10px] font-bold shadow-2xs border border-white/80">
-                                <span className="text-xs">{project.countryFlag}</span>
-                                <span className="truncate max-w-[85px]">{project.location?.split(",")[0]}</span>
-                            </span>
+                        {/* Hover Quick Action Indicator */}
+                        <div className="absolute top-2.5 right-2.5 z-10 w-7 h-7 rounded-full bg-white/90 backdrop-blur-md text-slate-800 flex items-center justify-center shadow-xs border border-white/60 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110">
+                            <ArrowUpRight size={14} />
                         </div>
-                    )}
-
-                    {/* Hover Quick Action Indicator */}
-                    <div className="absolute top-2.5 right-2.5 z-10 w-7 h-7 rounded-full bg-white/90 backdrop-blur-md text-slate-800 flex items-center justify-center shadow-xs border border-white/60 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110">
-                        <ArrowUpRight size={14} />
                     </div>
-
-                    {/* Live Link Badge */}
-                    {project.liveLink && project.liveLink !== "#" && (
-                        <div className="absolute bottom-2.5 right-2.5 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-500 text-white text-[10px] font-bold shadow-xs">
-                                <ExternalLink size={10} /> Live
-                            </span>
-                        </div>
-                    )}
                 </div>
 
-                {/* Minimalist, Clean Typography Matching Reference */}
+                {/* Minimalist, Clean Typography Matching Reference Screenshot */}
                 <div className="pt-3 px-1 flex flex-col">
-                    <div className="flex items-center justify-between gap-1 mb-0.5">
-                        <h3 className="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-600 transition-colors truncate">
-                            {project.title}
-                        </h3>
-                    </div>
-                    <p className="text-xs sm:text-[13px] text-slate-500 font-medium truncate">
-                        {project.badge || project.shortDescription || project.category}
+                    <h3 className="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-600 transition-colors truncate">
+                        {project.title}
+                    </h3>
+                    <p className="text-xs sm:text-[13px] text-slate-500 font-medium truncate mt-0.5">
+                        {project.shortDescription || project.category}
                     </p>
                 </div>
+
+                {/* Bottom Handle Notch for Center Card matching reference */}
+                {isCenter && (
+                    <div className="w-8 h-1 rounded-full bg-slate-400 mx-auto mt-2" />
+                )}
             </motion.div>
         </motion.div>
     );
