@@ -186,8 +186,8 @@ export const projects = [
             "Clean Vegan & Dermatologist Certification Badges",
         ],
         tech: ["Shopify Liquid", "React Components", "Tailwind CSS", "Razorpay", "Klaviyo"],
-        image: "/projects/finewine.png",
-        modalImage: "/projects/finewine.png",
+        image: "/projects/finewine.jpg",
+        modalImage: "/projects/finewine.jpg",
         liveLink: "https://finewine-cosmetics.com/",
     },
     {
