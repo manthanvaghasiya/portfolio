@@ -240,8 +240,8 @@ export const projects = [
             "Automated Tirupur Manufacturing Dispatch Sync",
         ],
         tech: ["Shopify", "Tailwind CSS", "Custom Theme Engine", "Razorpay Magic", "Klaviyo"],
-        image: "/projects/huggler.webp",
-        modalImage: "/projects/huggler.webp",
+        image: "/projects/huggler.jpg",
+        modalImage: "/projects/huggler.jpg",
         liveLink: "https://huggler.in/",
     },
     {
