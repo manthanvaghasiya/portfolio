@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
-import { ArrowUpRight, FileText } from "lucide-react";
+import { ArrowUpRight, FileText, Search } from "lucide-react";
 import NavLogo from "./NavLogo";
 import DesktopNav from "./DesktopNav";
 import MobileHeader from "./MobileHeader";
@@ -74,6 +74,16 @@ const Navbar = () => {
 
                     {/* Right Action Cluster */}
                     <div className="flex items-center gap-2 sm:gap-2.5">
+                        {/* Quick Command Palette Trigger (Cmd+K) */}
+                        <button
+                            onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
+                            className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-200/80 bg-white/90 hover:bg-slate-50 text-slate-500 hover:text-slate-900 text-xs font-semibold shadow-2xs hover:shadow transition-all group"
+                            title="Open Command Palette (⌘K / Ctrl+K)"
+                        >
+                            <Search size={13} className="text-slate-400 group-hover:text-blue-600 transition-colors" />
+                            <span className="font-mono text-[10px] px-1 py-0.2 rounded bg-slate-100 text-slate-600 font-bold border border-slate-200/70">⌘K</span>
+                        </button>
+
                         {/* Resume Quick Action */}
                         <a
                             href="/Manthan_Vaghasiya_Resume.pdf"

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
-import { FileText, MessageCircle, ArrowUpRight } from "lucide-react";
+import { FileText, MessageCircle, ArrowUpRight, Search } from "lucide-react";
 
 const MobileHeader = () => {
     const { scrollYProgress } = useScroll();
@@ -36,6 +36,15 @@ const MobileHeader = () => {
 
             {/* Quick Actions Cluster */}
             <div className="flex items-center gap-2">
+                {/* Search Trigger */}
+                <button
+                    onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
+                    className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 border border-slate-200 text-slate-600 active:bg-slate-200 transition-colors"
+                    aria-label="Search"
+                >
+                    <Search size={14} />
+                </button>
+
                 {/* Resume Pill */}
                 <a
                     href="/Manthan_Vaghasiya_Resume.pdf"

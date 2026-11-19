@@ -6,6 +6,8 @@ import Lenis from '@studio-freight/lenis';
 // Eager Load (Above the Fold)
 import Navbar from './components/layout/Navbar/Navbar';
 import Hero from './components/features/Hero/Hero';
+import ClientMarquee from './components/features/Hero/ClientMarquee';
+import CommandPalette from './components/common/CommandPalette';
 import ScrollToTop from './components/layout/ScrollToTop';
 import Preloader from './components/layout/Preloader';
 import GrainEffect from './components/layout/GrainEffect';
@@ -49,8 +51,10 @@ function App() {
           {/* <GrainEffect /> */}
 
           <Navbar />
+          <CommandPalette />
           <main>
             <Hero />
+            <ClientMarquee />
             <About />
 
             <Suspense fallback={<div className="h-20" />}>
