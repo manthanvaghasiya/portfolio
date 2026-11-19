@@ -22,8 +22,8 @@ export const projects = [
             "Private Dining & Group Celebration Inquiry Portal",
         ],
         tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "OpenTable API", "Local SEO"],
-        image: "/projects/qissa.webp",
-        modalImage: "/projects/qissa.webp",
+        image: "/projects/qissa.jpg",
+        modalImage: "/projects/qissa.jpg",
         liveLink: "https://www.qissa.co.uk/",
     },
     {
