@@ -132,8 +132,8 @@ export const projects = [
             "Event Catering & Private Venue Booking",
         ],
         tech: ["React", "WordPress Headless", "i18n Localization", "Tailwind CSS", "Cloudflare CDN"],
-        image: "/projects/mrpal.png",
-        modalImage: "/projects/mrpal.png",
+        image: "/projects/mrpal.jpg",
+        modalImage: "/projects/mrpal.jpg",
         liveLink: "https://mrpal.ch/en/",
     },
     {
