@@ -159,8 +159,8 @@ export const projects = [
             "High-Performance Visual Portfolio for Dallas Car Enthusiasts",
         ],
         tech: ["Next.js", "Tailwind CSS", "Framer Motion", "Booking Integration", "Local SEO"],
-        image: "/projects/rodeowerkz.webp",
-        modalImage: "/projects/rodeowerkz.webp",
+        image: "/projects/rodeowerkz.png",
+        modalImage: "/projects/rodeowerkz.png",
         liveLink: "https://rodeowerkz.com/",
     },
     {
