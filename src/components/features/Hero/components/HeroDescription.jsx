@@ -8,21 +8,30 @@ const HeroDescription = () => {
             variants={fadeIn("up", "spring", 1, 1)}
             className="-mt-6 text-sm md:text-lg lg:text-lg text-slate-700 leading-relaxed font-medium max-w-xl mx-auto lg:mx-0 px-2 md:px-0"
         >
-            As a <b>Full Stack Developer</b>, I design and develop complete web products from the ground up. From building <b>robust backend architectures</b> to crafting <b>user–friendly interfaces</b>, I focus on <b>performance, maintainability, and real business impact</b>. My portfolio includes platforms like{" "}
+            As a <b>Full-Stack Developer</b> and <b>Founder at Webiox</b>, I engineer high-velocity digital products and commercial web flagships for brands across the <b>UK, Switzerland, US, France, and India</b>. Trusted by international clients including{" "}
             <a
-                href="https://www.hariramcars.com/"
+                href="https://www.qissa.co.uk/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-bold text-slate-900 underline underline-offset-4 hover:no-underline transition"
+                className="font-bold text-slate-900 underline underline-offset-4 hover:text-emerald-600 transition"
+            >
+                Qissa (UK)
+            </a>,{" "}
+            <a
+                href="https://www.royaldrive.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-slate-900 underline underline-offset-4 hover:text-emerald-600 transition"
+            >
+                Royal Drive
+            </a>, and{" "}
+            <a
+                href="https://hariramcars.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-slate-900 underline underline-offset-4 hover:text-emerald-600 transition"
             >
                 Hariram Motors
-            </a>{" "}
-            and{" "}
-            <a
-                href="#projects"
-                className="font-bold text-slate-900 underline underline-offset-4 hover:no-underline transition"
-            >
-                LifeOS
             </a>.
         </motion.p>
     );

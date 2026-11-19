@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight, ExternalLink, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
 const HangingProjectCard = ({
@@ -63,6 +63,16 @@ const HangingProjectCard = ({
                     {/* Gradient scrim on hover */}
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
+                    {/* Top Left: Country Flag & Location Tag */}
+                    {project.countryFlag && (
+                        <div className="absolute top-2.5 left-2.5 z-10">
+                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-md text-slate-800 text-[10px] font-bold shadow-2xs border border-white/80">
+                                <span className="text-xs">{project.countryFlag}</span>
+                                <span className="truncate max-w-[85px]">{project.location?.split(",")[0]}</span>
+                            </span>
+                        </div>
+                    )}
+
                     {/* Hover Quick Action Indicator */}
                     <div className="absolute top-2.5 right-2.5 z-10 w-7 h-7 rounded-full bg-white/90 backdrop-blur-md text-slate-800 flex items-center justify-center shadow-xs border border-white/60 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110">
                         <ArrowUpRight size={14} />
@@ -80,11 +90,13 @@ const HangingProjectCard = ({
 
                 {/* Minimalist, Clean Typography Matching Reference */}
                 <div className="pt-3 px-1 flex flex-col">
-                    <h3 className="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-600 transition-colors truncate">
-                        {project.title}
-                    </h3>
-                    <p className="text-xs sm:text-[13px] text-slate-500 font-medium truncate mt-0.5">
-                        {project.shortDescription || project.category}
+                    <div className="flex items-center justify-between gap-1 mb-0.5">
+                        <h3 className="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-600 transition-colors truncate">
+                            {project.title}
+                        </h3>
+                    </div>
+                    <p className="text-xs sm:text-[13px] text-slate-500 font-medium truncate">
+                        {project.badge || project.shortDescription || project.category}
                     </p>
                 </div>
             </motion.div>

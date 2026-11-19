@@ -30,15 +30,16 @@ const milestones = [
         summary:
             "Dedicated technical partner for commercial brands and marketing agencies—delivering high-performance web platforms.",
         highlights: [
-            "Built digital dealership platforms for Sadguru Car Surat (150+ car catalog) and Hariram Motors.",
-            "Engineered custom staff portals with PWA capabilities for real-time mobile inventory management.",
-            "Optimized edge delivery with Vercel and Cloudflare CDN to guarantee <1s page load speeds.",
+            "Delivered international commercial web flagships including Qissa (Sevenoaks, UK) and Royal Drive (Kerala).",
+            "Built digital dealership platforms for Sadguru Car Surat (150+ car catalog) and Hariram Motors with PWA staff portals.",
+            "Optimized global edge delivery with Next.js and Cloudflare CDN to guarantee sub-second (<0.8s) page load speeds.",
         ],
         tech: ["Next.js", "React.js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS", "Vercel"],
         projectLinks: [
             { name: "webiox.tech", href: "https://webiox.tech/" },
-            { name: "Sadguru Car Surat", href: "https://sadgurucarsurat.com/" },
-            { name: "Hariram Motors", href: "https://www.hariramcars.com/" },
+            { name: "Qissa (UK)", href: "https://www.qissa.co.uk/" },
+            { name: "Royal Drive", href: "https://www.royaldrive.in/" },
+            { name: "Hariram Motors", href: "https://hariramcars.com/" },
         ],
     },
     {

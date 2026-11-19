@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { Globe, Zap, Car, ShieldCheck } from "lucide-react";
+import { Globe, Zap, Car, ShieldCheck, Compass, Users } from "lucide-react";
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
 
 // Animated Counter Component
@@ -39,15 +39,24 @@ const Stats = () => {
     const stats = [
         {
             id: 1,
-            value: "6+",
+            value: "18+",
             icon: <Globe size={20} />,
-            label: "Production Platforms",
+            label: "Live Production Platforms",
             desc: "Custom client portals & web apps",
             badge: "Commercial",
             accent: "group-hover/card:text-blue-600 group-hover/card:border-blue-200 group-hover/card:bg-blue-50/80",
         },
         {
             id: 2,
+            value: "6+",
+            icon: <Compass size={20} />,
+            label: "Countries Served",
+            desc: "UK, Swiss, USA, France, India",
+            badge: "Global",
+            accent: "group-hover/card:text-emerald-600 group-hover/card:border-emerald-200 group-hover/card:bg-emerald-50/80",
+        },
+        {
+            id: 3,
             value: "<1s",
             icon: <Zap size={20} />,
             label: "Page Load Speed",
@@ -56,20 +65,11 @@ const Stats = () => {
             accent: "group-hover/card:text-amber-600 group-hover/card:border-amber-200 group-hover/card:bg-amber-50/80",
         },
         {
-            id: 3,
-            value: "150+",
-            icon: <Car size={20} />,
-            label: "Digital Inventory",
-            desc: "Client website & dashboard built",
-            badge: "Production",
-            accent: "group-hover/card:text-emerald-600 group-hover/card:border-emerald-200 group-hover/card:bg-emerald-50/80",
-        },
-        {
             id: 4,
             value: "100%",
             icon: <ShieldCheck size={20} />,
             label: "Clean Architecture",
-            desc: "Modular React & Node.js code",
+            desc: "Modular React & Next.js systems",
             badge: "Quality",
             accent: "group-hover/card:text-indigo-600 group-hover/card:border-indigo-200 group-hover/card:bg-indigo-50/80",
         },

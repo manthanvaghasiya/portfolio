@@ -69,17 +69,17 @@ const Navbar = () => {
 
                     {/* RIGHT ACTION CLUSTER */}
                     <div className="flex items-center gap-2 sm:gap-2.5">
-                        {/* Manthan_Vaghasiya_Resume QUICK ACTION (DESKTOP) */}
+                        {/* RESUME QUICK ACTION (DESKTOP) */}
                         <a
                             href="/Manthan_Vaghasiya_Resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            download="Manthan_Vaghasiya_Manthan_Vaghasiya_Resume.pdf"
+                            download="Manthan_Vaghasiya_Resume.pdf"
                             className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-slate-200/80 bg-white/90 hover:bg-slate-50 text-slate-700 hover:text-slate-950 text-xs font-semibold shadow-xs hover:shadow transition-all group"
                             title="Download Curriculum Vitae"
                         >
                             <FileText size={13} className="text-slate-400 group-hover:text-slate-600 transition-colors" />
-                            <span>Manthan_Vaghasiya_Resume</span>
+                            <span>Resume</span>
                         </a>
 
                         {/* EXECUTIVE 'LET'S TALK' MAGNETIC BUTTON */}
