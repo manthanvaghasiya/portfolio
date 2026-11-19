@@ -83,7 +83,7 @@ export const projects = [
         liveLink: "https://sadgurucarsurat.com/inventory",
     },
     {
-        title: "Royal Drive Luxury Cars",
+        title: "Royal Drive",
         year: "2024",
         category: "Web Development",
         location: "Kerala, India",
@@ -105,8 +105,8 @@ export const projects = [
             "Multi-Showroom Inventory Sync (Kochi, Calicut, Malappuram)",
         ],
         tech: ["React", "Node.js", "Express", "Tailwind CSS", "Vehicle Valuation Engine"],
-        image: "/projects/royaldrive.png",
-        modalImage: "/projects/royaldrive.png",
+        image: "/projects/royaldrive.jpg",
+        modalImage: "/projects/royaldrive.jpg",
         liveLink: "https://www.royaldrive.in/",
     },
     {
